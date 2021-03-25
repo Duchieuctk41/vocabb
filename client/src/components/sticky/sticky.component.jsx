@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// icon
-import astronaut from "../../assets/img/astronaut.svg";
-
-// scss
+// icon && scss
+import { astronaut } from "../../img";
 import "./sticky.style.scss";
 
 const Sticky = () => (

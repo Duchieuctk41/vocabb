@@ -1,20 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// logo & icon
-import logo from "../../assets/img/learn.svg";
-import chat from "../../assets/img/chat.svg";
-import store from "../../assets/img/store.svg";
-import more from "../../assets/img/more.svg";
-import america from "../../assets/img/america.svg";
-import corona from "../../assets/img/corona.svg";
-import fire from "../../assets/img/fire.svg";
-import lingots from "../../assets/img/lingots.svg";
-import me from "../../assets/img/me.jpg";
-
 // import components
 import Dropdown from "../dropdown/dropdown.component";
 
+// img && scss
+import {
+  logo,
+  chat,
+  store,
+  more,
+  america,
+  corona,
+  fire,
+  lingots,
+  me,
+} from "../../img";
 import "./header.style.scss";
 
 const Header = () => (
