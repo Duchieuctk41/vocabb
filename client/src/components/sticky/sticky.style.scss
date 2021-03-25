@@ -1,0 +1,35 @@
+/* plus */
+
+.plus {
+  background-color: #fff;
+  position: sticky;
+  display: flex;
+  top: 95px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 48px;
+  border: 2px solid #e5e5e5;
+  border-top-width: 4px;
+  border-radius: 50%;
+  height: 72px;
+  width: 72px;
+
+  .plus--link {
+    padding: 7px 6px;
+    cursor: pointer;
+
+    span {
+      width: 100%;
+      text-transform: uppercase;
+      padding: 8px;
+      font-weight: 700;
+      color: #fff;
+      background-color: #2b70c9;
+      border-radius: 20px;
+    }
+
+    img {
+      height: 43px;
+    }
+  }
+}
