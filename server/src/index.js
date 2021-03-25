@@ -1,18 +1,23 @@
 import express from "express";
 import ConnectDB from "./config/connectDB";
-import ProductModel from "./models/product.model";
+import configViewEngine from "./config/viewEngine";
 import cors from "cors";
+import initRouters from "./routers/web";
 
+// Init app
 const app = express();
+
+// Enable client connect
 app.use(cors());
 
 // Connect mongodb
 ConnectDB();
 
-app.get("/read", async (req, res) => {
-  let product = await ProductModel.getItem();
-  res.status(200).send(product);
-});
+// Config view engine
+configViewEngine(app);
+
+// Init all Routers
+initRouters(app);
 
 app.listen(process.env.APP_PORT, process.env.APP_HOST, () => {
   console.log(
