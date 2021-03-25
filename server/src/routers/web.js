@@ -1,5 +1,6 @@
 import express from "express";
-import { home } from "./../controllers/index";
+import { home, listVocabContro } from "./../controllers/index";
+import { listVocab } from "./../services/index";
 
 let router = express.Router();
 
@@ -10,6 +11,8 @@ let router = express.Router();
 
 let initRouters = (app) => {
   router.get("/", home.getHome);
+  router.get("/createListVocab", home.getHome, listVocab.callcreate);
+  router.get("/getListVocab", listVocabContro.postVocabData);
 
   return app.use("/", router);
 };
