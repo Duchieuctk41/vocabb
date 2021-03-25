@@ -9,7 +9,18 @@ import { trophy, dumbbellblue } from "../../img";
 import "./main.style.scss";
 
 const Main = () => {
-  const lessons = ["1cc", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const lessons = [
+    "1cc",
+    "2jfkldf",
+    "3fdádfdàd",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+  ];
 
   let hang2 = false;
   let lap = false;
@@ -33,6 +44,7 @@ const Main = () => {
           }
         }
       })}
+
       <div className="grid">
         <div className="--complete">
           <img src={trophy} alt="trophy"></img>
