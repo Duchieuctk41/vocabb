@@ -1,12 +1,9 @@
-// import module
+// module
 import React from "react";
 import { Link } from "react-router-dom";
 
-// import icon
-import search from "../../assets/img/search.svg";
-import vocab from "../../assets/img/vocab.svg";
-
-// import scss
+// img && scss
+import { search, vocab } from "../../img";
 import "./dropdown.style.scss";
 
 const Dropdown = () => (

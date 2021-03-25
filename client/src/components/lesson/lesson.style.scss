@@ -1,0 +1,18 @@
+.grid {
+  width: 70%;
+  padding: 16px 12px;
+  left: 60%;
+  min-width: 440px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  column-gap: 38px;
+
+  
+}
+
+.grid:first-child {
+  padding-top: 0;
+}
+

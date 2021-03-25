@@ -1,23 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// import icon
-import me from "../../assets/img/me.jpg";
-
-import info from "../../assets/img/info.svg";
-import badge_silver_blank from "../../assets/img/badge_silver_blank.svg";
-import badge_gold_blank from "../../assets/img/badge_gold_blank.svg";
-import badge_sapphire from "../../assets/img/badge_sapphire.svg";
-import badge_locked from "../../assets/img/badge_locked.svg";
-import duo_sleeping from "../../assets/img/duo_sleeping.svg";
-
-import treasure from "../../assets/img/treasure.svg";
-import achievement from "../../assets/img/achievement.svg";
-import facebook from "../../assets/img/facebook.svg";
-import instagram from "../../assets/img/instagram.svg";
-import twitter from "../../assets/img/twitter.svg";
-
-// import scss
+// import img && scss
+import {
+  me,
+  info,
+  badge_silver_blank,
+  badge_gold_blank,
+  badge_sapphire,
+  badge_locked,
+  duo_sleeping,
+  treasure,
+  achievement,
+  facebook,
+  instagram,
+  twitter,
+} from "../../img";
 import "./sidebar.style.scss";
 
 const Sidebar = () => (
@@ -60,7 +58,9 @@ const Sidebar = () => (
         <div>
           <h2>Tổng kết KN</h2>
         </div>
-        <Link to="/" className="overall__about--link">Lên lịch</Link>
+        <Link to="/" className="overall__about--link">
+          Lên lịch
+        </Link>
       </div>
       <div className="overall__trophy">
         <div className="overall__trophy-item">
@@ -114,7 +114,9 @@ const Sidebar = () => (
         <div>
           <h2>Thành tích tiếp theo</h2>
         </div>
-        <Link to="/" className="achievement__about--link">Xem tất cả</Link>
+        <Link to="/" className="achievement__about--link">
+          Xem tất cả
+        </Link>
       </div>
       <div className="achievement__trophy">
         <div className="achievement__trophy-item">
@@ -145,7 +147,9 @@ const Sidebar = () => (
             <Link to="/" className="item-left--link">
               <img src={me} alt="me"></img>
             </Link>
-            <Link to="/" className="ml-12 item-left--link">Ngoc Kin Nguyen</Link>
+            <Link to="/" className="ml-12 item-left--link">
+              Ngoc Kin Nguyen
+            </Link>
           </div>
           <span className="item-right">41558KN</span>
         </li>
@@ -154,18 +158,26 @@ const Sidebar = () => (
             <Link to="/" className="item-left--link">
               <img src={me} alt="me"></img>
             </Link>
-            <Link to="/" className="item-left--link ml-12">Đức Hiếu</Link>
+            <Link to="/" className="item-left--link ml-12">
+              Đức Hiếu
+            </Link>
           </div>
           <span className="item-right">41558KN</span>
         </li>
       </ul>
       <div className="with_friends">
         <div className="friends__search">
-          <Link to="/" className="friends__search--link">Tìm bạn trên facebook</Link>
+          <Link to="/" className="friends__search--link">
+            Tìm bạn trên facebook
+          </Link>
         </div>
         <div className="friends__add">
-          <Link to="/" className="friends__add--link">Mời</Link>
-          <Link to="/"  className="friends__add--link">Tìm kiếm</Link>
+          <Link to="/" className="friends__add--link">
+            Mời
+          </Link>
+          <Link to="/" className="friends__add--link">
+            Tìm kiếm
+          </Link>
         </div>
       </div>
     </div>

@@ -16,6 +16,7 @@ function App() {
     Axios.get(`${localhost}/read`).then((response) => {
       setProduct(response.data);
     });
+    console.log(product);
   });
 
   return (
