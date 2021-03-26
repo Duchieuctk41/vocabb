@@ -1,0 +1,201 @@
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  height: 70px;
+  background-color: #235390;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  h2[name="game"] {
+    margin: 0px 0px;
+    font-size: 40px;
+    color: white;
+    // margin-left: 250px;
+    line-height: 70px;
+    font-weight: bold;
+    // float: left;
+  }
+  li {
+    list-style-type: none;
+    a[name="languages"] {
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+      color: #fff;
+      img[name="arrow"] {
+        width: 10px;
+        height: 10px;
+        margin-left: 3px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+.top {
+  width: 100%;
+  //background-color: #235390f7;
+  background-image: url("../img/universe.jpg");
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92vh;
+
+  .top__content {
+    align-items: center;
+    display: flex;
+    margin: 50px auto;
+    padding: 40px 40px 0;
+    text-align: center;
+    justify-content: space-between;
+
+    .circle1 {
+      width: 350px;
+      height: 350px;
+      border: 1px solid #4d85ff14;
+      background-color: #4d85ff14;
+      border-radius: 50%;
+
+      float: left;
+      float: left;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .circle2 {
+        width: 290px;
+        height: 290px;
+        border: 1px solid #93b4fc12;
+        background-color: #93b4fc12;
+        margin: 20px 20px;
+        border-radius: 50%;
+        .circle3 {
+          width: 250px;
+          height: 250px;
+          //border: 1px solid black;
+          margin: 20px 20px;
+          border-radius: 50%;
+          background-image: url("../img/earth.svg");
+          background-size: cover;
+        }
+      }
+    }
+    .topright {
+      margin: 40px 55px;
+      //border: 1px solid black;
+      h1[name="tor"] {
+        color: white;
+        text-align: center;
+        margin-bottom: 50px;
+        margin-top: 16px;
+      }
+      table {
+        //border: 1px solid black;
+        margin: auto auto;
+
+        a {
+          width: 320px;
+          border-radius: 16px;
+          text-transform: uppercase;
+          font-weight: 600;
+          letter-spacing: 0.4px;
+          text-decoration: none;
+          color: white;
+          padding: 12px 24px;
+          font-size: 14px;
+          max-width: 320px;
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+          justify-content: center;
+          text-align: center;
+        }
+        a[name="signup"] {
+          background-color: #58cc02;
+          border-bottom: 4px solid #58a700;
+          margin-bottom: 12px;
+        }
+        a[name="signin"] {
+          background-color: #235390;
+          border: 2px solid #153256;
+          border-bottom: 4px solid #153256;
+        }
+      }
+    }
+  }
+}
+.center {
+  width: auto;
+  height: 60px;
+  background-color: #0a4a82;
+  .incen {
+    width: 1000px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    //border: 1px solid black;
+    img[name="left"] {
+      width: 25px;
+      height: 30px;
+    }
+    img[name="right"] {
+      width: 25px;
+      height: 30px;
+      margin-left: auto;
+    }
+    .in {
+      width: 500px;
+      height: 35px;
+      //border: 1px solid black;
+      img[name="usa"] {
+        width: 40px;
+        height: 35px;
+        border: 1px solid white;
+        border-radius: 5px;
+        float: left;
+        margin-left: 25px;
+      }
+      a[name="usa"] {
+        float: left;
+        color: white;
+        margin-left: 10px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      img[name="china"] {
+        width: 40px;
+        height: 35px;
+        border: 1px solid white;
+        border-radius: 5px;
+        float: left;
+        margin-left: 30px;
+      }
+      a[name="china"] {
+        float: left;
+        color: white;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 10px;
+      }
+    }
+  }
+}

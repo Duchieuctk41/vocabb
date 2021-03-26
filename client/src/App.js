@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/header/header.component";
-import Homepage from "./pages/homepage.component";
+import Homepage from "./pages/home/homepage.component";
 
 const localhost = "http://localhost:3001";
 
