@@ -1,3 +1,5 @@
+import { VocabTypes } from "../types/vocabTypes";
+
 const initState = {
   data: [
     {
@@ -19,8 +21,9 @@ const initState = {
 
 const dataGameReducer = (state = initState, action) => {
   switch (action.type) {
-    case "FETCH_DATA_GAME":
-      return { ...state, data: action.payload.dataGame };
+    case VocabTypes.FETCH_DATA_GAME:
+      console.log("reducer", action.payload);
+      return { ...state, data: action.payload.data };
 
     default:
       return state;

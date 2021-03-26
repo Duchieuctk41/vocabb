@@ -11,7 +11,6 @@ const Game = () => {
   }, [dispatch]);
 
   const { dataGame } = useSelector((state) => state);
-  console.log(dataGame.data);
 
   return (
     <div>
