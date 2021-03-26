@@ -1,8 +1,7 @@
 import listVocabModel from "../models/list-vocab.model";
 
 let postVocabData = async (req, res) => {
-  const item = "Cơ bản";
-  let vocab = await listVocabModel.getListVocab(item);
+  let vocab = await listVocabModel.getListVocab();
   return res.send(vocab);
 };
 
