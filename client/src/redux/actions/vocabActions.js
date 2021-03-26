@@ -1,13 +1,12 @@
 import axios from "axios";
-
+import { VocabTypes } from "../types/vocabTypes";
 import { vocabURL } from "../../api";
 
 export const loadVocab = () => async (dispatch) => {
-  // FETCH AXIOS
   const vocabData = await axios.get(vocabURL());
 
   dispatch({
-    type: "FETCH_VOCAB",
+    type: VocabTypes.FETCH_VOCAB,
     payload: {
       vocab: vocabData.data,
     },

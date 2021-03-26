@@ -1,3 +1,5 @@
+import { VocabTypes } from "../types/vocabTypes";
+
 const initState = {
   vocab: [
     {
@@ -25,8 +27,7 @@ const initState = {
 
 const vocabReducer = (state = initState, action) => {
   switch (action.type) {
-    case "FETCH_VOCAB":
-      console.log("fetch_VOCAB");
+    case VocabTypes.FETCH_VOCAB:
       return { ...state, vocab: action.payload.vocab };
     default:
       return state;

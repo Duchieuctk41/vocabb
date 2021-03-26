@@ -1,60 +1,65 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { astronaut } from "../../img";
+import "./introduce.style.scss";
+
+// redux
+import { useSelector } from "react-redux";
 
 const Introduce = () => {
+  const { dataGame } = useSelector((state) => state);
   return (
     <div className="header">
       <h2 name="game">vocab</h2>
       <li>
-        <a href="#" name="languages">
+        <Link to="/" name="languages">
           NGÔN NGỮ HIỂN THỊ : TIẾNG VIỆT
-          <img src="../img/arrow.png" alt="arrow" name="arrow"></img>
-        </a>
+          <img src={astronaut} alt="arrow" name="arrow"></img>
+        </Link>
       </li>
-      <div class="top">
-        <div class="top__content">
-          <div class="circle1">
-            <div class="circle2">
-              <div class="circle3"></div>
+      <div className="top">
+        <div className="top__content">
+          <div className="circle1">
+            <div className="circle2">
+              <div className="circle3"></div>
             </div>
           </div>
-          <div class="topright">
+          <div className="topright">
             <h1 name="tor">Học ngoại ngữ khi chơi game</h1>
             <table>
               <tr>
                 <td>
-                  <a href="regiter" name="signup">
+                  <Link href="regiter" name="signup">
                     Bắt đầu
-                  </a>
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <a name="signin">Tôi đã có tài khoản</a>
+                  <Link name="signin">Tôi đã có tài khoản</Link>
                 </td>
               </tr>
             </table>
           </div>
         </div>
       </div>
-      <div class="center">
-        <div class="incen">
-          <img src="../img/left.png" alt="left" name="left"></img>
-          <div class="in">
-            <img src="../img/usa.png" alt="usa" name="usa"></img>
-            <Link href="#" name="usa">
+      <div className="center">
+        <div className="incen">
+          <img src={astronaut} alt="left" name="left"></img>
+          <div className="in">
+            <img src={astronaut} alt="usa" name="usa"></img>
+            <Link to="/" name="usa">
               Tiếng Anh
             </Link>
             <img src="../img/china.png" alt="china" name="china"></img>
-            <Link href="#" name="china">
+            <Link to="/" name="china">
               Tiếng Hoa
             </Link>
           </div>
-          <img src="../img/right.png" alt="right" name="right"></img>
+          <img src={astronaut} alt="right" name="right"></img>
         </div>
       </div>
-      <div class="botton"></div>
+      <div className="botton"></div>
     </div>
   );
 };

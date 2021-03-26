@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 // import components
 import Dropdown from "../dropdown/dropdown.component";
 
@@ -21,8 +19,6 @@ import "./header.style.scss";
 // import { getVocabList } from "../../redux/vocab/vocab.actions";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const { vocab } = useSelector((state) => state.vocab);
   return (
     <header className="header container">
       <ul className="menu1">

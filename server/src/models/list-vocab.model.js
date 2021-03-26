@@ -18,7 +18,7 @@ let ListVocab = new Schema({
     });
   },
 
-  getListVocab(item) {
+  getListVocab() {
     return this.find({});
   },
 }),
