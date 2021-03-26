@@ -1,12 +1,13 @@
 import axios from "axios";
-import { VocabTypes } from "../types/vocabTypes";
-import { vocabURL } from "../../api";
+import { vocabTypes } from "../types/vocabTypes";
+import { dataGameURL } from "../../api";
 
-export const loadVocab = () => async (dispatch) => {
-  const vocabData = await axios.get(vocabURL());
+export const vocabActions = () => async (dispatch) => {
+  const vocabData = await axios.get(dataGameURL());
+  // console.log(vocabData);
 
   dispatch({
-    type: VocabTypes.FETCH_VOCAB,
+    type: vocabTypes.FETCH_ALL_VOCAB,
     payload: {
       vocab: vocabData.data,
     },

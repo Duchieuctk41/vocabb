@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
+import lessonReducer from "./lessonReducer";
 import vocabReducer from "./vocabReducer";
-import dataGameReducer from "./dataGameReducer";
 
 const rootReducer = combineReducers({
+  lesson: lessonReducer,
   vocab: vocabReducer,
-  dataGame: dataGameReducer,
 });
 
 export default rootReducer;

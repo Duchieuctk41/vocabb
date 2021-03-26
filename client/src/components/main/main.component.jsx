@@ -10,40 +10,40 @@ import "./main.style.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadVocab } from "../../redux/actions/vocabActions";
+import { lessonActions } from "../../redux/actions/lessonActions";
 
 const Main = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadVocab());
+    dispatch(lessonActions());
   }, [dispatch]);
 
   let hang2 = false;
   let lap = false;
-  const { vocab } = useSelector((state) => state.vocab);
-  console.log(vocab);
+  const { lesson } = useSelector((state) => state.lesson);
+  // console.log("lesson: ", lesson);
   return (
     <div className="main">
-      {vocab.map((lesson) => {
+      {lesson.map((item) => {
         if (lap === true) {
           hang2 = false;
           return (lap = false);
         } else {
           if (hang2 === false) {
             hang2 = true;
-            return <Lesson lesson={lesson.vocab} key={lesson.id} />;
+            return <Lesson lesson={item.vocab} key={item.id} />;
           }
           if (hang2 === true) {
-            let vitri = vocab.indexOf(lesson) + 1;
+            let vitri = lesson.indexOf(item) + 1;
             let content;
-            vocab.length === vitri
-              ? (content = { vocab: undefined })
-              : (content = vocab[vitri]);
+            lesson.length === vitri
+              ? (content = { item: undefined })
+              : (content = lesson[vitri]);
             lap = true;
             return (
               <Lesson
-                key={lesson.vocab}
-                lesson={lesson.vocab}
+                key={item.vocab}
+                lesson={item.vocab}
                 content={content.vocab}
               />
             );
