@@ -2,19 +2,20 @@ import React, { useEffect } from "react";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { loadDataGame } from "../../redux/actions/dataGameActions";
+import { vocabActions } from "../../redux/actions/vocabActions";
 
 const Game = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadDataGame());
+    dispatch(vocabActions());
   }, [dispatch]);
 
-  const { dataGame } = useSelector((state) => state);
+  const { vocab } = useSelector((state) => state.vocab);
+  // console.log(vocab);
 
   return (
     <div>
-      {dataGame.data.map((item) => {
+      {vocab.map((item) => {
         return <h2>{item.EnName}</h2>;
       })}
     </div>

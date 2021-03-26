@@ -1,25 +1,19 @@
-import { VocabTypes } from "../types/vocabTypes";
+import { vocabTypes } from "../types/vocabTypes";
 
 const initState = {
   vocab: [
     {
-      _id: "605cb312c881b239f6a1eadf",
-      vocab: "Cơ bản",
+      _id: "605daaa6b5be904c8e59d16e",
+      EnName: "cold",
+      ViName: "lạnh",
+      img: "",
       __v: 0,
     },
     {
-      _id: "605cb312c881b239f6a1eae0",
-      vocab: "Chào hỏi",
-      __v: 0,
-    },
-    {
-      _id: "605cb312c881b239f6a1eae1",
-      vocab: "Giới thiệu",
-      __v: 0,
-    },
-    {
-      _id: "605cb312c881b239f6a1eae1",
-      vocab: "Giới aaa",
+      _id: "605daaa6b5be904c8e59d16f",
+      EnName: "sun",
+      ViName: "mặt tròi",
+      img: "",
       __v: 0,
     },
   ],
@@ -27,8 +21,10 @@ const initState = {
 
 const vocabReducer = (state = initState, action) => {
   switch (action.type) {
-    case VocabTypes.FETCH_VOCAB:
+    case vocabTypes.FETCH_ALL_VOCAB:
+      // console.log("reducer:", action.payload);
       return { ...state, vocab: action.payload.vocab };
+
     default:
       return state;
   }

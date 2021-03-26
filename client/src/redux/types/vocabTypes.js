@@ -1,4 +1,3 @@
-export const VocabTypes = {
-  FETCH_VOCAB: "FETCH_VOCAB",
-  FETCH_DATA_GAME: "FETCH_DATA_GAME",
+export const vocabTypes = {
+  FETCH_ALL_VOCAB: "FETCH_ALL_VOCAB",
 };
