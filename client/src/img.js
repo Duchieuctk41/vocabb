@@ -39,8 +39,10 @@ import arrow_right from "./assets/img/arrow_right.svg";
 import united from "./assets/img/united.svg";
 import earth from "./assets/img/earth.svg";
 import google from "./assets/img/google.svg";
+import close from "./assets/img/close.svg";
 
 export {
+  close,
   google,
   united,
   earth,

@@ -1,42 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import SignUp from "../../components/signup/signup.component";
+import { facebook, google } from "../../img";
 
-import { facebook, google, close } from "../../img";
+import style from "./signup.module.scss";
 
-import style from "./signup-login.module.scss";
-
-const SignupLogin = () => (
-  <div className={style.content}>
-    <Link to="/">
-      <img src={close} alt="cross" className={style.cross}></img>
-    </Link>
-    <Link to="/" className={style.signup}>
-      Đăng Ký
-    </Link>
-    <SignUp />
-    {/* <div className={style.main}>
-      <h1 className={style.title__login}>Đăng nhập</h1>
+const SignUp = () => (
+  <div>
+    <div className={style.main}>
+      <h1 className={style.login}>Tạo hồ sơ</h1>
       <div className={style.inp}>
+        <div className={style.inp1}>
+          <input type="text" placeholder="Tuổi"></input>
+        </div>
+        <div className={style.inp1}>
+          <input type="text" placeholder="Tên"></input>
+        </div>
         <div className={style.inp1}>
           <input type="text" placeholder="Email hoặc tên đăng nhập"></input>
         </div>
-        <div className={style.inp2}>
+        <div className={style.inp1}>
           <input type="text" placeholder="Mật khẩu"></input>
-          <Link to="/" className={style.forget}>
-            Quên?
-          </Link>
         </div>
       </div>
-      <Link to="/" className={style.signin}>
-        Đăng nhập
+      <Link to="/" name="signin">
+        Tạo tài khoản
       </Link>
       <div className={style.hr}>
         <hr />
         <div className={style.or}>Hoặc</div>
       </div>
-      <div className={style.inp3}>
+      <div className={style.inp5}>
         <Link to="/" className={style.fb}>
           <img src={facebook} alt="Facebook" name="fb"></img>
           FaceBook
@@ -49,14 +43,12 @@ const SignupLogin = () => (
       <div className={style.botton}>
         <p className={style.rule}>
           Khi đăng ký tài khoản trên VOCAB là bạn đã đồng ý với các
-          <Link to="/" className={style.rule__link}>
-            điều khoản và chính sách bảo mật
-          </Link>{" "}
+          <Link to="/"> điều khoản và chính sách bảo mật </Link>
           của chúng tôi.
         </p>
-      </div> 
-    </div>*/}
+      </div>
+    </div>
   </div>
 );
 
-export default SignupLogin;
+export default SignUp;

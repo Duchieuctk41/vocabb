@@ -16,7 +16,7 @@ function App() {
       {/* {product.map((val, key) => {
         return <h1>{val.vocab}</h1>;
       })} */}
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/introduce" component={Introduce} />
