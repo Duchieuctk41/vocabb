@@ -32,8 +32,19 @@ import search from "./assets/img/search.svg";
 import vocab from "./assets/img/vocab.svg";
 import dumbbellblue from "./assets/img/dumbbell-blue.svg";
 import astronaut from "./assets/img/astronaut.svg";
+import china from "./assets/img/china.svg";
+import arrow_down from "./assets/img/arrow_down.svg";
+import arrow_left from "./assets/img/arrow_left.svg";
+import arrow_right from "./assets/img/arrow_right.svg";
+import united from "./assets/img/united.svg";
+import earth from "./assets/img/earth.svg";
 
-export {
+export {united,
+  earth,
+  arrow_right,
+  arrow_left,
+  arrow_down,
+  china,
   trophy,
   sayhi,
   hi,

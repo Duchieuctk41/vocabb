@@ -10,18 +10,18 @@ a {
 }
 
 .header {
-  // height: 70px;
+  height: 70px;
   background-color: #235390;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-  // z-index: 2;
-  // display: flex;
-  // justify-content: space-around;
-  // align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-  h2[name="game"] {
+  .logo {
     margin: 0px 0px;
     font-size: 40px;
     color: white;
@@ -30,16 +30,17 @@ a {
     font-weight: bold;
     // float: left;
   }
-  li {
+  ul {
     list-style-type: none;
-    a[name="languages"] {
+
+    .languages {
       font-size: 14.5px;
       font-weight: 700;
       letter-spacing: 0.8px;
       padding-bottom: 5px;
       text-transform: uppercase;
       color: #fff;
-      img[name="arrow"] {
+      img {
         width: 10px;
         height: 10px;
         margin-left: 3px;
@@ -50,8 +51,8 @@ a {
 }
 .top {
   width: 100%;
-  //background-color: #235390f7;
-  // background-image: url("../img/universe.jpg");
+  background-color: #235390f7;
+  background-image: url("../../assets/img/universe.jpg");
   position: relative;
   display: flex;
   justify-content: center;
@@ -91,7 +92,7 @@ a {
           //border: 1px solid black;
           margin: 20px 20px;
           border-radius: 50%;
-          // background-image: url("../img/earth.svg");
+          background-image: url("../../assets/img/earth.svg");
           background-size: cover;
         }
       }
@@ -99,7 +100,7 @@ a {
     .topright {
       margin: 40px 55px;
       //border: 1px solid black;
-      h1[name="tor"] {
+      .tor {
         color: white;
         text-align: center;
         margin-bottom: 50px;
@@ -126,12 +127,12 @@ a {
           justify-content: center;
           text-align: center;
         }
-        a[name="signup"] {
+        .signup {
           background-color: #58cc02;
           border-bottom: 4px solid #58a700;
           margin-bottom: 12px;
         }
-        a[name="signin"] {
+        .signin {
           background-color: #235390;
           border: 2px solid #153256;
           border-bottom: 4px solid #153256;
@@ -151,11 +152,11 @@ a {
     display: flex;
     align-items: center;
     //border: 1px solid black;
-    img[name="left"] {
+    .img__left {
       width: 25px;
       height: 30px;
     }
-    img[name="right"] {
+    .img__right {
       width: 25px;
       height: 30px;
       margin-left: auto;
@@ -164,15 +165,19 @@ a {
       width: 500px;
       height: 35px;
       //border: 1px solid black;
-      img[name="usa"] {
-        width: 40px;
-        height: 35px;
-        border: 1px solid white;
+      .img__usa {
+        border: 2px solid white;
         border-radius: 5px;
         float: left;
         margin-left: 25px;
+        background-image: url("../../assets/img/united.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 40px;
+        height: 100%;
       }
-      a[name="usa"] {
+      .link__usa {
         float: left;
         color: white;
         margin-left: 10px;
@@ -180,15 +185,19 @@ a {
         top: 50%;
         transform: translateY(-50%);
       }
-      img[name="china"] {
-        width: 40px;
-        height: 35px;
-        border: 1px solid white;
+      .img__china {
+        border: 2px solid white;
         border-radius: 5px;
         float: left;
-        margin-left: 30px;
+        margin-left: 25px;
+        background-image: url("../../assets/img/china.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 40px;
+        height: 100%;
       }
-      a[name="china"] {
+      .link__china {
         float: left;
         color: white;
         position: relative;
