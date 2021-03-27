@@ -40,8 +40,14 @@ import united from "./assets/img/united.svg";
 import earth from "./assets/img/earth.svg";
 import google from "./assets/img/google.svg";
 import close from "./assets/img/close.svg";
+import cold from "./assets/img/cold.svg";
+import ramen from "./assets/img/ramen.svg";
+import rice from "./assets/img/rice.svg";
 
 export {
+  ramen,
+  rice,
+  cold,
   close,
   google,
   united,
