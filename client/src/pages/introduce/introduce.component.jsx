@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { astronaut } from "../../img";
-import "./introduce.style.scss";
+import "./introduce.module.scss";
 
 // redux
 import { useSelector } from "react-redux";

@@ -1,6 +1,6 @@
 import express from "express";
-import { home, listVocabContro, vocabContro } from "./../controllers/index";
-import { listVocab, createVocab } from "./../services/index";
+import { homeContro, lessonContro, vocabContro } from "./../controllers/index";
+import { lessonSer, vocabSer } from "./../services/index";
 
 let router = express.Router();
 
@@ -10,11 +10,11 @@ let router = express.Router();
  */
 
 let initRouters = (app) => {
-  router.get("/", home.getHome);
-  router.get("/createListVocab", home.getHome, listVocab.callcreate);
-  router.get("/create-vocab", createVocab.callcreate);
-  router.get("/getListVocab", listVocabContro.postVocabData);
-  router.get("/getVocab", vocabContro.getAll);
+  router.get("/", homeContro.getHome);
+  router.get("/initLesson", lessonSer.initData);
+  router.get("/initVocab", vocabSer.initData);
+  router.get("/api-lesson", lessonContro.getAllData);
+  router.get("/api-vocab", vocabContro.getAllData);
 
   return app.use("/", router);
 };

@@ -1,5 +1,5 @@
-import listVocabService from "./list-vocab.service";
+import lessonService from "./lessonService";
 import vocabService from "./vocabService";
 
-export const listVocab = listVocabService;
-export const createVocab = vocabService;
+export const lessonSer = lessonService;
+export const vocabSer = vocabService;

@@ -1,7 +1,8 @@
-import VocabModel from "../models/vocabModel";
+import lessonModel from "../models/lessonModel";
 
 let getAllData = async (req, res) => {
-  let vocab = await VocabModel.getAllData();
+  let vocab = await lessonModel.getAllData();
+  console.log(vocab);
   return res.send(vocab);
 };
 
