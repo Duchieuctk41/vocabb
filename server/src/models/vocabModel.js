@@ -23,7 +23,7 @@ let VocabModel = new Schema({
   },
 
   // Lay tat ca du lieu
-  getAll() {
+  getAllData() {
     return this.find({});
   }
 }),

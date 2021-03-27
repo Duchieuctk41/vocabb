@@ -1,14 +1,14 @@
-import VocabModel from "../models/vocabModel";
+import vocabModel from "../models/vocabModel";
 
-let createVocab = (item) => {
+let createNewItem = (item) => {
   return new Promise(async (resolve, reject) => {
-    let vocabExists = await VocabModel.checkExists(item);
+    let vocabExists = await vocabModel.checkExists(item);
     if (vocabExists) {
       return reject(false);
     }
     let newListVocabItem = item;
 
-    let newListVocab = VocabModel.createNew(newListVocabItem);
+    let newListVocab = vocabModel.createNew(newListVocabItem);
     resolve(newListVocab);
   });
 };
@@ -21,14 +21,14 @@ let listVocabb = [
   { EnName: "cave", ViName: "phò", img: "" },
 ];
 
-let callcreate = () => {
+let initData = () => {
   for (let i = 0; i < listVocabb.length; i++) {
-    createVocab(listVocabb[i]);
+    createNewItem(listVocabb[i]);
   }
   return;
 };
 
 module.exports = {
-  createVocab: createVocab,
-  callcreate: callcreate,
+  createNewItem: createNewItem,
+  initData: initData,
 };

@@ -1,7 +1,7 @@
 import homeController from "./home.controller";
-import listVocabController from "./listVocab.controllers";
+import lessonController from "./lessonController";
 import vocabController from "./vocabController";
 
-export const home = homeController;
-export const listVocabContro = listVocabController;
+export const homeContro = homeController;
+export const lessonContro = lessonController;
 export const vocabContro = vocabController;

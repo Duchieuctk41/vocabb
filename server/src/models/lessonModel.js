@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 let Schema = mongoose.Schema;
 
-let ListVocab = new Schema({
+let LessonModel = new Schema({
   vocabId: String,
   vocab: String,
 });
 
-(ListVocab.statics = {
+(LessonModel.statics = {
   createNew(item) {
     return this.create(item);
   },
@@ -18,8 +18,8 @@ let ListVocab = new Schema({
     });
   },
 
-  getListVocab() {
+  getAllData() {
     return this.find({});
   },
 }),
-  (module.exports = mongoose.model("product", ListVocab));
+  (module.exports = mongoose.model("lessons", LessonModel));
