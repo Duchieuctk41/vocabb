@@ -38,8 +38,11 @@ import arrow_left from "./assets/img/arrow_left.svg";
 import arrow_right from "./assets/img/arrow_right.svg";
 import united from "./assets/img/united.svg";
 import earth from "./assets/img/earth.svg";
+import google from "./assets/img/google.svg";
 
-export {united,
+export {
+  google,
+  united,
   earth,
   arrow_right,
   arrow_left,
