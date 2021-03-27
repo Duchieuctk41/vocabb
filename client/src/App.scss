@@ -1,0 +1,55 @@
+/* Variable */
+:root {
+  --yellow: #ffc800;
+  --lingots: #ff504b;
+  --blue: #1cb0f6;
+}
+/* Common */
+
+*,
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+h2,
+h3,
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.ml-12 {
+  margin-left: 12px;
+}
+
+.corona-color {
+  color: var(--yellow) !important;
+}
+
+.lingots-color {
+  color: var(--lingots) !important;
+}
+
+.App {
+  .container {
+    padding: 0 130px;
+  }
+
+  .content {
+    margin: 95px auto;
+    display: flex;
+    padding: 0 130px;
+    justify-content: space-between;
+  }
+}
