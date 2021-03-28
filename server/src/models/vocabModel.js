@@ -2,29 +2,17 @@ import mongoose from "mongoose";
 
 let Schema = mongoose.Schema;
 
-let VocabModel = new Schema({
-  vocabId: String,
+let VocabSchema = new Schema({
+  lessonId: String,
   EnName: String,
   ViName: String,
-  img: "",
+  img: { type: String, default: "avatar-default.jpg" },
 });
 
-(VocabModel.statics = {
+VocabSchema.statics = {
   createNew(item) {
     return this.create(item);
   },
-  
-  checkExists(item) {
-    return this.findOne({
-      EnName: item.EnName,
-      ViName: item.ViName,
-      img: ""
-    })
-  },
+};
 
-  // Lay tat ca du lieu
-  getAllData() {
-    return this.find({});
-  }
-}),
-  (module.exports = mongoose.model("vocabularies", VocabModel));
+module.exports = mongoose.model("vocab", VocabSchema);

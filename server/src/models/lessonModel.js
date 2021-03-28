@@ -2,24 +2,16 @@ import mongoose from "mongoose";
 
 let Schema = mongoose.Schema;
 
-let LessonModel = new Schema({
-  vocabId: String,
-  vocab: String,
+let LessonSchema = new Schema({
+  name: String,
+  img: String,
+  grade: { type: Number, default: 3 },
 });
 
-(LessonModel.statics = {
+LessonSchema.statics = {
   createNew(item) {
     return this.create(item);
   },
+};
 
-  checkExists(item) {
-    return this.findOne({
-      vocab: item,
-    });
-  },
-
-  getAllData() {
-    return this.find({});
-  },
-}),
-  (module.exports = mongoose.model("lessons", LessonModel));
+module.exports = mongoose.model("lesson", LessonSchema);
