@@ -31,7 +31,7 @@ const Main = () => {
         } else {
           if (hang2 === false) {
             hang2 = true;
-            return <Lesson lesson={item.vocab} key={item.id} />;
+            return <Lesson lesson={item} key={item._id}/>;
           }
           if (hang2 === true) {
             let vitri = lesson.indexOf(item) + 1;
@@ -41,11 +41,7 @@ const Main = () => {
               : (content = lesson[vitri]);
             lap = true;
             return (
-              <Lesson
-                key={item.vocab}
-                lesson={item.vocab}
-                content={content.vocab}
-              />
+              <Lesson key={item._id} lesson={item} content={content} />
             );
           }
         }

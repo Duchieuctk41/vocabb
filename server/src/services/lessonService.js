@@ -1,29 +1,46 @@
 import lessonModel from "../models/lessonModel";
 
-let createListVocab = (item) => {
+let createNewItem = (item) => {
   return new Promise(async (resolve, reject) => {
-    let vocabExists = await lessonModel.checkExists(item);
-    if (vocabExists) {
+    // Kiem tra item co ton tai hay ko
+    let checkExists = await lessonModel.checkExists(item);
+    if (checkExists) {
       return reject(false);
     }
-    let newListVocabItem = {
-      vocab: item,
-    };
-    let newListVocab = lessonModel.createNew(newListVocabItem);
+
+    let newItem = item;
+    //console.log(newItem);
+    let newListVocab = lessonModel.createNew(newItem);
     resolve(newListVocab);
   });
 };
 
-let listvocabb = ["Cơ bản", "Chào hỏi", "Giới thiệu", "Gia đình", "Mua sắm", "Xã hội", "Nhà hàng", "Trường học" ];
+let listItem = [
+  { name: "Cơ bản" },
+  { name: "Chào hỏi" },
+  { name: "Giới thiệu" },
+  { name: "Gia đình" },
+  { name: "Mua sắm" },
+  { name: "Xã hội" },
+  { name: "Nhà hàng" },
+  { name: "Trường học" },
+  { name: "Các sự vật" },
+  { name: "Sở hữu" },
+  { name: "Con người" },
+  { name: "Trang phục" },
+  { name: "Màu sắc" },
+  { name: "Thời gian" },
+  { name: "Công việc" },
+];
 
 let initData = () => {
-  for (let i = 0; i < listvocabb.length; i++) {
-    createListVocab(listvocabb[i]);
+  for (let i = 0; i < listItem.length; i++) {
+    createNewItem(listItem[i]);
   }
   return;
 };
 
 module.exports = {
-  createListVocab: createListVocab,
+  createNewItem: createNewItem,
   initData: initData,
 };
