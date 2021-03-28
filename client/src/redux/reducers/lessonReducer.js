@@ -4,22 +4,22 @@ const initState = {
   lesson: [
     {
       _id: "605cb312c881b239f6a1eadf",
-      vocab: "Cơ bản",
+      name: "Cơ bản",
       __v: 0,
     },
     {
       _id: "605cb312c881b239f6a1eae0",
-      vocab: "Chào hỏi",
+      name: "Chào hỏi",
       __v: 0,
     },
     {
       _id: "605cb312c881b239f6a1eae1",
-      vocab: "Giới thiệu",
+      name: "Giới thiệu",
       __v: 0,
     },
     {
       _id: "605cb312c881b239f6a1eae1",
-      vocab: "Giới aaa",
+      name: "Giới aaa",
       __v: 0,
     },
   ],
