@@ -10,6 +10,29 @@ import { vocabActions } from "../../redux/actions/vocabActions";
 import style from "./game.module.scss";
 
 const Game = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(vocabActions());
+  }, [dispatch]);
+
+  const { vocab } = useSelector((state) => state.vocab);
+  let i = 0;
+  let chon3 = [];
+  let rand = Math.random().toFixed(0) * vocab.length;
+  chon3.push(rand);
+  while (chon3.length < 3) {
+    rand = Math.random().toFixed(0) * vocab.length;
+    chon3.forEach((item) => {
+      if (item == rand) {
+        console.log("vao ko?", chon3);
+        return;
+      } else {
+        chon3.push(rand);
+      }
+    });
+  }
+  console.log(chon3);
+
   return (
     <div className={style.container}>
       <div className={style.header}>
@@ -23,33 +46,24 @@ const Game = () => {
           </h1>
           <div className={style.answer}>
             {/* item */}
-            <div className={style.answer__item}>
-              <div className={style["answer__item-img"]}>
-                <img src={cold}></img>
-              </div>
-              <div className={style["answer__item-sub"]}>
-                <span>noodles</span>
-                <span>1</span>
-              </div>
-            </div>
-            <div className={style.answer__item}>
-              <div className={style["answer__item-img"]}>
-                <img src={rice}></img>
-              </div>
-              <div className={style["answer__item-sub"]}>
-                <span>noodles</span>
-                <span>1</span>
-              </div>
-            </div>
-            <div className={style.answer__item}>
-              <div className={style["answer__item-img"]}>
-                <img src={ramen}></img>
-              </div>
-              <div className={style["answer__item-sub"]}>
-                <span>noodles</span>
-                <span>1</span>
-              </div>
-            </div>
+            {vocab.map((item) => {
+              i++;
+              if (i > 3) {
+                return;
+              }
+              // let chon3 =
+              return (
+                <div className={style.answer__item}>
+                  <div className={style["answer__item-img"]}>
+                    <img src={rice}></img>
+                  </div>
+                  <div className={style["answer__item-sub"]}>
+                    <span>{item.EnName}</span>
+                    <span>1</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
