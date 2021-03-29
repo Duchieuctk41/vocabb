@@ -12,6 +12,7 @@ let router = express.Router();
 let initRouters = (app) => {
   router.get("/", homeContro.getHome);
   router.get("/init-lesson", lessonSer.initData);
+  router.get("/init-vocab", vocabSer.initData);
   router.get("/api-lesson", lessonContro.getAllData);
   router.get("/api-vocab", vocabContro.getAllData);
 
