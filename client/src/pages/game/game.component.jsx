@@ -10,29 +10,88 @@ import { vocabActions } from "../../redux/actions/vocabActions";
 import style from "./game.module.scss";
 
 const Game = () => {
+  // lay data api vocab
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(vocabActions());
   }, [dispatch]);
 
+  // Lay data in redux
   const { vocab } = useSelector((state) => state.vocab);
-  let i = 0;
-  let chon3 = [];
-  let rand = Math.random().toFixed(0) * vocab.length;
-  chon3.push(rand);
-  while (chon3.length < 3) {
-    rand = Math.random().toFixed(0) * vocab.length;
-    chon3.forEach((item) => {
-      if (item == rand) {
-        console.log("vao ko?", chon3);
-        return;
-      } else {
-        chon3.push(rand);
+
+  let learned = ["hot", "noodles", "man"];
+  let chuahoc = [];
+
+  // console.log("vocab.length: ", vocab.length);
+
+  // Push vao mang chuahoc
+  vocab.forEach((item) => {
+    let chon = false;
+    learned.forEach((i) => {
+      if (item.EnName == i) {
+        chon = true;
       }
     });
-  }
-  console.log(chon3);
+    if (chon == false) {
+      chuahoc.push(item.EnName);
+    }
+  });
+  // console.log("lan1", chuahoc);
 
+  function shuffle(array) {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+  // Dao danh sach trong mang chua hoc
+  shuffle(chuahoc);
+  // console.log("lan2 ", chuahoc);
+
+  // Tim vi tri ptu trong mang vocab
+  let indexCurrent;
+  vocab.filter((item) => {
+    if (chuahoc[0] == item.EnName) {
+      indexCurrent = vocab.indexOf(item);
+    }
+  });
+
+  let listAnswer = [chuahoc[0]];
+
+  console.log("hihi ", listAnswer);
+
+  // for (let i = 0; i < 10; i++) {
+  //   if (listAnswer.length >= 3) {
+  //     break;
+  //   } else {
+  //     let randomIndex = Math.floor(Math.random() * vocab.length);
+  //     let result = listAnswer.filter(
+  //       (item) => item == vocab[randomIndex].EnName
+  //     );
+
+  //     if (result.length === 0) {
+  //       listAnswer.push(vocab[randomIndex].EnName);
+  //     }
+  //   }
+  // }
+
+  console.log("list answer nef ", listAnswer);
+
+  let i = 0;
   return (
     <div className={style.container}>
       <div className={style.header}>
@@ -51,7 +110,6 @@ const Game = () => {
               if (i > 3) {
                 return;
               }
-              // let chon3 =
               return (
                 <div className={style.answer__item}>
                   <div className={style["answer__item-img"]}>
