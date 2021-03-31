@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // import icon &&  scss
 import { chick } from "../../img";
@@ -6,14 +7,14 @@ import "./lesson-item.style.scss";
 
 const LessonItem = ({ lesson }) => {
   return (
-    <div className="grid__item">
+    <Link className="grid__item" to="/game">
       <div className="grid__item-img">
         <div className="grid__item-img--purple">
           <img src={chick} alt="chick"></img>
         </div>
       </div>
       <h3>{lesson}</h3>
-    </div>
+    </Link>
   );
 };
 
