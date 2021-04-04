@@ -16,6 +16,7 @@ import Tudien from "./pages/tudien/tudien.component";
 import Store from "./pages/store/store.component";
 import Setting from "./pages/setting/setting.component";
 import Profile from "./pages/profile/profile.component";
+import Flashcard from "./pages/flashcard/flashcard.component";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/store" component={Store} />
         <Route path="/setting" component={Setting} />
         <Route path="/profile" component={Profile} />
+        <Route path="/flashcard" component={Flashcard} />
       </Switch>
     </div>
   );
