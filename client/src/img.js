@@ -48,6 +48,7 @@ import loupe from "./assets/img/loupe.svg";
 import usvi from "./assets/img/usvi.png";
 import cnvi from "./assets/img/cnvi.png";
 import down from "./assets/img/down.svg";
+import robot from "./assets/img/robot.png";
 
 export {
   loupe,
@@ -99,4 +100,5 @@ export {
   usvi,
   cnvi,
   down,
+  robot,
 };

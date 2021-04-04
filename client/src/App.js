@@ -14,6 +14,7 @@ import Learned from "./pages/learned/learned.component";
 import Discuss from "./pages/discuss/discuss.component";
 import Tudien from "./pages/tudien/tudien.component";
 import Store from "./pages/store/store.component";
+import Setting from "./pages/setting/setting.component";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/discuss" component={Discuss} />
         <Route path="/tudien" component={Tudien} />
         <Route path="/store" component={Store} />
+        <Route path="/setting" component={Setting} />
       </Switch>
     </div>
   );
