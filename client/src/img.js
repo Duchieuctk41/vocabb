@@ -51,8 +51,15 @@ import down from "./assets/img/down.svg";
 import robot from "./assets/img/robot.png";
 import achievement_wildfire from "./assets/img/achievement_wildfire.svg";
 import us from "./assets/img/us.png";
+import image from "./assets/img/image.svg";
+import add from "./assets/img/add.svg";
+import clear from "./assets/img/clear.svg";
+
 
 export {
+  add,
+  clear,
+  image,
   loupe,
   ramen,
   rice,
