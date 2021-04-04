@@ -30,7 +30,6 @@
             display: flex;
             align-items: center;
             margin-top: 40px;
-
             .img {
                 display: flex;
                 align-items: center;
@@ -38,11 +37,11 @@
             img:first-child{
                 width: 45px;
                 height: 35px;
-               
                 margin-left: 10px;
             }
             img:active{
-                padding: 24px 0;
+                image-rendering: pixelated;
+                object-fit: cover;
             }
             img[name=down]{
                 width: 15px;
