@@ -49,6 +49,8 @@ import usvi from "./assets/img/usvi.png";
 import cnvi from "./assets/img/cnvi.png";
 import down from "./assets/img/down.svg";
 import robot from "./assets/img/robot.png";
+import achievement_wildfire from "./assets/img/achievement_wildfire.svg";
+import us from "./assets/img/us.png";
 
 export {
   loupe,
@@ -101,4 +103,6 @@ export {
   cnvi,
   down,
   robot,
+  achievement_wildfire,
+  us,
 };
