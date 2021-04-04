@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // import icon &&  scss
-import { chick } from "../../img";
+import { chick, corona } from "../../img";
 import "./lesson-item.style.scss";
 
 const LessonItem = ({ lesson }) => {
@@ -11,6 +11,7 @@ const LessonItem = ({ lesson }) => {
       <div className="grid__item-img">
         <div className="grid__item-img--purple">
           <img src={chick} alt="chick"></img>
+          <img src={corona} alt="corona" />
         </div>
       </div>
       <h3>{lesson}</h3>
