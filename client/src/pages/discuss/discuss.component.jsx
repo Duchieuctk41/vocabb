@@ -61,7 +61,7 @@ const Game = () => {
             <div>
               <img src={loupe} alt="" />
             </div>
-            <input type="text" placeholder="Tim kiem" />
+            <input type="text" placeholder="Tìm kiếm" />
           </div>
           <div className={style.note}>
             <h2>

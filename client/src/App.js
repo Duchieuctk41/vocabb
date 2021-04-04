@@ -13,6 +13,7 @@ import SignupLogin from "./pages/signup-login/signup-login.component";
 import Learned from "./pages/learned/learned.component";
 import Discuss from "./pages/discuss/discuss.component";
 import Tudien from "./pages/tudien/tudien.component";
+import Store from "./pages/store/store.component";
 import Setting from "./pages/setting/setting.component";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/learned" component={Learned} />
         <Route path="/discuss" component={Discuss} />
         <Route path="/tudien" component={Tudien} />
+        <Route path="/store" component={Store} />
         <Route path="/setting" component={Setting} />
       </Switch>
     </div>
