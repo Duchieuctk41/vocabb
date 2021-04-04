@@ -1,0 +1,25 @@
+/* FONT FACE - font-display: fallback; */
+@font-face {
+  font-family: "dr";
+  src: url("./fonts/DINRoundPro.woff2") format("woff2"),
+    url("./fonts/DINRoundPro.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "db";
+  src: url("./fonts/DINRoundPro-Bold.woff2") format("woff2"),
+    url("./fonts/DINRoundPro-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: "dbl";
+  src: url("./fonts/DINRoundPro-Black.woff2") format("woff2"),
+    url("./fonts/DINRoundPro-Black.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}

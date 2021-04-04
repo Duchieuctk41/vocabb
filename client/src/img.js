@@ -34,6 +34,7 @@ import dumbbellblue from "./assets/img/dumbbell-blue.svg";
 import astronaut from "./assets/img/astronaut.svg";
 import china from "./assets/img/china.svg";
 import arrow_down from "./assets/img/arrow_down.svg";
+import arrow_down2 from "./assets/img/arrow_down2.svg";
 import arrow_left from "./assets/img/arrow_left.svg";
 import arrow_right from "./assets/img/arrow_right.svg";
 import united from "./assets/img/united.svg";
@@ -43,8 +44,10 @@ import close from "./assets/img/close.svg";
 import cold from "./assets/img/cold.svg";
 import ramen from "./assets/img/ramen.svg";
 import rice from "./assets/img/rice.svg";
+import loupe from "./assets/img/loupe.svg";
 
 export {
+  loupe,
   ramen,
   rice,
   cold,
@@ -55,6 +58,7 @@ export {
   arrow_right,
   arrow_left,
   arrow_down,
+  arrow_down2,
   china,
   trophy,
   sayhi,
