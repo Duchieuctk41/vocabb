@@ -9,7 +9,7 @@ import "./dropdown.style.scss";
 const Dropdown = () => (
   <ul className="menu__sub">
     <li>
-      <Link className="menu1__sub-item" to="/">
+      <Link className="menu1__sub-item" to="/tudien">
         <img src={search} alt="search icon"></img>
         Từ điển
       </Link>

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { usvi, cnvi, down, babyboy } from "../../img";
+import { usvi, cnvi, down, babyboy } 
+from "../../img";
 
 import style from "./tudien.module.scss";
 
