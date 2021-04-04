@@ -12,6 +12,7 @@ import Game from "./pages/game/game.component";
 import SignupLogin from "./pages/signup-login/signup-login.component";
 import Learned from "./pages/learned/learned.component";
 import Discuss from "./pages/discuss/discuss.component";
+import Tudien from "./pages/tudien/tudien.component";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/game" component={Game} />
         <Route path="/learned" component={Learned} />
         <Route path="/discuss" component={Discuss} />
+        <Route path="/tudien" component={Tudien} />
       </Switch>
     </div>
   );

@@ -45,6 +45,9 @@ import cold from "./assets/img/cold.svg";
 import ramen from "./assets/img/ramen.svg";
 import rice from "./assets/img/rice.svg";
 import loupe from "./assets/img/loupe.svg";
+import usvi from "./assets/img/usvi.png";
+import cnvi from "./assets/img/cnvi.png";
+import down from "./assets/img/down.svg";
 
 export {
   loupe,
@@ -93,4 +96,7 @@ export {
   search,
   vocab,
   astronaut,
+  usvi,
+  cnvi,
+  down,
 };
