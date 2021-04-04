@@ -3,6 +3,7 @@ import {Link, Switch, Route} from "react-router-dom";
 import Pass from "../../components/pass/pass.component";
 import User from "../../components/user/user.component";
 
+
 import{
     robot,
 } from "../../img";
@@ -26,7 +27,7 @@ const Setting = ({history}) => {
                         <div className={style.avt}>
                             <img src={robot} alt="robot" name="avt"/>
                             <h2 onClick={() => {history.push("/setting/pass")}}>Avatar49</h2>
-                            <Link name="profile" to="#">Xem hồ sơ của bạn</Link>
+                            <Link name="profile" to="/profile">Xem hồ sơ của bạn</Link>
                         </div>
                         {/* target="blank" */}
                         <Link name="user" to="/setting/user" id="user">Tài khoản</Link>

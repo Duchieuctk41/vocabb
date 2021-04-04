@@ -49,9 +49,12 @@ import usvi from "./assets/img/usvi.png";
 import cnvi from "./assets/img/cnvi.png";
 import down from "./assets/img/down.svg";
 import robot from "./assets/img/robot.png";
+import achievement_wildfire from "./assets/img/achievement_wildfire.svg";
+import us from "./assets/img/us.png";
 import image from "./assets/img/image.svg";
 import add from "./assets/img/add.svg";
 import clear from "./assets/img/clear.svg";
+
 
 export {
   add,
@@ -107,4 +110,6 @@ export {
   cnvi,
   down,
   robot,
+  achievement_wildfire,
+  us,
 };
