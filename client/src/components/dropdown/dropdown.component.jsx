@@ -6,21 +6,20 @@ import { Link } from "react-router-dom";
 import { search, vocab } from "../../img";
 import "./dropdown.style.scss";
 
-const Dropdown = () => (
-  <ul className="menu__sub">
-    <li>
-      <Link className="menu1__sub-item" to="/tudien">
-        <img src={search} alt="search icon"></img>
-        Từ điển
-      </Link>
-    </li>
-    <li>
-      <Link className="menu1__sub-item" to="/">
-        <img src={vocab} alt="flash-card icon"></img>
-        Từ vựng
-      </Link>
-    </li>
-  </ul>
-);
+const Dropdown = ({ title, subtitle, classes }) => {
+  return (
+    <ul className={`menu__sub ${classes}`}>
+      {title.map((item) => (
+        <li>
+          <Link className="menu1__sub-item" to={`/${item.to}`}>
+            <img src={search} alt="search icon"></img>
+            {item.name}
+          </Link>
+          {subtitle ? <div>{subtitle}</div> : null}
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 export default Dropdown;

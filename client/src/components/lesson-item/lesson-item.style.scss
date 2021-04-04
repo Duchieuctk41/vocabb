@@ -1,6 +1,5 @@
 .grid__item {
   text-align: center;
-  overflow: hidden;
   color: #3c3c3c;
 
   .grid__item-img {
@@ -9,6 +8,7 @@
     border-radius: 50%;
     border: 10px solid #e5e5e5;
     box-sizing: border-box;
+    position: relative;
 
     .grid__item-img--purple {
       background-color: #ce82ff;
@@ -21,9 +21,17 @@
       justify-content: center;
 
       img {
-        height: 65%;
-        width: 65%;
-        align-self: center;
+        &:first-child {
+          height: 65%;
+          width: 65%;
+          align-self: center;
+        }
+        &:last-child {
+          position: absolute;
+          bottom: 3%;
+          left: 73%;
+          width: 35px;
+        }
       }
     }
   }
