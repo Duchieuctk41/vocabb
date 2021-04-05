@@ -36,6 +36,9 @@
           text-align: center;
           align-items: center;
           justify-content: center;
+          &:hover {
+            filter: brightness(1.1);
+          }
 
           a {
             color: #fff;

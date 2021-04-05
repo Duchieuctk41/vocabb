@@ -93,7 +93,7 @@ const Header = () => {
             60
           </span>
           <Dropdown
-            title={[{ name: "Lingots" }, (to: "")]}
+            title={[{ name: "Lingots", to: "" }]}
             subtitle={"Bạn có 64 lingots"}
             classes={"--lingots"}
           />
@@ -104,10 +104,9 @@ const Header = () => {
           </span>
           <Dropdown
             title={[
-              { name: "Tài khoản", to: "profile" },
               { name: "Hồ sơ của bạn", to: "profile" },
               { name: "Cài đặt", to: "setting" },
-              { name: "Đăng xuất", to: "login" },
+              { name: "Đăng xuất", to: "introduce" },
             ]}
             classes={"--me"}
           />
