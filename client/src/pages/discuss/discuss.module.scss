@@ -62,9 +62,15 @@
               text-align: center;
               display: block;
               color: #afafaf;
-              &:hover {
+              &:hover,
+              &:active {
                 border-bottom: 2px solid #1cb0f6;
+                color: #1cb0f6;
               }
+            }
+            .--active {
+              border-bottom: 2px solid #1cb0f6;
+              color: #1cb0f6;
             }
           }
         }
@@ -82,6 +88,11 @@
           border-radius: 50%;
           border: 0.5px solid #e5e5e5;
           overflow: hidden;
+          cursor: pointer;
+
+          &:hover {
+            
+          }
           img {
             height: 100%;
             width: 100%;
@@ -96,6 +107,9 @@
             display: flex;
             justify-content: space-between;
             margin-top: 10px;
+            h3 {
+              cursor: pointer;
+            }
 
             &-right {
               font-size: 15px;
@@ -103,6 +117,10 @@
               color: #afafaf;
               display: flex;
               align-items: end;
+              cursor: pointer;
+              &:hover {
+                color: #ffc800;
+              }
               span {
                 &:first-child {
                   font-size: 20px;
@@ -132,6 +150,10 @@
             }
             .time {
               margin: 0 5px;
+            }
+            .user {
+              color: #1cb0f6;
+              cursor: pointer;
             }
           }
         }

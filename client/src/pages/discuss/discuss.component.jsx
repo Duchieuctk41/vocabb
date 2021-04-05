@@ -18,7 +18,7 @@ const Game = () => {
           <ul className={style.left__category}>
             <li>
               <h2>
-                <a>ĐANG ĐƯỢC ƯA THÍCH</a>
+                <a className={style["--active"]}>ĐANG ĐƯỢC ƯA THÍCH</a>
               </h2>
             </li>
             <li>
@@ -51,7 +51,7 @@ const Game = () => {
                   <span className="ti-angle-down"></span>
                 </span>
                 <span className={style.time}>6 tiếng trước</span>
-                <span>từ mai_hoang_yen</span>
+                <span className={style.user}>từ mai_hoang_yen</span>
               </div>
             </div>
           </div>
