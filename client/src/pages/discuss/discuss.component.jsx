@@ -34,6 +34,7 @@ const Game = () => {
           </ul>
           <div className={style.left__discuss}>
             <span className={style.avatar}>
+              <span className={style.border}></span>
               <img src={babyboy} alt="" />
             </span>
             <div className={style.info}>
