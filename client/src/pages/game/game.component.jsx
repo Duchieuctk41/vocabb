@@ -95,7 +95,9 @@ const Game = () => {
   return (
     <div className={style.container}>
       <div className={style.header}>
-        <img src={close}></img>
+        <Link to="/">
+          <img src={close} className={style.filter_green}></img>
+        </Link>
         <div className={style.process}></div>
       </div>
       <div className={style.content}>
