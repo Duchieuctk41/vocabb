@@ -5,8 +5,9 @@
     width: 720px;
     height: 100px;
     h1 {
-      font-size: 30px;
+      font-size: 27px;
       float: left;
+      color: #3c3c3c;
     }
     button {
       width: 140px;
@@ -37,13 +38,22 @@
   .left2 {
     width: 220px;
     float: left;
+    span {
+      display: inline-block;
+      width: 100%;
+      padding: 24px 40px 24px 0;
+    }
     label {
       display: flex;
-      width: 100%;
-      height: 60px;
+      cursor: pointer;
       margin: 0;
-      text-align: left;
+      display: flex;
+      justify-content: flex-end;
       align-items: center;
+      color: #4b4b4b;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: end;
     }
   }
   .left3 {
@@ -131,9 +141,10 @@
       text-decoration: none;
       text-align: left;
       margin: 15px 0;
-      color: black;
+      color: #999;
+      font-size: 17px;
       &:hover {
-        font-weight: bold;
+        filter: brightness(0.8);
       }
     }
   }
