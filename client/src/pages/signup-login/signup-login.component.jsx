@@ -15,8 +15,8 @@ const SignupLogin = () => (
     <Link to="/" className={style.signup}>
       Đăng Ký
     </Link>
-    {/* <SignUp /> */}
-    <div className={style.main}>
+    <SignUp />
+    {/* <div className={style.main}>
       <h1 className={style.title__login}>Đăng nhập</h1>
       <div className={style.inp}>
         <div className={style.inp1}>
@@ -55,7 +55,7 @@ const SignupLogin = () => (
           của chúng tôi.
         </p>
       </div>
-    </div>
+    </div>*/}
   </div>
 );
 
