@@ -19,13 +19,15 @@ const Introduce = () => {
   return (
     <div>
       <div className={style.header}>
-        <h2 className={style.logo}>vocab</h2>
-        <ul>
-          <li className={style.languages}>
-            NGÔN NGỮ HIỂN THỊ : TIẾNG VIỆT
-            <img src={arrow_down} alt="arrow"></img>
-          </li>
-        </ul>
+        <div className={style.container}>
+          <h2 className={style.logo}>vocab</h2>
+          <ul>
+            <li className={style.languages}>
+              NGÔN NGỮ HIỂN THỊ : TIẾNG VIỆT
+              <img src={arrow_down} alt="arrow"></img>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div className={style.top}>
@@ -37,37 +39,36 @@ const Introduce = () => {
           </div>
           <div className={style.topright}>
             <h1 className={style.tor}>Học ngoại ngữ miễn phí. Mãi mãi</h1>
-            <table>
-              <tr>
-                <td>
-                  <Link href="regiter" className={style.signup}>
-                    Bắt đầu
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Link className={style.signin}>Tôi đã có tài khoản</Link>
-                </td>
-              </tr>
-            </table>
+            <div>
+              <Link to="/login" className={style.signup}>
+                Bắt đầu
+              </Link>
+            </div>
+            <div>
+              <Link to="/login" className={style.signin}>
+                Tôi đã có tài khoản
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-      <div className={style.center}>
-        <div className={style.incen}>
+      <div className={style.footer}>
+        <div className={style.container}>
           <img src={arrow_left} alt="left" className={style.img__left}></img>
-          <div className={style.in}>
-            <span alt="usa" className={style.img__usa}></span>
-
-            <Link to="/" className={style.link__usa}>
-              Tiếng Anh
-            </Link>
-            <img src={china} alt="china" className={style.img__china}></img>
-            <Link to="/" className={style.link__china}>
-              Tiếng Hoa
-            </Link>
-          </div>
+          <ul className={style.in}>
+            <li>
+              <span className={style.america}></span>
+              <Link to="/" className={style.link__usa}>
+                Tiếng Anh
+              </Link>
+            </li>
+            <li>
+              <span className={style.china}></span>
+              <Link to="/" className={style.link__china}>
+                Tiếng Hoa
+              </Link>
+            </li>
+          </ul>
           <img src={arrow_right} alt="right" className={style.img__right}></img>
         </div>
       </div>
