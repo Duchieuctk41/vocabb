@@ -9,17 +9,24 @@ a {
   text-decoration: none;
 }
 
+.container {
+  max-width: 1065px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
 .header {
-  height: 70px;
   background-color: #235390;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 2;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  height: 70px;
 
   .logo {
     margin: 0px 0px;
@@ -105,106 +112,124 @@ a {
         text-align: center;
         margin-bottom: 50px;
         margin-top: 16px;
+        font-size: 32px;
       }
-      table {
-        //border: 1px solid black;
-        margin: auto auto;
-
-        a {
+      div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 60px;
+        .signin,
+        .signup {
           width: 320px;
+          max-width: 320px;
+          padding: 15px 24px;
           border-radius: 16px;
           text-transform: uppercase;
           font-weight: 600;
           letter-spacing: 0.4px;
           text-decoration: none;
           color: white;
-          padding: 12px 24px;
           font-size: 14px;
-          max-width: 320px;
           display: flex;
           align-items: center;
           box-sizing: border-box;
           justify-content: center;
           text-align: center;
+
+          &:hover {
+            filter: brightness(1.1);
+          }
         }
+
         .signup {
           background-color: #58cc02;
           border-bottom: 4px solid #58a700;
           margin-bottom: 12px;
         }
         .signin {
+          height: 50px;
           background-color: #235390;
-          border: 2px solid #153256;
-          border-bottom: 4px solid #153256;
+          border: 2px solid#143156;
+          border-bottom: 4px solid #143156;
+          &:hover {
+            color: hsla(0, 0%, 100%, 0.7);
+          }
         }
       }
     }
   }
 }
-.center {
-  width: auto;
-  height: 60px;
+.footer {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  height: 74px;
   background-color: #0a4a82;
-  .incen {
-    width: 1000px;
-    margin: 0 auto;
-    height: 100%;
+
+  .img__left,
+  .img__right {
+    width: 22px;
+    height: 28px;
+    cursor: pointer;
+  }
+
+  ul {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    //border: 1px solid black;
-    .img__left {
-      width: 25px;
-      height: 30px;
-    }
-    .img__right {
-      width: 25px;
-      height: 30px;
-      margin-left: auto;
-    }
-    .in {
-      width: 500px;
-      height: 35px;
-      //border: 1px solid black;
-      .img__usa {
-        border: 2px solid white;
+    flex: 1;
+    margin-left: 30px;
+
+    li {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      min-width: 120px;
+      cursor: pointer;
+
+      span {
+        border: 2px solid #fff;
         border-radius: 5px;
-        float: left;
-        margin-left: 25px;
-        background-image: url("../../assets/img/united.svg");
+        background-size: 40px;
+        display: inline-block;
+        height: 28.19512px;
+        width: 36px;
+        background-position: 0;
         background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        width: 40px;
-        height: 100%;
+        margin-right: 6px;
       }
-      .link__usa {
-        float: left;
-        color: white;
-        margin-left: 10px;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+      .america {
+        background-image: url("../../assets/img/america.svg");
       }
-      .img__china {
-        border: 2px solid white;
-        border-radius: 5px;
-        float: left;
-        margin-left: 25px;
+      .china {
         background-image: url("../../assets/img/china.svg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        width: 40px;
-        height: 100%;
       }
-      .link__china {
-        float: left;
-        color: white;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        margin-left: 10px;
-      }
+    }
+    a {
+      color: white;
+      font-weight: 600;
+      margin-left: 10px;
+      text-transform: uppercase;
+      margin-right: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
     }
   }
+}
+
+.signin:active,
+.signup:active {
+  top: 2px;
+  position: relative;
+}
+
+.signin:active {
+  border-width: 0 0 2px !important;
+}
+
+.signup:active {
+  border-width: 0 !important;
 }
