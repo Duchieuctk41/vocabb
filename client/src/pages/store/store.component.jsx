@@ -12,7 +12,7 @@ const Store = () => {
           <div className={style.left__title}>
             <h1>Bộ thẻ từ vựng</h1>
             <span className={style.left__post}>
-              <Link>Tạo bộ thẻ mới</Link>
+              <Link to="/flashcard">Tạo bộ thẻ mới</Link>
             </span>
           </div>
           <div className={style.left__store}>
@@ -24,7 +24,7 @@ const Store = () => {
               <h4>50 từ</h4>
             </div>
             <span className={style["left__store-right"]}>
-              <Link>Thêm từ vựng</Link>
+              <Link to="/flashcard">Thêm từ vựng</Link>
             </span>
           </div>
           {/* nhan doi */}
@@ -37,7 +37,7 @@ const Store = () => {
               <h4>50 từ</h4>
             </div>
             <span className={style["left__store-right"]}>
-              <Link>Thêm từ vựng</Link>
+              <Link to="/flashcard">Thêm từ vựng</Link>
             </span>
           </div>
         </div>

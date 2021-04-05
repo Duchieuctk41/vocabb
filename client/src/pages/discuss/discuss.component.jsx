@@ -51,8 +51,8 @@ const Game = () => {
                   <span className="ti-angle-up"></span>
                   <span className="ti-angle-down"></span>
                 </span>
-                <span className={style.time}>6 tiếng trước</span>
-                <span className={style.user}>từ mai_hoang_yen</span>
+                <span className={style.time}>6 tiếng trước từ</span>
+                <span className={style.user}>mai_hoang_yen</span>
               </div>
             </div>
           </div>
