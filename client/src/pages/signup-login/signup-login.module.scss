@@ -37,7 +37,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -210px 0 0 -200px;
+    transform: translate(-50%, -50%);
     .title__login {
       text-align: center;
       font-size: 26px;
