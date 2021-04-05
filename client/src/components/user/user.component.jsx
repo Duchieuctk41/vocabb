@@ -10,28 +10,40 @@ const User = () => (
       <button type="submit">Lưu thay đổi</button>
     </div>
     <div className={style.left2}>
-      <label>
-        Tên đăng nhập<br></br>
-      </label>
-      <label>
-        Email<br></br>
-      </label>
-      <label>
-        Hiệu ứng âm thanh<br></br>
-      </label>
-      <label>
-        Hiệu ứng hoạt hình<br></br>
-      </label>
-      <label>
-        Thông báo khích lệ<br></br>
-      </label>
-      <label>
-        Bài tập nói<br></br>
-      </label>
-      <label>
-        Bài tập nghe<br></br>
-      </label>
-      <label>Ảnh hồ sơ</label>
+      <span>
+        <label>Tên đăng nhập</label>
+      </span>
+      <span>
+        <label>Email</label>
+      </span>
+      <span>
+        <label>
+          Hiệu ứng âm thanh<br></br>
+        </label>
+      </span>
+      <span>
+        <label>
+          Hiệu ứng hoạt hình<br></br>
+        </label>
+      </span>
+      <span>
+        <label>
+          Thông báo khích lệ<br></br>
+        </label>
+      </span>
+      <span>
+        <label>
+          Bài tập nói<br></br>
+        </label>
+      </span>
+      <span>
+        <label>
+          Bài tập nghe<br></br>
+        </label>
+      </span>
+      <span>
+        <label>Ảnh hồ sơ</label>
+      </span>
     </div>
     <div className={style.left3}>
       <input type="text" />
