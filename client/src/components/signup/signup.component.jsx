@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { facebook, google } from "../../img";
+import { facebook, google, question } from "../../img";
 
 import style from "./signup.module.scss";
 
 const SignUp = () => (
-  <div>
+  <div className={style.container}>
     <div className={style.main}>
       <h1 className={style.login}>Tạo hồ sơ</h1>
       <div className={style.inp}>
         <div className={style.inp1}>
+          <img src={question} alt="question" className={style.question} />
           <input type="text" placeholder="Tuổi"></input>
         </div>
         <div className={style.inp1}>
@@ -27,8 +28,9 @@ const SignUp = () => (
         Tạo tài khoản
       </Link>
       <div className={style.hr}>
-        <hr />
-        <div className={style.or}>Hoặc</div>
+        <div className={style.hr__line}></div>
+        <div className={style.hr__or}>Hoặc</div>
+        <div className={style.hr__line}></div>
       </div>
       <div className={style.inp5}>
         <Link to="/" className={style.fb}>
@@ -42,9 +44,9 @@ const SignUp = () => (
       </div>
       <div className={style.botton}>
         <p className={style.rule}>
-          Khi đăng ký tài khoản trên VOCAB là bạn đã đồng ý với các
-          <Link to="/"> điều khoản và chính sách bảo mật </Link>
-          của chúng tôi.
+          Khi đăng ký trên Vocab, bạn đã đồng ý với{" "}
+          <Link to="/">Các chính sách</Link> và{" "}
+          <Link to="/">Chính sách bảo mật</Link> của chúng tôi.
         </p>
       </div>
     </div>

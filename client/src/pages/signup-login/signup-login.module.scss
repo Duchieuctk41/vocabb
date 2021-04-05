@@ -37,68 +37,56 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -210px 0 0 -200px;
+    transform: translate(-50%, -50%);
     .title__login {
       text-align: center;
       font-size: 26px;
-      padding-bottom: 30px;
+      margin: 15px 0 30px;
       font-family: sans-serif;
       font-weight: bold;
     }
     .inp {
+      margin-top: 30px;
       .inp1 {
         width: 100%;
-        height: 45px;
-        background: #f7f7f7;
-        border: 2px solid #e5e5e5;
-        border-radius: 16px;
-        margin: 8px 0 0;
-        input {
-          padding: 6px 16px;
-          width: 340px;
+        height: 49px;
+        margin-top: 8px;
+        position: relative;
+
+        a {
+          text-transform: uppercase;
+          color: #afafaf;
+          font-weight: bold;
+          font-size: 15px;
+          letter-spacing: 0.8px;
           position: absolute;
-          margin: 4.5px 15.5px;
-          background-color: transparent;
-          border-color: transparent;
-          outline: none;
-        }
-      }
-      .inp2 {
-        width: 100%;
-        height: 45px;
-        background: #f7f7f7;
-        border: 2px solid #e5e5e5;
-        border-radius: 16px;
-        margin: 8px 0 0;
-        input {
-          padding: 6px 16px;
-          width: 300px;
-          position: absolute;
-          margin: 4.5px 15.5px;
-          background-color: transparent;
-          border-color: transparent;
-          outline: none;
-        }
-        .forget {
-          color: #777;
-          text-decoration: none;
           right: 15px;
-          line-height: 39px;
-          margin-left: 320px;
+          top: 50%;
+          transform: translateY(-50%);
         }
-        .forget:hover {
-          color: black;
+        input {
+          width: 100%;
+          height: 100%;
+          background: #f7f7f7;
+          border: 2px solid #e5e5e5;
+          border-radius: 16px;
+          padding: 8px 16px;
+          outline: none;
+          &::placeholder {
+            font-size: 16px;
+            font-weight: 500;
+            color: #b3afaf;
+          }
         }
       }
     }
     .signin {
       text-decoration: none;
       width: 100%;
-      height: 50px;
+      height: 54px;
       border-radius: 15px;
       text-transform: uppercase;
-      border: transparent;
-      box-shadow: 0 4px #1899d6;
+      border-bottom: 4px solid #1899d6;
       display: block;
       line-height: 50px;
       align-items: center;
@@ -114,86 +102,76 @@
       background-color: #57c5f8;
     }
     .hr {
-      hr {
-        margin: 30px auto;
-        background-color: #e5e5e5;
+      margin: 20px 0;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__line {
+        border-bottom: 2px solid #e5e5e5;
+        flex: 1;
       }
-      .or {
-        width: 60px;
-        height: 20px;
-        background-color: white;
-        margin-inline: auto;
-        text-align: center;
-        margin-top: -42px;
-        text-transform: uppercase;
-        font-weight: bold;
+      &__or {
         color: #afafaf;
+        padding: 0 8px;
+        text-transform: uppercase;
+        font-size: 15px;
+        flex-grow: 0;
       }
     }
     .inp3 {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      .fb,
+      .gg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: solid #e5e5e5;
+        border-width: 2px 2px 4px;
+        text-align: center;
+        line-height: 46px;
+        text-transform: uppercase;
+        border-radius: 15px;
+        text-decoration: none;
+        width: 180px;
+        height: 100%;
+        font-size: 15px;
+        background-color: white;
+        font-weight: bold;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+        img {
+          width: 15px;
+          height: 15px;
+          margin-right: 10px;
+        }
+      }
       .fb {
-        width: 180px;
-        height: 100%;
-        text-decoration: none;
-        border-radius: 15px;
-        text-transform: uppercase;
-        border: 1px solid #e5e5e5;
-        box-shadow: 0 4px #e5e5e5;
-        display: block;
-        line-height: 50px;
-        align-items: center;
-        text-align: center;
         color: #3b5998;
-        font-size: 15px;
-        font-weight: bold;
-        margin-top: 20px;
-        background-color: white;
-        float: left;
-        img {
-          width: 15px;
-          height: 15px;
-        }
-      }
-      .fb:hover {
-        filter: brightness(0.9);
       }
       .gg {
-        width: 180px;
-        height: 100%;
-        text-decoration: none;
-        border-radius: 15px;
-        text-transform: uppercase;
-        border: 1px solid #e5e5e5;
-        box-shadow: 0 4px #e5e5e5;
-        display: block;
-        line-height: 50px;
-        align-items: center;
-        text-align: center;
-        color: #3b5998;
-        font-size: 15px;
-        font-weight: bold;
-        margin-top: 20px;
-        background-color: white;
-        float: right;
-        img {
-          width: 15px;
-          height: 15px;
-        }
-      }
-      .gg {
-        filter: brightness(0.9);
+        color: #4285f4;
       }
     }
     .botton {
       width: 100%;
-      height: 170px;
-      .rule {
-        color: #888888;
-        margin-top: 120px;
+      padding: 40px 0 10px;
+      p.rule {
+        color: #afafaf;
+        font-size: 14px;
         text-align: center;
-        .rule__link {
+        text-shadow: 0 0 0.1px #afafaf;
+        line-height: 1.45;
+        a {
           text-decoration: none;
-          color: #616161;
+          color: #a09f9f;
+          font-weight: bold;
+          text-shadow: 0 0 0.1px #afafaf;
         }
       }
     }
@@ -201,10 +179,15 @@
 }
 
 .signup:active,
+.signin:active,
 .fb:active,
 .gg:active {
   position: relative;
   top: 2px;
   border-width: 2px !important;
   background-color: #f7f7f7;
+}
+
+.signin:active {
+  border-width: 0 !important;
 }

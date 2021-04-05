@@ -64,17 +64,12 @@
           cursor: pointer;
 
           &:hover {
-            border-width: 2px 2px 2px 2px !important;
-            top: 2px;
             background-color: #f7f7f7;
-            position: relative;
           }
 
           &:active,
           &:focus {
-            border-width: 2px 2px 2px 2px !important;
             outline: none;
-            position: relative;
             background-color: #ddf4ff;
             border-color: #84d8ff;
 
@@ -172,17 +167,26 @@
       border: none;
       height: 46px;
       margin-top: 4px;
-      }
-    }
-
-    .check {
-      border: solid;
-      border-width: 0 0 4px;
-      border-color: #58a700;
-      background: #58cc02;
-      color: #fff;
-      &:hover {
-        filter: brightness(1.1);
     }
   }
+
+  .check {
+    border: solid;
+    border-width: 0 0 4px;
+    border-color: #58a700;
+    background: #58cc02;
+    color: #fff;
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
+}
+
+.answer__item:hover,
+.answer__item:active,
+.ignore:active,
+.check:active {
+  border-width: 2px 2px 2px 2px !important;
+  top: 2px;
+  position: relative;
 }

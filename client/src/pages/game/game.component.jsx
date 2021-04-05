@@ -129,7 +129,9 @@ const Game = () => {
       </div>
       <div className={style.footer}>
         <div className={style.footer__container}>
-          <Link to="/">Bỏ qua</Link>
+          <Link to="/" className={style.ignore}>
+            Bỏ qua
+          </Link>
           <Link to="/">Kiểm tra</Link>
         </div>
       </div>
