@@ -21,7 +21,7 @@ import Flashcard from "./pages/flashcard/flashcard.component";
 function App() {
   return (
     <div className="App">
-      {/* <Header /> */}
+      <Header />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/introduce" component={Introduce} />
