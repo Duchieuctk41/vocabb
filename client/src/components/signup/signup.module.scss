@@ -55,14 +55,14 @@ a[name="signup"]:hover {
       }
     }
   }
-  a[name="signin"] {
+  .signin {
     text-decoration: none;
     width: 100%;
     height: 50px;
     border-radius: 15px;
     text-transform: uppercase;
     border: transparent;
-    box-shadow: 0 4px #1899d6;
+    border-bottom: 4px solid #1899d6;
     display: block;
     line-height: 50px;
     align-items: center;
@@ -74,8 +74,8 @@ a[name="signup"]:hover {
     margin-top: 20px;
     background-color: #1cb0f6;
   }
-  a[name="signin"]:hover {
-    background-color: #57c5f8;
+  .signin:hover {
+    filter: brightness(1.1);
   }
   .hr {
     hr {
@@ -95,57 +95,41 @@ a[name="signup"]:hover {
     }
   }
   .inp5 {
-    .fb {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    .fb,
+    .gg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: solid #e5e5e5;
+      border-width: 2px 2px 4px;
+      text-align: center;
+      line-height: 50px;
+      text-transform: uppercase;
+      border-radius: 15px;
+      text-decoration: none;
       width: 180px;
       height: 100%;
-      text-decoration: none;
-      border-radius: 15px;
-      text-transform: uppercase;
-      border: 1px solid #e5e5e5;
-      box-shadow: 0 4px #e5e5e5;
-      display: block;
-      line-height: 50px;
-      align-items: center;
-      text-align: center;
-      color: #3b5998;
       font-size: 15px;
-      font-weight: bold;
-      margin-top: 20px;
       background-color: white;
-      float: left;
+      font-weight: bold;
+
+      &:hover {
+        filter: brightness(0.9);
+      }
       img {
         width: 15px;
         height: 15px;
+        margin-right: 10px;
       }
     }
-    .fb:hover {
-      background-color: #f7f7f7;
+    .fb {
+      color: #3b5998;
     }
     .gg {
-      width: 180px;
-      height: 100%;
-      text-decoration: none;
-      border-radius: 15px;
-      text-transform: uppercase;
-      border: 1px solid #e5e5e5;
-      box-shadow: 0 4px #e5e5e5;
-      display: block;
-      line-height: 50px;
-      align-items: center;
-      text-align: center;
-      color: #3b5998;
-      font-size: 15px;
-      font-weight: bold;
-      margin-top: 20px;
-      background-color: white;
-      float: right;
-      img {
-        width: 15px;
-        height: 15px;
-      }
-    }
-    .gg:hover {
-      background-color: #f7f7f7;
+      color: #4285f4;
     }
   }
   .botton {
@@ -161,4 +145,14 @@ a[name="signup"]:hover {
       }
     }
   }
+}
+.signin:active,
+.fb:active,
+.gg:active {
+  position: relative;
+  top: 2px;
+  border-width: 2px !important;
+}
+.signin:active {
+  border-width: 0 !important;
 }

@@ -22,13 +22,14 @@
     align-items: center;
     text-align: center;
     border-bottom: 4px solid #e5e5e5;
+    background-color: #fff;
     color: #1cb0f6;
     font-size: 15px;
     margin-left: auto;
     font-weight: bold;
   }
   .signup:hover {
-    background-color: rgba(175, 175, 175, 0.658);
+    filter: brightness(0.9);
   }
   .main {
     width: 375px;
@@ -154,7 +155,7 @@
         }
       }
       .fb:hover {
-        background-color: #f7f7f7;
+        filter: brightness(0.9);
       }
       .gg {
         width: 180px;
@@ -180,7 +181,7 @@
         }
       }
       .gg {
-        background-color: #f7f7f7;
+        filter: brightness(0.9);
       }
     }
     .botton {
@@ -197,4 +198,13 @@
       }
     }
   }
+}
+
+.signup:active,
+.fb:active,
+.gg:active {
+  position: relative;
+  top: 2px;
+  border-width: 2px !important;
+  background-color: #f7f7f7;
 }

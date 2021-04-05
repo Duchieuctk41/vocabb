@@ -23,7 +23,7 @@ const SignUp = () => (
           <input type="text" placeholder="Mật khẩu"></input>
         </div>
       </div>
-      <Link to="/" name="signin">
+      <Link to="/" className={style.signin}>
         Tạo tài khoản
       </Link>
       <div className={style.hr}>
