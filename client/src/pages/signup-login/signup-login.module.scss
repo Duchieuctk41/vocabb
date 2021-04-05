@@ -6,6 +6,9 @@
     width: 16px;
     height: 16px;
     float: left;
+    &:hover {
+      filter: brightness(1.1);
+    }
   }
   .signup {
     text-decoration: none;
