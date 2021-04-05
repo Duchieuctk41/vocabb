@@ -14,7 +14,11 @@
 
     img {
       height: 18px;
+      &:hover {
+        filter: brightness(1.1);
+      }
     }
+
     .process {
       background-color: #e5e5e5;
       border-radius: 20px;
@@ -57,11 +61,32 @@
           border-color: #e5e5e5;
           border-radius: 16px;
           padding: 24px;
+          cursor: pointer;
 
           &:hover {
             border-width: 2px 2px 2px 2px !important;
+            top: 2px;
             background-color: #f7f7f7;
             position: relative;
+          }
+
+          &:active,
+          &:focus {
+            border-width: 2px 2px 2px 2px !important;
+            outline: none;
+            position: relative;
+            background-color: #ddf4ff;
+            border-color: #84d8ff;
+
+            .answer__item-sub {
+              span:first-child {
+                color: #1899d6;
+              }
+              span:nth-child(2) {
+                border-color: #84d8ff;
+                color: #1899d6;
+              }
+            }
           }
 
           .answer__item-img {
@@ -132,12 +157,32 @@
       font-weight: 700;
       text-transform: uppercase;
       text-decoration: none;
+
+      &:first-child {
+        &:hover {
+          background: #e5e5e5;
+          filter: brightness(1);
+          border-color: #cecece;
+          color: #afafaf;
+        }
+      }
     }
     a:nth-child(2) {
       background-color: #e5e5e5;
       border: none;
       height: 46px;
       margin-top: 4px;
+      }
+    }
+
+    .check {
+      border: solid;
+      border-width: 0 0 4px;
+      border-color: #58a700;
+      background: #58cc02;
+      color: #fff;
+      &:hover {
+        filter: brightness(1.1);
     }
   }
 }
