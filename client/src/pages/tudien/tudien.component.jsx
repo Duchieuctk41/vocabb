@@ -39,6 +39,7 @@ const Tudien = () => {
       </div>
       <div className={style.botton}>
         <hr className={style.hr}/>
+        <div className={style.botton__list}>
         <ul className="menu">
           <li>
             <Link className="item" to="#">
@@ -81,7 +82,9 @@ const Tudien = () => {
             </Link>
           </li>
         </ul>
-      </div>
+      
+        </div>
+        </div>
     </div>
   );
 };
