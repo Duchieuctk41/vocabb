@@ -10,7 +10,7 @@ import style from "./lesson-item.module.scss";
 const LessonItem = ({ lesson }) => {
   const [toggle, setToggle] = useState(false);
   return (
-    <div>
+    <div className={style.item}>
       <Link className={style.grid__item} onClick={() => setToggle(!toggle)}>
         <div className={style["grid__item-img"]}>
           <span className={style.border}></span>
@@ -20,8 +20,8 @@ const LessonItem = ({ lesson }) => {
           </div>
         </div>
         <h3>{lesson}</h3>
+        {toggle ? <Popup /> : null}
       </Link>
-      {toggle ? <Popup /> : null}
     </div>
   );
 };

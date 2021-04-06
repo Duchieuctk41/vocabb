@@ -6,7 +6,7 @@ import Lesson from "../lesson/lesson.component";
 
 // img && scss
 import { trophy, dumbbellblue } from "../../img";
-import "./main.style.scss";
+import style from "./main.module.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -23,7 +23,7 @@ const Main = () => {
   const { lesson } = useSelector((state) => state.lesson);
   // console.log("lesson: ", lesson);
   return (
-    <div className="main">
+    <div className={style.main}>
       {lesson.map((item) => {
         if (lap === true) {
           hang2 = false;
@@ -45,13 +45,13 @@ const Main = () => {
         }
       })}
 
-      <div className="grid">
-        <div className="--complete">
+      <div className={style.trophy}>
+        <div className={style["--complete"]}>
           <img src={trophy} alt="trophy"></img>
         </div>
       </div>
-      <div className="exercise">
-        <Link className="exercise__link" to="/game">
+      <div className={style.exercise}>
+        <Link className={style.exercise__link} to="/game">
           <img src={dumbbellblue} alt="dumbbelblue"></img>
         </Link>
       </div>

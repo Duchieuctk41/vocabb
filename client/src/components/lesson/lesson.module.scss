@@ -1,0 +1,12 @@
+.grid {
+  padding: 16px 12px 16px 135px;
+  min-width: 440px;
+  display: flex;
+  justify-content: center;
+  grid-column-gap: 38px;
+  column-gap: 51px;
+}
+
+.grid:first-child {
+  padding-top: 0;
+}
