@@ -17,6 +17,8 @@
   background-image: url("../../assets/img/key.svg");
   background-position: left top;
   z-index: 2;
+  left: -100px;
+  top: 110%;
 
   &::before {
     content: "";

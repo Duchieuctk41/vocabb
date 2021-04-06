@@ -6,7 +6,8 @@
 }
 
 .sidebar {
-  flex: 3;
+  flex: 1;
+  max-width: 380px;
 
   h2 {
     color: #3c3c3c;
