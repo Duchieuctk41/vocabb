@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Switch, Route } from "react-router-dom";
 import Pass from "../../components/pass/pass.component";
+import Coach from "../../components/coach/coach.component";
 import User from "../../components/user/user.component";
 
 import { robot } from "../../img";
@@ -13,6 +14,7 @@ const Setting = ({ history }) => {
       <div className={style.content}>
         <Switch>
           <Route path="/setting/pass" component={Pass} />
+          <Route path="/setting/coach" component={Coach} />
           <Route path="/setting/user" component={User} />
         </Switch>
 
@@ -35,6 +37,11 @@ const Setting = ({ history }) => {
               <li className={style["--active"]}>
                 <Link name="user" to="/setting/user" id="user">
                   Tài khoản
+                </Link>
+              </li>
+              <li>
+                <Link name="user" to="/setting/coach" id="coach">
+                  Đặt chế độ tập luyện
                 </Link>
               </li>
               <li>

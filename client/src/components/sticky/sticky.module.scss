@@ -13,6 +13,13 @@
   border-radius: 50%;
   height: 72px;
   width: 72px;
+  &:hover {
+    filter: brightness(0.9);
+  }
+  &:active {
+    bottom: 2px;
+    border-top-width: 2px !important;
+  }
 
   .plus--link {
     padding: 7px 6px;
