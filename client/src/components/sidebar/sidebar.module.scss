@@ -6,6 +6,8 @@
 }
 
 .sidebar {
+  flex: 3;
+
   .competion {
     padding: 24px 24px 0;
     width: 380px;
@@ -46,7 +48,7 @@
       justify-content: space-between;
       margin-bottom: 24px;
 
-      .competion__trophyitem {
+      .competion__trophy-item {
         width: 53px;
         height: 64px;
         max-width: 20%;
@@ -85,7 +87,7 @@
         justify-content: space-between;
       }
 
-      .overall__about_link {
+      .overall__about--link {
         color: var(--blue);
         text-transform: uppercase;
         letter-spacing: 0.8px;
@@ -101,7 +103,7 @@
       align-items: center;
       margin-bottom: 24px;
 
-      .overall__trophyitem {
+      .overall__trophy-item {
         width: 73px;
         height: 73px;
         margin-right: 14px;
@@ -116,7 +118,7 @@
           margin-bottom: 12px;
         }
 
-        .overall__processdetail {
+        .overall__process-detail {
           display: flex;
           justify-content: space-between;
 
@@ -143,7 +145,7 @@
       align-items: center;
       text-align: center;
 
-      .lines {
+      .--lines {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -163,7 +165,7 @@
           text-align: end;
         }
 
-        .week {
+        .--week {
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -196,7 +198,7 @@
         justify-content: space-between;
       }
 
-      .achievement__aboutlink {
+      .achievement__about--link {
         color: var(--blue);
         text-transform: uppercase;
         letter-spacing: 0.8px;
@@ -212,7 +214,7 @@
       align-items: center;
       margin-bottom: 24px;
 
-      .achievement__trophyitem {
+      .achievement__trophy-item {
         height: 80px;
         margin-right: 14px;
         background-color: #fff;
@@ -250,7 +252,7 @@
           margin-bottom: 12px;
         }
 
-        .achievement__processdetail {
+        .achievement__process-detail {
           display: flex;
           justify-content: space-between;
 
@@ -332,16 +334,16 @@
           border-bottom: 2px solid #e5e5e5;
         }
 
-        .itemleft,
-        .itemright {
+        .item-left,
+        .item-right {
           align-items: center;
           display: flex;
         }
 
-        .itemleft {
+        .item-left {
           flex: 1;
 
-          .itemleftlink {
+          .item-left--link {
             color: #4b4b4b;
             font-size: 19px;
             font-weight: 700;
@@ -356,7 +358,7 @@
           }
         }
 
-        .itemright {
+        .item-right {
           color: #999999;
         }
       }
@@ -370,18 +372,19 @@
         display: flex;
         justify-content: center;
 
-        .friends__searchlink,
-        .friends__addlink {
+        .friends__search--link,
+        .friends__add--link {
           border: 2px solid #e5e5e5;
           color: #afafaf;
           width: 100%;
           text-transform: uppercase;
           font-weight: 700;
           text-align: center;
-          border-bottom: 4px solid #e5e5e5;
+          border-bottom-width: 4px;
           padding: 14px 8px;
           border-radius: 16px;
           font-size: 15px;
+          background: #fff;
         }
       }
 
@@ -393,7 +396,7 @@
       .friends__add {
         justify-content: space-between;
 
-        .friends__addlink {
+        .friends__add--link {
           max-width: 158px;
         }
       }
@@ -426,8 +429,9 @@
         border: 2px solid #e5e5e5;
         border-radius: 16px;
         border-bottom: 4px solid #e5e5e5;
+        background: #fff;
 
-        .follow__listlink {
+        .follow__list--link {
           font-size: 15px;
           font-weight: 600;
           letter-spacing: 0.8px;
@@ -440,7 +444,7 @@
         }
       }
 
-      li:first-child .follow__listlink {
+      li:first-child .follow__list--link {
         color: #1da1f2;
 
         img {
@@ -448,7 +452,7 @@
         }
       }
 
-      li:nth-child(2) .follow__listlink {
+      li:nth-child(2) .follow__list--link {
         color: #3b5998;
 
         img {
@@ -456,7 +460,7 @@
         }
       }
 
-      li:last-child .follow__listlink {
+      li:last-child .follow__list--link {
         color: #ff4b4b;
 
         img {
@@ -465,4 +469,19 @@
       }
     }
   }
+}
+
+.friends__search--link:hover,
+.friends__add--link:hover,
+.link-to:hover {
+  filter: brightness(0.9) !important;
+}
+
+.friends__search--link:active,
+.friends__add--link:active,
+.link-to:active {
+  position: relative;
+  top: 2px;
+  margin-bottom: 2px;
+  border-bottom-width: 2px !important;
 }

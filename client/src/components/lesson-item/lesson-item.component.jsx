@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 
 // import icon &&  scss
 import { chick, corona } from "../../img";
-import "./lesson-item.style.scss";
+import style from "./lesson-item.module.scss";
 
 const LessonItem = ({ lesson }) => {
   return (
-    <Link className="grid__item" to="/game">
-      <div className="grid__item-img">
-        <div className="grid__item-img--purple">
+    <Link className={style.grid__item} to="/game">
+      <div className={style["grid__item-img"]}>
+        <span className={style.border}></span>
+        <div className={style["grid__item-img--purple"]}>
           <img src={chick} alt="chick"></img>
           <img src={corona} alt="corona" />
         </div>

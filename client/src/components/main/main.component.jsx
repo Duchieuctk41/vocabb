@@ -31,7 +31,7 @@ const Main = () => {
         } else {
           if (hang2 === false) {
             hang2 = true;
-            return <Lesson lesson={item} key={item._id}/>;
+            return <Lesson lesson={item} key={item._id} />;
           }
           if (hang2 === true) {
             let vitri = lesson.indexOf(item) + 1;
@@ -40,9 +40,7 @@ const Main = () => {
               ? (content = { item: undefined })
               : (content = lesson[vitri]);
             lap = true;
-            return (
-              <Lesson key={item._id} lesson={item} content={content} />
-            );
+            return <Lesson key={item._id} lesson={item} content={content} />;
           }
         }
       })}
@@ -53,7 +51,7 @@ const Main = () => {
         </div>
       </div>
       <div className="exercise">
-        <Link className="exercise__link" to="/">
+        <Link className="exercise__link" to="/game">
           <img src={dumbbellblue} alt="dumbbelblue"></img>
         </Link>
       </div>
