@@ -55,8 +55,10 @@ import image from "./assets/img/image.svg";
 import add from "./assets/img/add.svg";
 import clear from "./assets/img/clear.svg";
 import question from "./assets/img/question.svg";
+import key from "./assets/img/key.svg";
 
 export {
+  key,
   question,
   add,
   clear,

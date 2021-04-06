@@ -1,0 +1,105 @@
+@keyframes spin {
+  100% {
+    transform: rotateZ(180deg);
+  }
+}
+
+.popup {
+  background: #ce82ff;
+  color: #fff;
+  padding: 24px 16px;
+  text-align: center;
+  width: 300px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  transform: translateZ(0);
+  background-image: url("../../assets/img/key.svg");
+  background-position: left top;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 10px solid;
+    z-index: 2;
+    border-color: transparent transparent #ce82ff transparent;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    &-left {
+      font-size: 17px;
+      .--bold {
+        font-weight: 700;
+      }
+      div:last-child {
+        padding-top: 5px;
+      }
+    }
+    &-right {
+      border-radius: 16px;
+      flex-grow: 0;
+      height: 48px;
+      margin-left: 8px;
+      padding: 5px 0 0 !important;
+      width: 48px;
+      border-style: solid;
+      border-width: 2px 2px 4px;
+      border-color: #a568cc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        img {
+          animation: spin 0.3s linear forwards;
+        }
+      }
+      &:active {
+        position: relative;
+        top: 2px;
+        border-width: 2px !important;
+      }
+
+      img {
+        height: 75%;
+        width: 75%;
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    a {
+      padding: 13px 16px;
+      color: #ce82ff;
+      background: #fff;
+      flex-grow: 1;
+      text-transform: uppercase;
+      border-radius: 16px;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      border-bottom: 4px solid #e7c1ff;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 20px;
+      &:hover {
+        filter: brightness(1.06);
+      }
+      &:active {
+        margin-top: 4px;
+        border-bottom: none !important;
+      }
+    }
+  }
+}

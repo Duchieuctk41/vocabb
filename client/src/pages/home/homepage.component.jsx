@@ -5,7 +5,6 @@ import React from "react";
 import Main from "../../components/main/main.component";
 import Sticky from "../../components/sticky/sticky.component";
 import Sidebar from "../../components/sidebar/sidebar.component";
-
 // import scss
 import "./homepage.style.scss";
 
