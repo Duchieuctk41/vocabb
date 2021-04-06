@@ -5,6 +5,7 @@
 }
 
 .popup {
+  position: absolute;
   background: #ce82ff;
   color: #fff;
   padding: 24px 16px;
@@ -15,6 +16,7 @@
   transform: translateZ(0);
   background-image: url("../../assets/img/key.svg");
   background-position: left top;
+  z-index: 2;
 
   &::before {
     content: "";
