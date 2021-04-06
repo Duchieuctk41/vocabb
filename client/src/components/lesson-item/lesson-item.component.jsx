@@ -8,8 +8,7 @@ import { chick, corona } from "../../img";
 import style from "./lesson-item.module.scss";
 
 const LessonItem = ({ lesson }) => {
-  const [toggle, setToggle] = useState(false);
-
+  const [toggle, setTogle] = useState(false);
   return (
     <div className={style.main}>
       <div className={style.itemne}>
