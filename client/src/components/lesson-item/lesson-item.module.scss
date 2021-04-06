@@ -4,15 +4,9 @@
   }
 }
 
-.main {
-  display: block;
-  position: relative;
-}
-
 .grid__item {
   text-align: center;
   color: #3c3c3c;
-  z-index: 0;
 
   .border {
     position: absolute;
@@ -24,7 +18,6 @@
     background-clip: content-box;
     animation: spin 25s linear infinite;
     border: 2.5px dashed #46c4ff;
-    z-index: 0;
     border-color: #f7797d #fed540 #78c800 #46c4ff;
   }
 
@@ -35,8 +28,7 @@
     border: 10px solid #e5e5e5;
     border-color: #b2e4ec4a #fffdba;
     box-sizing: border-box;
-    z-index: 0;
-
+    position: relative;
     &:hover {
       filter: brightness(1.04);
       transition: 1s ease;
