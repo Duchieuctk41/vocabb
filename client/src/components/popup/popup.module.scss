@@ -6,22 +6,17 @@
 
 .popup {
   position: absolute;
-  &::after {
-    content: "";
-    display: block;
-    background: #ce82ff;
-    color: #fff;
-    padding: 24px 16px;
-    text-align: center;
-    min-height: 200px;
-    width: 300px;
-    border-radius: 15px;
-    box-sizing: border-box;
-    transform: translateZ(0);
-    background-image: url("../../assets/img/key.svg");
-    background-position: left top;
-    z-index: 3;
-  }
+  background: #ce82ff;
+  color: #fff;
+  padding: 24px 16px;
+  text-align: center;
+  width: 300px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  transform: translateZ(0);
+  background-image: url("../../assets/img/key.svg");
+  background-position: left top;
+  z-index: 2;
 
   &::before {
     content: "";
