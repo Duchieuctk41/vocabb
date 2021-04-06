@@ -11,7 +11,7 @@ const LessonItem = ({ lesson }) => {
   const [toggle, setToggle] = useState(false);
   return (
     <div>
-      <Link className={style.grid__item}>
+      <Link className={style.grid__item} onClick={() => setToggle(!toggle)}>
         <div className={style["grid__item-img"]}>
           <span className={style.border}></span>
           <div className={style["grid__item-img--purple"]}>
@@ -21,6 +21,7 @@ const LessonItem = ({ lesson }) => {
         </div>
         <h3>{lesson}</h3>
       </Link>
+      {toggle ? <Popup /> : null}
     </div>
   );
 };
