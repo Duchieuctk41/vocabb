@@ -8,6 +8,7 @@ import { chick, corona } from "../../img";
 import style from "./lesson-item.module.scss";
 
 const LessonItem = ({ lesson }) => {
+  const [toggle, setTogle] = useState(false);
   return (
     <div>
       <Link className={style.grid__item}>
