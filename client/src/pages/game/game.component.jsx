@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { close, cold, ramen, rice } from "../../img";
+import { close, rice } from "../../img";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -28,11 +28,11 @@ const Game = () => {
   vocab.forEach((item) => {
     let chon = false;
     learned.forEach((i) => {
-      if (item.EnName == i) {
+      if (item.EnName === i) {
         chon = true;
       }
     });
-    if (chon == false) {
+    if (chon === false) {
       chuahoc.push(item.EnName);
     }
   });
@@ -65,9 +65,11 @@ const Game = () => {
   // Tim vi tri ptu trong mang vocab
   let indexCurrent;
   vocab.filter((item) => {
-    if (chuahoc[0] == item.EnName) {
+    if (chuahoc[0] === item.EnName) {
       indexCurrent = vocab.indexOf(item);
+      return indexCurrent;
     }
+    return false;
   });
 
   let listAnswer = [chuahoc[0]];
@@ -80,7 +82,7 @@ const Game = () => {
   //   } else {
   //     let randomIndex = Math.floor(Math.random() * vocab.length);
   //     let result = listAnswer.filter(
-  //       (item) => item == vocab[randomIndex].EnName
+  //       (item) => item === vocab[randomIndex].EnName
   //     );
 
   //     if (result.length === 0) {
@@ -96,7 +98,7 @@ const Game = () => {
     <div className={style.container}>
       <div className={style.header}>
         <Link to="/">
-          <img src={close} className={style.filter_green}></img>
+          <img src={close} className={style.filter_green} alt="img"></img>
         </Link>
         <div className={style.process}></div>
       </div>
@@ -110,12 +112,12 @@ const Game = () => {
             {vocab.map((item) => {
               i++;
               if (i > 3) {
-                return;
+                return true;
               }
               return (
                 <div className={style.answer__item}>
                   <div className={style["answer__item-img"]}>
-                    <img src={rice}></img>
+                    <img src={rice} alt="img"></img>
                   </div>
                   <div className={style["answer__item-sub"]}>
                     <span>{item.EnName}</span>

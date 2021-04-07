@@ -28,6 +28,7 @@ const SignUp = () => {
       .post(postSignupUrl(), signup)
       .then((response) => {
         console.log(response);
+        console.log("vao day khong", response.data.errors);
       })
       .catch((error) => {
         console.log(error);

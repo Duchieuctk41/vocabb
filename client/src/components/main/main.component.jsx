@@ -43,6 +43,7 @@ const Main = () => {
             return <Lesson key={item._id} lesson={item} content={content} />;
           }
         }
+        return false;
       })}
 
       <div className={style.trophy}>

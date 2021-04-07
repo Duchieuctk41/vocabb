@@ -18,11 +18,11 @@ const Store = () => {
           <div className={style.flashcard}>
             <div className={style.left__tool}>
               <span>
-                <img src={clear} alt="" />
+                <img src={clear} alt="img" />
                 Clear
               </span>
               <span>
-                <img src={add} alt="" />
+                <img src={add} alt="img" />
                 Thêm
               </span>
             </div>
@@ -34,7 +34,7 @@ const Store = () => {
                 <input type="text" placeholder="Thêm mặt sau" />
               </div>
               <div className={style["left__store-img"]}>
-                <img src={image}></img>
+                <img src={image} alt="img"></img>
                 <span>Hình ảnh</span>
               </div>
             </div>
@@ -63,7 +63,7 @@ const Store = () => {
         <div className={style.right}>
           <div className={style.search}>
             <div>
-              <img src={loupe} alt="" />
+              <img src={loupe} alt="img" />
             </div>
             <input type="text" placeholder="Tìm kiếm" />
           </div>
@@ -73,7 +73,7 @@ const Store = () => {
             <ul>
               <li>
                 <div className={style.note__follow}>
-                  <img src={america} alt="" />
+                  <img src={america} alt="img" />
                   <h3>Gia đình</h3>
                   <h4>đã học 40 từ</h4>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, Switch, Route } from "react-router-dom";
 import Pass from "../../components/pass/pass.component";
 import Coach from "../../components/coach/coach.component";

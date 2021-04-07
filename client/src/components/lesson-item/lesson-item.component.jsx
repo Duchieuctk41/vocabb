@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import Popup from "../popup/popup.component";
 
@@ -11,7 +10,7 @@ const LessonItem = ({ lesson }) => {
   const [toggle, setToggle] = useState(false);
   return (
     <div className={style.item}>
-      <Link className={style.grid__item} onClick={() => setToggle(!toggle)}>
+      <div className={style.grid__item} onClick={() => setToggle(!toggle)}>
         <div className={style["grid__item-img"]}>
           <span className={style.border}></span>
           <div className={style["grid__item-img--purple"]}>
@@ -21,7 +20,7 @@ const LessonItem = ({ lesson }) => {
         </div>
         <h3>{lesson}</h3>
         {toggle ? <Popup /> : null}
-      </Link>
+      </div>
     </div>
   );
 };

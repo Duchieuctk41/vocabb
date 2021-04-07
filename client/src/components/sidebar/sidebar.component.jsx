@@ -188,6 +188,7 @@ const Sidebar = () => (
         <li className={style["link-to"]}>
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://twitter.com/duolingo"
             className={style["follow__list--link"]}
           >
@@ -197,6 +198,7 @@ const Sidebar = () => (
         <li className={style["link-to"]}>
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://www.facebook.com/pencil.816"
             className={style["follow__list--link"]}
           >
@@ -206,6 +208,7 @@ const Sidebar = () => (
         <li className={style["link-to"]}>
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://www.instagram.com/pencil.816/"
             className={style["follow__list--link"]}
           >

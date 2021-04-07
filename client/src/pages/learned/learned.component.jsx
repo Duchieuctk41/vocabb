@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import style from "./learned.module.scss";
 
 const Introduce = () => {
-  const [toggle, setToggle] = useState(true);
   return (
     <div className={style["container-fluid"]}>
       <div className={style.container}>

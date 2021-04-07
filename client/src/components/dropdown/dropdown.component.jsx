@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // img && scss
-import { search, vocab } from "../../img";
+import { search } from "../../img";
 import "./dropdown.style.scss";
 
 const Dropdown = ({ title, subtitle, classes }) => {

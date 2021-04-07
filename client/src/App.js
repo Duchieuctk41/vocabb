@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import "./scss/style.scss";
 
-import Header from "./components/header/header.component";
+// import Header from "./components/header/header.component";
 import Homepage from "./pages/home/homepage.component";
 import Introduce from "./pages/introduce/introduce.component";
 import Game from "./pages/game/game.component";
