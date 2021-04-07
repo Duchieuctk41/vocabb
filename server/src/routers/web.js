@@ -1,6 +1,12 @@
 import express from "express";
-import { homeContro, lessonContro, vocabContro } from "./../controllers/index";
+import {
+  homeContro,
+  lessonContro,
+  vocabContro,
+  authContro,
+} from "./../controllers/index";
 import { lessonSer, vocabSer } from "./../services/index";
+import { authValid } from "./../validation/index";
 
 let router = express.Router();
 
@@ -15,6 +21,7 @@ let initRouters = (app) => {
   router.get("/init-vocab", vocabSer.initData);
   router.get("/api-lesson", lessonContro.getAllData);
   router.get("/api-vocab", vocabContro.getAllData);
+  router.post("/register", authValid.register, authContro.postRegister);
 
   return app.use("/", router);
 };
