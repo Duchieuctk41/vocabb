@@ -10,8 +10,11 @@ const LessonItem = ({ lesson }) => {
   const [toggle, setToggle] = useState(false);
   return (
     <div className={style.item}>
-      <div className={style.grid__item} onClick={() => setToggle(!toggle)}>
-        <div className={style["grid__item-img"]}>
+      <div className={style.grid__item}>
+        <div
+          className={style["grid__item-img"]}
+          onClick={() => setToggle(!toggle)}
+        >
           <span className={style.border}></span>
           <div className={style["grid__item-img--purple"]}>
             <img src={chick} alt="chick"></img>
