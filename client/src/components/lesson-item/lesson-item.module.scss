@@ -32,6 +32,7 @@
       border-color: #b2e4ec4a #fffdba;
       box-sizing: border-box;
       position: relative;
+      cursor: pointer;
       &:hover {
         filter: brightness(1.04);
         transition: 1s ease;

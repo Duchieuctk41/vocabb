@@ -19,7 +19,6 @@ import "./header.style.scss";
 // import { getVocabList } from "../../redux/vocab/vocab.actions";
 
 const Header = () => {
-  const to = ["hihi", "hihiha"];
   return (
     <header className="header container">
       <ul className="menu1">

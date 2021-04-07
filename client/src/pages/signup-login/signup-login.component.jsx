@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import SignUp from "../../components/signup/signup.component";
 
-import { facebook, google, close } from "../../img";
+import { close } from "../../img";
 
 import style from "./signup-login.module.scss";
 

@@ -1,21 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  astronaut,
-  america,
-  china,
-  arrow_down,
-  arrow_left,
-  arrow_right,
-  earth,
-} from "../../img";
+import { arrow_down, arrow_left, arrow_right } from "../../img";
 import style from "./introduce.module.scss";
 
-// redux
-import { useSelector } from "react-redux";
-
 const Introduce = () => {
-  const { dataGame } = useSelector((state) => state);
+  // const { dataGame } = useSelector((state) => state);
   return (
     <div>
       <div className={style.header}>

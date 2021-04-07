@@ -9,7 +9,8 @@ let postRegister = async (req, res) => {
     errors.forEach((item) => {
       errorArr.push(item.msg);
     });
-    console.log(errorArr);
+    // res.send(errorArr);
+    res.send({ errors: errorArr });
     return;
   }
   console.log(req.body);

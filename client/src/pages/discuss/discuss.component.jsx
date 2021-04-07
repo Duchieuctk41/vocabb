@@ -18,17 +18,19 @@ const Game = () => {
           <ul className={style.left__category}>
             <li>
               <h2>
-                <a className={style["--active"]}>ĐANG ĐƯỢC ƯA THÍCH</a>
+                <Link to="/" className={style["--active"]}>
+                  ĐANG ĐƯỢC ƯA THÍCH
+                </Link>
               </h2>
             </li>
             <li>
               <h2>
-                <a>MỚI</a>
+                <Link to="/">MỚI</Link>
               </h2>
             </li>
             <li>
               <h2>
-                <a>ĐÃ THEO DÕI</a>
+                <Link to="/">ĐÃ THEO DÕI</Link>
               </h2>
             </li>
           </ul>
