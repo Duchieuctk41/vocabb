@@ -1,5 +1,10 @@
 import { validationResult } from "express-validator";
 
+let getLoginRegister = (req, res) => {
+  console.log("dau cat moi", req);
+  // return res.send({ errors: req.flash("errors") });
+};
+
 let postRegister = async (req, res) => {
   let errorArr = [];
 
@@ -9,13 +14,13 @@ let postRegister = async (req, res) => {
     errors.forEach((item) => {
       errorArr.push(item.msg);
     });
-    // res.send(errorArr);
-    res.send({ errors: errorArr });
-    return;
+
+    return res.send({ errors: errorArr});
   }
   console.log(req.body);
 };
 
 module.exports = {
+  getLoginRegister: getLoginRegister,
   postRegister: postRegister,
 };
