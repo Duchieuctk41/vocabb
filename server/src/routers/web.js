@@ -21,7 +21,9 @@ let initRouters = (app) => {
   router.get("/init-vocab", vocabSer.initData);
   router.get("/api-lesson", lessonContro.getAllData);
   router.get("/api-vocab", vocabContro.getAllData);
+
   router.post("/register", authValid.register, authContro.postRegister);
+  router.get("/login-register", authContro.getLoginRegister);
 
   return app.use("/", router);
 };

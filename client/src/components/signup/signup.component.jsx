@@ -15,6 +15,8 @@ const SignUp = () => {
     password: "",
   });
 
+  const [flash, setFlash] = useState();
+
   const { age, name, email, password } = signup;
 
   const changeHandler = (e) => {
@@ -27,8 +29,8 @@ const SignUp = () => {
     axios
       .post(postSignupUrl(), signup)
       .then((response) => {
-        console.log(response);
-        console.log("vao day khong", response.data.errors);
+        console.log(response.data.errors);
+        setFlash(response.data.errors);
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +40,7 @@ const SignUp = () => {
   return (
     <div className={style.container}>
       <div className={style.main}>
-        <h1 className={style.login}>Tạo hồ sơ</h1>
+        <h1 className={style.login}>{flash ? flash : "Tạo hồ sơ"}</h1>
         <form onSubmit={submitHandler}>
           <div className={style.inp}>
             <div className={style.inp1}>
