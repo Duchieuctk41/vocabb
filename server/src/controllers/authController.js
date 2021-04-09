@@ -1,12 +1,9 @@
 import { validationResult } from "express-validator";
-
-let getLoginRegister = (req, res) => {
-  console.log("dau cat moi", req);
-  // return res.send({ errors: req.flash("errors") });
-};
+import { authSer } from "./../services/index";
 
 let postRegister = async (req, res) => {
   let errorArr = [];
+  let successArr = [];
 
   let validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -14,13 +11,26 @@ let postRegister = async (req, res) => {
     errors.forEach((item) => {
       errorArr.push(item.msg);
     });
-
-    return res.send({ errors: errorArr});
+    req.flash("errors", errorArr);
+    return res.send({ errors: errorArr });
   }
-  console.log(req.body);
+  try {
+    let createUserSuccess = await authSer.register(
+      req.body.age,
+      req.body.name,
+      req.body.email,
+      req.body.password
+    );
+    successArr.push(createUserSuccess);
+    req.flash("success", successArr);
+    return res.send({ success: successArr });
+  } catch (error) {
+    errorArr.push(error);
+    req.flash("errors", errorArr);
+    return res.send({ errors: errorArr });
+  }
 };
 
 module.exports = {
-  getLoginRegister: getLoginRegister,
   postRegister: postRegister,
 };

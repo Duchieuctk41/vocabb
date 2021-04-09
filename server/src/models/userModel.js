@@ -4,6 +4,7 @@ let Schema = mongoose.Schema;
 
 let UserSchema = new Schema({
   username: String,
+  age: Number,
   gender: { type: String, default: "male" },
   phone: { type: String, default: null },
   address: { type: String, default: null },
@@ -33,6 +34,12 @@ let UserSchema = new Schema({
 UserSchema.statics = {
   createNew(item) {
     return this.create(item);
+  },
+
+  findByEmail(email) {
+    return this.findOne({
+      "local.email": email,
+    }).exec();
   },
 };
 
