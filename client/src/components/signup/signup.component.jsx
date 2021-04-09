@@ -30,7 +30,10 @@ const SignUp = () => {
       .post(postSignupUrl(), signup)
       .then((response) => {
         console.log(response.data.errors);
-        setFlash(response.data.errors);
+        console.log("success", response.data.success);
+        response.data.errors
+          ? setFlash(response.data.errors)
+          : setFlash(response.data.success);
       })
       .catch((error) => {
         console.log(error);
