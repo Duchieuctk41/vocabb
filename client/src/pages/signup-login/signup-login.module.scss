@@ -2,40 +2,4 @@
   width: 100%;
   height: 100%;
   padding: 30px;
-  .cross {
-    width: 16px;
-    height: 16px;
-    float: left;
-    &:hover {
-      filter: brightness(1.1);
-    }
-  }
-  .signup {
-    text-decoration: none;
-    width: 100px;
-    height: 50px;
-    border-radius: 15px;
-    text-transform: uppercase;
-    border: 2px solid #e5e5e5;
-    display: block;
-    line-height: 45px;
-    align-items: center;
-    text-align: center;
-    border-bottom: 4px solid #e5e5e5;
-    background-color: #fff;
-    color: #1cb0f6;
-    font-size: 15px;
-    margin-left: auto;
-    font-weight: bold;
-  }
-  .signup:hover {
-    filter: brightness(0.9);
-  }
-}
-
-.signup:active {
-  position: relative;
-  top: 2px;
-  border-width: 2px !important;
-  background-color: #f7f7f7;
 }
