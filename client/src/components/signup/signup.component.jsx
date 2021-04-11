@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { postSignupUrl } from "../../api";
+import { useDispatch, useSelector } from "react-redux";
+import { signupActions } from "./../../redux/actions/signupActions";
 
 import { facebook, google, question } from "../../img";
 import style from "./signup.module.scss";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(signupActions());
+  }, [dispatch]);
+
+  console.log("hieu", dispatch);
+
+  const { message } = useSelector((state) => state.message);
+  // console.log("qua on", message);
+
   const [signup, setSignup] = useState({
     age: "",
     name: "",
@@ -42,6 +54,7 @@ const SignUp = () => {
 
   return (
     <div className={style.container}>
+      {message ? message : null}
       <div className={style.main}>
         <h1 className={style.login}>{flash ? flash : "Tạo hồ sơ"}</h1>
         <form onSubmit={submitHandler}>

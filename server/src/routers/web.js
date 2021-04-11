@@ -23,7 +23,7 @@ let initRouters = (app) => {
   router.get("/api-vocab", vocabContro.getAllData);
 
   router.post("/register", authValid.register, authContro.postRegister);
-
+  router.get("/verify/:token", authContro.verifyAccount);
   return app.use("/", router);
 };
 
