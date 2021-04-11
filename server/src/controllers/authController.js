@@ -19,7 +19,9 @@ let postRegister = async (req, res) => {
       req.body.age,
       req.body.name,
       req.body.email,
-      req.body.password
+      req.body.password,
+      req.protocol,
+      req.get("host")
     );
     successArr.push(createUserSuccess);
     req.flash("success", successArr);
@@ -30,7 +32,34 @@ let postRegister = async (req, res) => {
     return res.send({ errors: errorArr });
   }
 };
+let success = ["1"];
+
+let getFlash = (req, res) => {
+  console.log("vao day roiw");
+
+  success.push("1");
+  return res.send(success);
+};
+
+let verifyAccount = async (req, res) => {
+  let errorArr = [];
+  let successArr = [];
+  try {
+    let verifySuccess = await authSer.verifyAccount(req.params.token);
+    successArr.push(verifySuccess);
+    successFlash.push(verifySuccess);
+    req.flash("success", successArr);
+    console.log("vao day roi1");
+    return res.redirect("/home");
+  } catch (error) {
+    errorArr.push(error);
+    req.flash("errors", errorArr);
+    return res.redirect("/home");
+  }
+};
 
 module.exports = {
   postRegister: postRegister,
+  verifyAccount: verifyAccount,
+  getFlash: getFlash,
 };

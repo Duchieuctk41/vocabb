@@ -1,15 +1,17 @@
 import { signupTypes } from "../types/signupTypes";
 
-const initState = {};
+const initState = {
+  message: [],
+};
 
-const signupReducers = (state = initState, action) => {
+const signupReducer = (state = initState, action) => {
   switch (action.type) {
     case signupTypes.FETCH_RESPONSE_SERVER:
       // console.log("payload", action.payload);
-      return { ...state, signup: action.payload.signup };
+      return { message: action.payload.message };
     default:
       return state;
   }
 };
 
-export default signupReducers;
+export default signupReducer;

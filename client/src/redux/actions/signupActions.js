@@ -1,15 +1,15 @@
 import axios from "axios";
 import { signupTypes } from "../types/signupTypes";
-import { postSignupUrl } from "../../api";
+import { verifyUrl } from "../../api";
 
 export const signupActions = () => async (dispatch) => {
-  const signupData = await axios.get(postSignupUrl());
-  console.log("signup=", signupData);
+  const messageData = await axios.get(verifyUrl());
+  console.log("message", messageData);
 
   dispatch({
     type: signupTypes.FETCH_RESPONSE_SERVER,
     payload: {
-      signup: signupData.data,
+      message: messageData.data,
     },
   });
 };
