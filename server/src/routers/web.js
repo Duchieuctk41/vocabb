@@ -8,6 +8,12 @@ import {
 import { lessonSer, vocabSer } from "./../services/index";
 import { authValid } from "./../validation/index";
 
+import passport from "passport";
+import initPassportLocal from "./../controllers/passportController/local";
+
+// Init all passport
+initPassportLocal();
+
 let router = express.Router();
 
 /**
@@ -24,6 +30,17 @@ let initRouters = (app) => {
 
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);
+
+  router.post(
+    "/login",
+    passport.authenticate("local", {
+      successRedirect: "http://localhost:3000/login",
+      failureRedirect: "/",
+      successFlash: true,
+      failureFlash: true,
+    })
+  );
+
   return app.use("/", router);
 };
 

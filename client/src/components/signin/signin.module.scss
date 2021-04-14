@@ -53,6 +53,7 @@
     height: 54px;
     border-radius: 15px;
     text-transform: uppercase;
+    border: transparent;
     border-bottom: 4px solid #1899d6;
     display: block;
     line-height: 50px;
@@ -64,9 +65,11 @@
     font-weight: bold;
     margin-top: 20px;
     background-color: #1cb0f6;
+    outline: none;
+    cursor: pointer;
   }
   .signin:hover {
-    background-color: #57c5f8;
+    filter: brightness(1.1);
   }
   .hr {
     margin: 20px 0;

@@ -6,11 +6,18 @@ import initRouters from "./routers/web";
 import bodyParser from "body-parser";
 import connectFlash from "connect-flash";
 import configSession from "./config/session";
+import passport from "passport";
 // Init app
 const app = express();
 
 // Enable client connect
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // allow to server to accept request from different origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // allow session cookie from browser to pass through
+  })
+);
 
 // Connect mongodb
 ConnectDB();
@@ -27,6 +34,11 @@ app.use(bodyParser.json());
 
 // Enable flash messages
 app.use(connectFlash());
+
+// Config passport js
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Init all Routers
 initRouters(app);
 
