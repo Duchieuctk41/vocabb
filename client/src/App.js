@@ -1,11 +1,11 @@
 // import module
 
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import "./scss/style.scss";
 
-// import Header from "./components/header/header.component";
+import Header from "./components/header/header.component";
 import Homepage from "./pages/home/homepage.component";
 import Introduce from "./pages/introduce/introduce.component";
 import Game from "./pages/game/game.component";
@@ -19,9 +19,14 @@ import Profile from "./pages/profile/profile.component";
 import Flashcard from "./pages/flashcard/flashcard.component";
 
 function App() {
+  const location = useLocation();
+  console.log(location.pathname);
+  const notHeader = ["/login", "/game", "/introduce"];
+  const toggleHeader = notHeader.filter((item) => item === location.pathname);
+  console.log("header", toggleHeader);
   return (
     <div className="App">
-      {/* <Header /> */}
+      {toggleHeader.length === 0 ? <Header /> : null}
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/introduce" component={Introduce} />
