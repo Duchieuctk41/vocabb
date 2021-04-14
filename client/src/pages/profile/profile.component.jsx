@@ -36,7 +36,7 @@ const Profile = () => {
                                     <div className={style.ratio}></div>
                                 </div>
                                 <div className={style.streaked2}>
-                                    <p>1/1</p>
+                                    <p>1/3</p>
                                 </div>
                             </div>
                         </div>
