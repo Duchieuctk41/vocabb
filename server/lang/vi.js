@@ -12,6 +12,9 @@ export const transErrors = {
     "Tài khoản này đã bị gỡ khỏi hệ thống, vui lòng liên hệ bộ phận hỗ trợ của chúng tôi.",
   account_not_active:
     "Email này đã được đăng ký nhưng chưa được active, vui lòng kiểm tra email của bạn.",
+  login_failed: "Sai tài khoản hoặc mật khẩu!",
+  server_error:
+    "Có lỗi ở phía server, vui lòng liên hệ với bộ phận của chúng tôi, xin cảm ơn.",
 };
 
 export const transSuccess = {
@@ -20,6 +23,9 @@ export const transSuccess = {
   },
   account_actived:
     "Kích hoạt tài khoản thành công, bạn đã có thể đăng nhập ứng dụng.",
+  loginSuccess: (username) => {
+    return `Xin chào ${username}, chúc bạn một ngày học tập hiệu quả.`;
+  },
 };
 
 export const transMail = {

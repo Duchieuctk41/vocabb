@@ -1,20 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
 import { close } from "./../../img";
-
 import style from "./login-link.module.scss";
-const LoginLink = () => {
+
+import { useSelector } from "react-redux";
+import { loginActions } from "./../../redux/actions/loginActions";
+const LoginLink = ({ loginActions }) => {
+  const { login } = useSelector((state) => state.login);
   return (
     <div>
-      <Link to="/">
+      <div>
         <img src={close} alt="cross" className={style.cross}></img>
-      </Link>
-      <Link to="/" className={style.signup}>
-        Đăng Ký
-      </Link>
+      </div>
+      <div className={style.signup} onClick={loginActions}>
+        {login ? "Đăng Ký" : "Đăng Nhập"}
+      </div>
     </div>
   );
 };
 
-export default LoginLink;
+const mapDispatchToProps = (dispatch) => ({
+  loginActions: () => dispatch(loginActions()),
+});
+
+export default connect(null, mapDispatchToProps)(LoginLink);

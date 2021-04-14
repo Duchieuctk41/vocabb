@@ -15,7 +15,7 @@ const SignUp = () => {
     dispatch(signupActions());
   }, [dispatch]);
 
-  console.log("hieu", dispatch);
+  // console.log("hieu", dispatch);
 
   const { message } = useSelector((state) => state.message);
   // console.log("qua on", message);
