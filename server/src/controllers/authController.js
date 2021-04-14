@@ -49,7 +49,7 @@ let verifyAccount = async (req, res) => {
     successArr.push(verifySuccess);
     successFlash.push(verifySuccess);
     req.flash("success", successArr);
-    console.log("vao day roi1");
+    // console.log("vao day roi1");
     return res.redirect("/home");
   } catch (error) {
     errorArr.push(error);
