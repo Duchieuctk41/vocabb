@@ -57,6 +57,21 @@ import clear from "./assets/img/clear.svg";
 import question from "./assets/img/question.svg";
 import key from "./assets/img/key.svg";
 
+
+
+
+
+
+
+
+
+
+
+import logoad from "./admin/images/logo.svg";
+import homead from "./admin/images/home.svg";
+import avatarad from "./admin/images/avatar.svg";
+
+
 export {
   key,
   question,
@@ -115,4 +130,11 @@ export {
   robot,
   achievement_wildfire,
   us,
+
+
+
+
+  logoad,
+  homead,
+  avatarad,
 };
