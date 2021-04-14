@@ -8,7 +8,8 @@
 }
 .signup {
   text-decoration: none;
-  width: 100px;
+  padding: 0 16px;
+  width: max-content;
   height: 50px;
   border-radius: 15px;
   text-transform: uppercase;
@@ -23,6 +24,7 @@
   font-size: 15px;
   margin-left: auto;
   font-weight: bold;
+  cursor: pointer;
 }
 .signup:hover {
   filter: brightness(0.9);
