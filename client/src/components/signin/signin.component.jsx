@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-
 import { authLogoUrl } from "../../api";
 
 import style from "./signin.module.scss";
@@ -15,22 +14,32 @@ const SignIn = () => {
   });
 
   const { email, password } = signup;
+  const history = useHistory();
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setSignup({ ...signup, [name]: value });
   };
 
+  const handleOnSubmit = () => {
+    history.push(`/`);
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    axios
-      .post(authLogoUrl(), signup)
+    axios({
+      method: "POST",
+      data: signup,
+      withCredentials: true,
+      url: authLogoUrl(),
+    })
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
+        if (response.data.success) {
+          history.push(`/`);
+        }
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -52,7 +61,7 @@ const SignIn = () => {
               Quên?
             </Link>
             <input
-              type="text"
+              type="password"
               placeholder="Mật khẩu"
               name="password"
               required

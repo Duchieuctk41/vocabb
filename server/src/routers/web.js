@@ -31,15 +31,16 @@ let initRouters = (app) => {
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);
 
-  router.post(
-    "/login",
-    passport.authenticate("local", {
-      successRedirect: "http://localhost:3000/login",
-      failureRedirect: "/",
-      successFlash: true,
-      failureFlash: true,
-    })
-  );
+  router.post("/login", (req, res, next) => {
+    passport.authenticate("local", (error, user, info) => {
+      console.log("data: ", info);
+      if (error) throw error;
+      if (!user) res.send(info);
+      else {
+        res.send(info);
+      }
+    })(req, res, next);
+  });
 
   return app.use("/", router);
 };
