@@ -27,6 +27,7 @@ const Game = () => {
     dispatch(vocabActions());
     dispatch(questionActions(listQuestion[1]));
   }, [dispatch]);
+  console.log(listQuestion);
 
   return (
     <div className={style.container}>
@@ -58,12 +59,9 @@ const Game = () => {
             {question.type && question.type === "input" ? (
               <AnswerInput item={question} />
             ) : null}
-            {question.type && question.type === "order"
-              ? question.Answer &&
-                question.Answer.map((item) => {
-                  return <AnswerOrder item={item} />;
-                })
-              : null}
+            {question.type && question.type === "order" ? (
+              <AnswerOrder item={question} />
+            ) : null}
           </div>
         </div>
       </div>

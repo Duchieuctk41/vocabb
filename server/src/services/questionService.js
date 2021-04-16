@@ -16,26 +16,17 @@ let createNewItem = (item) => {
   });
 };
 
-let listQuestion = {
-  topic: "6078ff367e7c3f2076928234",
-  question: `Viết bằng Tiếng Việt`,
-  sensece:  "Thank you, bye",
-  Answer: [{ title: "Cảm ơn, chào", correct: true }],
-  type: "input",
-};
+// Model input
 
 // let listQuestion = {
 //   topic: "6078ff367e7c3f2076928234",
-//   question: `Dịch câu sau sang tiếng Anh "Cảm ơn, chào"`,
-//   Answer: [
-//     { title: "Thank you", correct: true, order: 1 },
-//     { title: "bye", correct: true, order: 2 },
-//     { title: "see you again" },
-//     { title: "hello" },
-//     { title: "nice" },
-//   ],
-//   type: "order",
+//   question: "Viết bằng Tiếng Việt",
+//   sentense: "Thank you, bye",
+//   Answer: [{ title: "Cảm ơn, chào", correct: true }],
+//   type: "input",
 // };
+
+// Model order
 
 // let listQuestion = {
 //   topic: "6078ff367e7c3f2076928234",
