@@ -1,22 +1,13 @@
 import { vocabTypes } from "../types/vocabTypes";
 
 const initState = {
-  vocab: [
-    {
-      _id: "605daaa6b5be904c8e59d16e",
-      EnName: "cold",
-      ViName: "lạnh",
-      img: "",
-      __v: 0,
-    },
-    {
-      _id: "605daaa6b5be904c8e59d16f",
-      EnName: "sun",
-      ViName: "mặt tròi",
-      img: "",
-      __v: 0,
-    },
-  ],
+  vocab: {
+    listQuestion: [
+      "6079108d8a5b364151f0f929",
+      "6079117dedb60243d24212c1",
+      "60791360e1c87a49ba560322",
+    ],
+  },
 };
 
 const vocabReducer = (state = initState, action) => {

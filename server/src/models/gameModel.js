@@ -7,11 +7,21 @@ let GameSchema = new Schema({
 });
 
 GameSchema.statics = {
+  checkExists(item) {
+    return this.findOne({
+      question: item.question,
+    });
+  },
   createNew(item) {
     return this.create(item);
   },
   getAllData() {
     return this.find({});
+  },
+  getCollection(item) {
+    return this.findOne({
+      _id: item,
+    });
   },
 };
 

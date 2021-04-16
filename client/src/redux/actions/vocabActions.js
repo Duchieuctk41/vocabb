@@ -1,9 +1,9 @@
 import axios from "axios";
 import { vocabTypes } from "../types/vocabTypes";
-import { vocabURL } from "../../api";
+import { gameURL } from "../../api";
 
 export const vocabActions = () => async (dispatch) => {
-  const vocabData = await axios.get(vocabURL());
+  const vocabData = await axios.get(gameURL());
   // console.log("vocab=== ", vocabData);
 
   dispatch({

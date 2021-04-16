@@ -1,99 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { close, rice } from "../../img";
+import AnswerChoose from "./../../components/answer-choose/answer-choose.component";
+import AnswerInput from "./../../components/answer-input/anser-input.component";
+import AnswerOrder from "./../../components/answer-order/answer-order.component";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { vocabActions } from "../../redux/actions/vocabActions";
+import { questionActions } from "../../redux/actions/questionActions";
 
 import style from "./game.module.scss";
 
 const Game = () => {
+  const [position, setPosition] = useState(0);
+
+  // Lay data in redux
+  const { vocab } = useSelector((state) => state.vocab);
+  const { question } = useSelector((state) => state.question);
+  // console.log("question: ", question);
+  const listQuestion = vocab.listQuestion;
   // lay data api vocab
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(vocabActions());
+    dispatch(questionActions(listQuestion[1]));
   }, [dispatch]);
 
-  // Lay data in redux
-  const { vocab } = useSelector((state) => state.vocab);
-
-  let learned = ["hot", "noodles", "man"];
-  let chuahoc = [];
-
-  // console.log("vocab.length: ", vocab.length);
-
-  // Push vao mang chuahoc
-  vocab.forEach((item) => {
-    let chon = false;
-    learned.forEach((i) => {
-      if (item.EnName === i) {
-        chon = true;
-      }
-    });
-    if (chon === false) {
-      chuahoc.push(item.EnName);
-    }
-  });
-  // console.log("lan1", chuahoc);
-
-  function shuffle(array) {
-    var currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
-
-  // Dao danh sach trong mang chua hoc
-  shuffle(chuahoc);
-  // console.log("lan2 ", chuahoc);
-
-  // Tim vi tri ptu trong mang vocab
-  let indexCurrent;
-  vocab.filter((item) => {
-    if (chuahoc[0] === item.EnName) {
-      indexCurrent = vocab.indexOf(item);
-      return indexCurrent;
-    }
-    return false;
-  });
-
-  let listAnswer = [chuahoc[0]];
-
-  console.log("hihi ", listAnswer);
-
-  // for (let i = 0; i < 10; i++) {
-  //   if (listAnswer.length >= 3) {
-  //     break;
-  //   } else {
-  //     let randomIndex = Math.floor(Math.random() * vocab.length);
-  //     let result = listAnswer.filter(
-  //       (item) => item === vocab[randomIndex].EnName
-  //     );
-
-  //     if (result.length === 0) {
-  //       listAnswer.push(vocab[randomIndex].EnName);
-  //     }
-  //   }
-  // }
-
-  console.log("list answer nef ", listAnswer);
-
-  let i = 0;
   return (
     <div className={style.container}>
       <div className={style.header}>
@@ -105,27 +39,31 @@ const Game = () => {
       <div className={style.content}>
         <div className={style.grid}>
           <h1>
-            <span>Đâu là "nóng"?</span>
+            <span>{question.question}</span>
           </h1>
-          <div className={style.answer}>
-            {/* item */}
-            {vocab.map((item) => {
-              i++;
-              if (i > 3) {
-                return true;
-              }
-              return (
-                <div className={style.answer__item}>
-                  <div className={style["answer__item-img"]}>
-                    <img src={rice} alt="img"></img>
-                  </div>
-                  <div className={style["answer__item-sub"]}>
-                    <span>{item.EnName}</span>
-                    <span>1</span>
-                  </div>
-                </div>
-              );
-            })}
+          <div
+            className={
+              question.type && question.type === "choose"
+                ? style["answer-choose"]
+                : style.answer
+            }
+          >
+            {question.type && question.type === "choose"
+              ? question.Answer &&
+                question.Answer.map((item) => {
+                  let stt = question.Answer.indexOf(item) + 1;
+                  return <AnswerChoose item={item} stt={stt} />;
+                })
+              : null}
+            {question.type && question.type === "input" ? (
+              <AnswerInput item={question} />
+            ) : null}
+            {question.type && question.type === "order"
+              ? question.Answer &&
+                question.Answer.map((item) => {
+                  return <AnswerOrder item={item} />;
+                })
+              : null}
           </div>
         </div>
       </div>
