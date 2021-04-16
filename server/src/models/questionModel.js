@@ -5,7 +5,14 @@ let Schema = mongoose.Schema;
 let QuestionSchema = new Schema({
   topic: String,
   question: String,
-  Answer: [{ title: String, img: String }],
+  Answer: [
+    {
+      title: String,
+      img: String,
+      correct: { type: Boolean, default: false },
+      order: Number,
+    },
+  ],
   type: String,
 });
 
@@ -15,6 +22,16 @@ QuestionSchema.statics = {
   },
   getAllData() {
     return this.find({});
+  },
+  getCollection(item) {
+    return this.findOne({
+      _id: item,
+    });
+  },
+  checkExists(item) {
+    return this.findOne({
+      question: item.question,
+    });
   },
 };
 

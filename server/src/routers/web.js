@@ -5,6 +5,8 @@ import {
   vocabContro,
   authContro,
   imageContro,
+  questionContro,
+  gameContro,
 } from "./../controllers/index";
 import { lessonSer, vocabSer, gameSer, questionSer } from "./../services/index";
 import { authValid } from "./../validation/index";
@@ -31,6 +33,8 @@ let initRouters = (app) => {
   router.get("/init-question", questionSer.initData);
   router.get("/api-lesson", lessonContro.getAllData);
   router.get("/api-vocab", vocabContro.getAllData);
+  router.get(`/api-question/:id`, questionContro.getCollection);
+  router.get("/api-game", gameContro.getCollection);
 
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);

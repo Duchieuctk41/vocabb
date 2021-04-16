@@ -3,10 +3,11 @@ import questionModel from "../models/questionModel";
 let createNewItem = (item) => {
   return new Promise(async (resolve, reject) => {
     // Kiem tra item co ton tai hay ko
-    // let checkExists = await questionModel.checkExists(item);
-    // if (checkExists) {
-    //   return reject(false);
-    // }
+    let checkExists = await questionModel.checkExists(item);
+    if (checkExists) {
+      console.log("Câu hỏi đã tồn taị!");
+      return reject(false);
+    }
 
     let newItem = item;
     //console.log(newItem);
@@ -17,10 +18,37 @@ let createNewItem = (item) => {
 
 let listQuestion = {
   topic: "6078ff367e7c3f2076928234",
-  question: "Dau la thit bo?",
-  Answer: [{ title: "beef", img: "cow" }],
-  type: "choose",
+  question: `Viết bằng Tiếng Việt`,
+  sensece:  "Thank you, bye",
+  Answer: [{ title: "Cảm ơn, chào", correct: true }],
+  type: "input",
 };
+
+// let listQuestion = {
+//   topic: "6078ff367e7c3f2076928234",
+//   question: `Dịch câu sau sang tiếng Anh "Cảm ơn, chào"`,
+//   Answer: [
+//     { title: "Thank you", correct: true, order: 1 },
+//     { title: "bye", correct: true, order: 2 },
+//     { title: "see you again" },
+//     { title: "hello" },
+//     { title: "nice" },
+//   ],
+//   type: "order",
+// };
+
+// let listQuestion = {
+//   topic: "6078ff367e7c3f2076928234",
+//   question: `Dịch câu sau sang tiếng Anh "Cảm ơn, chào"`,
+//   Answer: [
+//     { title: "Thank you", correct: true, order: 1 },
+//     { title: "bye", correct: true, order: 2 },
+//     { title: "see you again" },
+//     { title: "hello" },
+//     { title: "nice" },
+//   ],
+//   type: "order",
+// };
 
 let initData = () => {
   createNewItem(listQuestion);
