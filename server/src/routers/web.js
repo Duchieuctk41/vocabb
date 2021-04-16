@@ -4,12 +4,14 @@ import {
   lessonContro,
   vocabContro,
   authContro,
+  imageContro,
 } from "./../controllers/index";
 import { lessonSer, vocabSer } from "./../services/index";
 import { authValid } from "./../validation/index";
 
 import passport from "passport";
 import initPassportLocal from "./../controllers/passportController/local";
+const { cloudinary } = require("./../config/cloudinary");
 
 // Init all passport
 initPassportLocal();
@@ -31,16 +33,8 @@ let initRouters = (app) => {
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);
 
-  router.post("/login", (req, res, next) => {
-    passport.authenticate("local", (error, user, info) => {
-      console.log("data: ", info);
-      if (error) throw error;
-      if (!user) res.send(info);
-      else {
-        res.send(info);
-      }
-    })(req, res, next);
-  });
+  app.get("/api/images", imageContro.getImage);
+  app.post("/api/upload", imageContro.uploadImage);
 
   return app.use("/", router);
 };

@@ -6,7 +6,9 @@ import Popup from "../popup/popup.component";
 import { chick, corona } from "../../img";
 import style from "./lesson-item.module.scss";
 
-const LessonItem = ({ lesson }) => {
+const LessonItem = ({ lesson, imaged }) => {
+  // console.log("lesson: ", lesson);
+  console.log("imaged: ", imaged);
   const [toggle, setToggle] = useState(false);
   return (
     <div className={style.item}>
@@ -17,7 +19,11 @@ const LessonItem = ({ lesson }) => {
         >
           <span className={style.border}></span>
           <div className={style["grid__item-img--purple"]}>
-            <img src={chick} alt="chick"></img>
+            {imaged ? (
+              <img src={imaged} alt="chick"></img>
+            ) : (
+              <img src={chick} alt="chick"></img>
+            )}
             <img src={corona} alt="corona" />
           </div>
         </div>
