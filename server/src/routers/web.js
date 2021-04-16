@@ -6,7 +6,7 @@ import {
   authContro,
   imageContro,
 } from "./../controllers/index";
-import { lessonSer, vocabSer } from "./../services/index";
+import { lessonSer, vocabSer, gameSer, questionSer } from "./../services/index";
 import { authValid } from "./../validation/index";
 
 import passport from "passport";
@@ -27,6 +27,8 @@ let initRouters = (app) => {
   router.get("/", homeContro.getHome);
   router.get("/init-lesson", lessonSer.initData);
   router.get("/init-vocab", vocabSer.initData);
+  router.get("/init-game", gameSer.initData);
+  router.get("/init-question", questionSer.initData);
   router.get("/api-lesson", lessonContro.getAllData);
   router.get("/api-vocab", vocabContro.getAllData);
 
