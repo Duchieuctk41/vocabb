@@ -13,14 +13,18 @@ const Lesson = ({ lesson, content }) => {
     let item2 = [content.name, content.img, content._id];
     return (
       <div className={style.grid}>
-        <LessonItem lesson={item[0]} key={`${item[3]}-item`} />
-        <LessonItem lesson={item2[0]} key={`${item2[2]}-item`} />
+        <LessonItem lesson={item[0]} key={`${item[3]}-item`} imaged={item[1]} />
+        <LessonItem
+          lesson={item2[0]}
+          key={`${item2[2]}-item`}
+          imaged={item2[1]}
+        />
       </div>
     );
   } else {
     return (
       <div className={style.grid}>
-        <LessonItem lesson={item[0]} key={`${item[2]}-item`} />
+        <LessonItem lesson={item[0]} key={`${item[2]}-item`} imaged={item[1]} />
       </div>
     );
   }

@@ -17,14 +17,19 @@ import Store from "./pages/store/store.component";
 import Setting from "./pages/setting/setting.component";
 import Profile from "./pages/profile/profile.component";
 import Flashcard from "./pages/flashcard/flashcard.component";
-
 import Homeadmin from "./admin/home/homepage.component";
-
+import UploadImage from "./pages/upload-image/upload-image.component";
 
 function App() {
   const location = useLocation();
   console.log(location.pathname);
-  const notHeader = ["/login", "/game", "/introduce"];
+  const notHeader = [
+    "/login",
+    "/game",
+    "/introduce",
+    "/image",
+    "/homepageadmin",
+  ];
   const toggleHeader = notHeader.filter((item) => item === location.pathname);
   console.log("header", toggleHeader);
   return (
@@ -42,7 +47,7 @@ function App() {
         <Route path="/setting" component={Setting} />
         <Route path="/profile" component={Profile} />
         <Route path="/flashcard" component={Flashcard} />
-
+        <Route path="/image" component={UploadImage} />
         <Route path="/homepageadmin" component={Homeadmin} />
       </Switch>
     </div>

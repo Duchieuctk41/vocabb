@@ -15,3 +15,9 @@
   export MAIL_PASSWORD=***
   export MAIL_HOST=***
   export MAIL_PORT=*** 
+
+# Config cloudinary
+  export CLOUDINARY_NAME=*** 
+  export CLOUDINARY_KEY=*** 
+  export CLOUDINARY_SECRET=*** 
+  export CLOUDINARY_URL=*** 

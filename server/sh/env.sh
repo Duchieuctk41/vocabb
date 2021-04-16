@@ -15,3 +15,9 @@
   export MAIL_PASSWORD=thuyduong1112001
   export MAIL_HOST=smtp.gmail.com
   export MAIL_PORT=587 
+
+# Config cloudinary
+  export CLOUDINARY_NAME=duchieu
+  export CLOUDINARY_KEY=894513215544578
+  export CLOUDINARY_SECRET=iL6nD0ldkOfBNOo7A_fOsLedSRE
+  export CLOUDINARY_URL=cloudinary://894513215544578:iL6nD0ldkOfBNOo7A_fOsLedSRE@duchieu
