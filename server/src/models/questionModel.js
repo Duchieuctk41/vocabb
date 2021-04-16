@@ -5,6 +5,8 @@ let Schema = mongoose.Schema;
 let QuestionSchema = new Schema({
   topic: String,
   question: String,
+  sentense: String,
+  illustration: String,
   Answer: [
     {
       title: String,

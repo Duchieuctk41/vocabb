@@ -7,9 +7,9 @@ const AnswerInput = ({ item }) => {
   return (
     <div className={style.content}>
       <div className={style.image}>
-        <img alt="img" src={astronaut}></img>
+        <img alt="img" src={item.illustration}></img>
         <div className={style.image__sentense}>
-          <span>Thank you, bye</span>
+          <span>{item.sentense}</span>
         </div>
       </div>
       <textarea placeholder={item.question}></textarea>
