@@ -15,6 +15,7 @@ import style from "./game.module.scss";
 
 const Game = () => {
   const [position, setPosition] = useState(0);
+  const [isActive, setIsActve] = useState(0);
 
   // Lay data in redux
   const { vocab } = useSelector((state) => state.vocab);
@@ -25,9 +26,13 @@ const Game = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(vocabActions());
-    dispatch(questionActions(listQuestion[1]));
+    dispatch(questionActions(listQuestion[0]));
   }, [dispatch]);
   console.log(listQuestion);
+
+  const onClickHandler = (stt) => {
+    setIsActve(stt);
+  };
 
   return (
     <div className={style.container}>
@@ -53,7 +58,14 @@ const Game = () => {
               ? question.Answer &&
                 question.Answer.map((item) => {
                   let stt = question.Answer.indexOf(item) + 1;
-                  return <AnswerChoose item={item} stt={stt} />;
+                  return (
+                    <AnswerChoose
+                      item={item}
+                      stt={stt}
+                      actived={onClickHandler}
+                      isActive={isActive}
+                    />
+                  );
                 })
               : null}
             {question.type && question.type === "input" ? (
