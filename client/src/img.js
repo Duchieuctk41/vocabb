@@ -56,23 +56,20 @@ import add from "./assets/img/add.svg";
 import clear from "./assets/img/clear.svg";
 import question from "./assets/img/question.svg";
 import key from "./assets/img/key.svg";
-
-
-
-
-
-
-
-
-
-
+import cancel from "./assets/img/cancel.svg";
+import flag from "./assets/img/flag.svg";
+import flagtrue from "./assets/img/flagtrue.svg";
+import check from "./assets/img/check.svg";
 
 import logoad from "./admin/images/logo.svg";
 import homead from "./admin/images/home.svg";
 import avatarad from "./admin/images/avatar.svg";
 
-
 export {
+  check,
+  flagtrue,
+  flag,
+  cancel,
   key,
   question,
   add,
@@ -130,10 +127,6 @@ export {
   robot,
   achievement_wildfire,
   us,
-
-
-
-
   logoad,
   homead,
   avatarad,
