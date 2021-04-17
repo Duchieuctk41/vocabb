@@ -23,6 +23,24 @@
       background-color: #e5e5e5;
       border-radius: 20px;
       height: 16px;
+      .processed {
+        position: relative;
+        border-radius: 20px;
+        width: 20%;
+        height: 100%;
+        background-color: #58cc02;
+        div {
+          position: absolute;
+          background-color: #79d635;
+          opacity: 0.2;
+          border-radius: 40px;
+          height: 30%;
+          left: 0;
+          right: 0;
+          top: 25%;
+          margin: 0 8px;
+        }
+      }
     }
   }
 
@@ -47,7 +65,7 @@
 
         span {
           font-size: 32px;
-          color: #b0b0b0;
+          color: #4c4c4c;
           line-height: 40px;
         }
       }
@@ -82,7 +100,7 @@
     align-items: center;
     padding: 0 40px;
 
-    a {
+    button {
       font-size: 17px;
       padding: 12px 16px;
       width: 150px;
@@ -95,10 +113,13 @@
       border: 2px solid;
       border-bottom: 4px solid;
       color: #afafaf;
+      background-color: #fff;
       border-color: #e5e5e5;
       font-weight: 700;
       text-transform: uppercase;
       text-decoration: none;
+      outline: none;
+      cursor: pointer;
 
       &:first-child {
         &:hover {
@@ -109,22 +130,22 @@
         }
       }
     }
-    a:nth-child(2) {
+    .notcheck {
       background-color: #e5e5e5;
       border: none;
       height: 46px;
       margin-top: 4px;
+      cursor: default;
     }
-  }
-
-  .check {
-    border: solid;
-    border-width: 0 0 4px;
-    border-color: #58a700;
-    background: #58cc02;
-    color: #fff;
-    &:hover {
-      filter: brightness(1.1);
+    .check {
+      border: solid;
+      border-width: 0 0 4px;
+      border-color: #58a700;
+      background: #58cc02;
+      color: #fff;
+      &:hover {
+        filter: brightness(1.1);
+      }
     }
   }
 }

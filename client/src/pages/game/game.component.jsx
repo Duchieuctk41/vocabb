@@ -5,6 +5,7 @@ import { close, rice } from "../../img";
 import AnswerChoose from "./../../components/answer-choose/answer-choose.component";
 import AnswerInput from "./../../components/answer-input/anser-input.component";
 import AnswerOrder from "./../../components/answer-order/answer-order.component";
+import Check from "./../../components/modal/check/check.component";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +16,9 @@ import style from "./game.module.scss";
 
 const Game = () => {
   const [position, setPosition] = useState(0);
-  const [isActive, setIsActve] = useState(0);
+  const [isActive, setIsActve] = useState(null);
+  const [isTrue, setIsTrue] = useState(false);
+  const [process, setprocess] = useState(10);
 
   // Lay data in redux
   const { vocab } = useSelector((state) => state.vocab);
@@ -28,11 +31,18 @@ const Game = () => {
     dispatch(vocabActions());
     dispatch(questionActions(listQuestion[0]));
   }, [dispatch]);
-  console.log(listQuestion);
+  // console.log(listQuestion);
 
   const onClickHandler = (stt) => {
     setIsActve(stt);
   };
+
+  const checkTruFalseHandler = () => {
+    setIsTrue(true);
+  };
+
+  let find =
+    question.Answer && question.Answer.filter((item) => item.correct === true);
 
   return (
     <div className={style.container}>
@@ -40,7 +50,11 @@ const Game = () => {
         <Link to="/">
           <img src={close} className={style.filter_green} alt="img"></img>
         </Link>
-        <div className={style.process}></div>
+        <div className={style.process}>
+          <div className={style.processed}>
+            <div></div>
+          </div>
+        </div>
       </div>
       <div className={style.content}>
         <div className={style.grid}>
@@ -79,12 +93,21 @@ const Game = () => {
       </div>
       <div className={style.footer}>
         <div className={style.footer__container}>
-          <Link to="/" className={style.ignore}>
-            Bỏ qua
-          </Link>
-          <Link to="/">Kiểm tra</Link>
+          <button className={style.ignore}>Bỏ qua</button>
+          <button
+            className={`${isActive ? style.check : style.notcheck}`}
+            onClick={checkTruFalseHandler}
+          >
+            Kiểm tra
+          </button>
         </div>
       </div>
+      {isTrue ? (
+        <Check
+          report={question.Answer[isActive - 1].correct}
+          result={find[0].title}
+        />
+      ) : null}
     </div>
   );
 };
