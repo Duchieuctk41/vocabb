@@ -61,6 +61,23 @@
   }
 }
 
+.active {
+  border-color: #84d8ff;
+  background-color: #ddf4ff;
+  &:hover {
+    background-color: #ddf4ff;
+  }
+  .answer__item-sub {
+    span:first-child {
+      color: #1899d6;
+    }
+    span:nth-child(2) {
+      border-color: #84d8ff;
+      color: #1899d6;
+    }
+  }
+}
+
 .answer__item:hover,
 .answer__item:active {
   border-width: 2px !important;
