@@ -18,7 +18,7 @@ const Game = () => {
   const [position, setPosition] = useState(0);
   const [isActive, setIsActve] = useState(null);
   const [isTrue, setIsTrue] = useState(false);
-  const [process, setprocess] = useState(10);
+  const [process, setProcess] = useState(0);
 
   // Lay data in redux
   const { vocab } = useSelector((state) => state.vocab);
@@ -29,9 +29,9 @@ const Game = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(vocabActions());
-    dispatch(questionActions(listQuestion[0]));
   }, [dispatch]);
   // console.log(listQuestion);
+  dispatch(questionActions(listQuestion[position]));
 
   const onClickHandler = (stt) => {
     setIsActve(stt);
@@ -40,6 +40,39 @@ const Game = () => {
   const checkTruFalseHandler = () => {
     setIsTrue(true);
   };
+
+  const onClickProcess = (val) => {
+    if (val) {
+      setPosition(position + 1);
+      setProcess(process + 10);
+    } else {
+      console.log("truoc ", listQuestion);
+      let test1 = [];
+      for (let i = position; i < listQuestion.length; i++) {
+        test1.push(listQuestion[i]);
+      }
+      shuffle(test1);
+      for (let i = position; i < listQuestion.length; i++) {
+        let j = 0;
+        listQuestion[i] = test1[j];
+        j++;
+      }
+      console.log("sau ", listQuestion);
+    }
+    setIsTrue(false);
+  };
+
+  /**
+   * Shuffles array in place. ES6 version
+   * @param {Array} a items An array containing the items.
+   */
+  function shuffle(a, pos) {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
 
   let find =
     question.Answer && question.Answer.filter((item) => item.correct === true);
@@ -51,7 +84,7 @@ const Game = () => {
           <img src={close} className={style.filter_green} alt="img"></img>
         </Link>
         <div className={style.process}>
-          <div className={style.processed}>
+          <div className={style.processed} style={{ width: `${process}%` }}>
             <div></div>
           </div>
         </div>
@@ -106,6 +139,7 @@ const Game = () => {
         <Check
           report={question.Answer[isActive - 1].correct}
           result={find[0].title}
+          processedd={onClickProcess}
         />
       ) : null}
     </div>

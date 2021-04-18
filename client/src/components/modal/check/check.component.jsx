@@ -3,10 +3,8 @@ import style from "./check.module.scss";
 
 import { cancel, check, flag, flagtrue } from "./../../../img";
 
-const Check = ({ report, result }) => {
-  const onClickHandler = () => {
-    alert(1);
-  };
+const Check = ({ report, result, processedd }) => {
+  let checkProcess = processedd;
   return (
     <div className={style.content}>
       <div
@@ -28,7 +26,7 @@ const Check = ({ report, result }) => {
           </div>
         </div>
         <div className={style.main__continue}>
-          <button onClick={onClickHandler}>Tiếp Tục</button>
+          <button onClick={() => checkProcess(report)}>Tiếp Tục</button>
         </div>
       </div>
     </div>
