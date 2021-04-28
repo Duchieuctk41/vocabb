@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import Alert from "./../alert/alert.component";
 
-import style from "./cloudinary.module.scss";
-import axios from "axios";
-
 const Cloudinary = () => {
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState("");

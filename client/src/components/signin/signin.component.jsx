@@ -13,16 +13,11 @@ const SignIn = () => {
     password: "",
   });
 
-  const { email, password } = signup;
   const history = useHistory();
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setSignup({ ...signup, [name]: value });
-  };
-
-  const handleOnSubmit = () => {
-    history.push(`/`);
   };
 
   const submitHandler = (e) => {
