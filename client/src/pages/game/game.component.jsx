@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-import { close, rice } from "../../img";
+import { close } from "../../img";
 import AnswerChoose from "./../../components/answer-choose/answer-choose.component";
 import AnswerInput from "./../../components/answer-input/anser-input.component";
 import AnswerOrder from "./../../components/answer-order/answer-order.component";
@@ -15,23 +15,25 @@ import { questionActions } from "../../redux/actions/questionActions";
 import style from "./game.module.scss";
 
 const Game = () => {
-  const [position, setPosition] = useState(0);
   const [isActive, setIsActve] = useState(null);
   const [isTrue, setIsTrue] = useState(false);
   const [process, setProcess] = useState(0);
+
+  const history = useHistory();
 
   // Lay data in redux
   const { vocab } = useSelector((state) => state.vocab);
   const { question } = useSelector((state) => state.question);
   // console.log("question: ", question);
   const listQuestion = vocab.listQuestion;
-  // lay data api vocab
+  let test1 = listQuestion;
+  // lay data cau hoi
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(vocabActions());
   }, [dispatch]);
   // console.log(listQuestion);
-  dispatch(questionActions(listQuestion[position]));
+  dispatch(questionActions(test1[0]));
 
   const onClickHandler = (stt) => {
     setIsActve(stt);
@@ -41,24 +43,17 @@ const Game = () => {
     setIsTrue(true);
   };
 
+  // click nút tiếp tục
   const onClickProcess = (val) => {
+    if (test1.length === 0) history.push(`/`);
     if (val) {
-      setPosition(position + 1);
       setProcess(process + 10);
+      test1.splice(0, 1);
     } else {
-      console.log("truoc ", listQuestion);
-      let test1 = [];
-      for (let i = position; i < listQuestion.length; i++) {
-        test1.push(listQuestion[i]);
-      }
       shuffle(test1);
-      for (let i = position; i < listQuestion.length; i++) {
-        let j = 0;
-        listQuestion[i] = test1[j];
-        j++;
-      }
-      console.log("sau ", listQuestion);
     }
+    console.log("fsdfsdfsda", test1);
+
     setIsTrue(false);
   };
 

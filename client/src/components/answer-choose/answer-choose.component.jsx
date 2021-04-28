@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import style from "./answer-choose.module.scss";
-import { close, rice } from "./../../img";
 
 const AnswerChoose = ({ item, stt, isActive, actived }) => {
   // console.log(item);

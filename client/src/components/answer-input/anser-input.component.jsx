@@ -1,9 +1,8 @@
 import React from "react";
 import style from "./answer-input.module.scss";
-import { astronaut } from "./../../img";
 
 const AnswerInput = ({ item }) => {
-  console.log(item.question);
+  // console.log(item.question);
   return (
     <div className={style.content}>
       <div className={style.image}>
