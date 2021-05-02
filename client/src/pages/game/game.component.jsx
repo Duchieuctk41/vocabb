@@ -33,7 +33,7 @@ const Game = () => {
     dispatch(vocabActions());
   }, [dispatch]);
   // console.log(listQuestion);
-  dispatch(questionActions(test1[0]));
+  dispatch(questionActions(test1[1]));
 
   const onClickHandler = (stt) => {
     setIsActve(stt);
@@ -45,6 +45,7 @@ const Game = () => {
 
   // click nút tiếp tục
   const onClickProcess = (val) => {
+    console.log(question.Answer);
     if (test1.length === 0) history.push(`/`);
     if (val) {
       setProcess(process + 10);
