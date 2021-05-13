@@ -1,1 +1,1 @@
-# Ứng dụng học từ vưng tiếng Anh (MERN)
+# Ứng dụng học từ vựng tiếng Anh (MERN)
