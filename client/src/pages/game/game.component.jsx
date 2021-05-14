@@ -27,13 +27,18 @@ const Game = () => {
   // console.log("question: ", question);
   const listQuestion = vocab.listQuestion;
   let test1 = listQuestion;
+  // console.log("test1 ",test1);
   // lay data cau hoi
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(vocabActions());
   }, [dispatch]);
+  
   // console.log(listQuestion);
   dispatch(questionActions(test1[1]));
+ 
+  // dispatch(questionActions(test1[2]));
 
   const onClickHandler = (stt) => {
     setIsActve(stt);
@@ -53,7 +58,7 @@ const Game = () => {
     } else {
       shuffle(test1);
     }
-    console.log("fsdfsdfsda", test1);
+    // console.log("fsdfsdfsda", test1);
 
     setIsTrue(false);
   };
