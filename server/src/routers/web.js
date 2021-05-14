@@ -27,10 +27,11 @@ let router = express.Router();
 
 let initRouters = (app) => {
   router.get("/", homeContro.getHome);
-  router.get("/init-lesson", lessonSer.initData);
-  router.get("/init-vocab", vocabSer.initData);
-  router.get("/init-game", gameSer.initData);
-  router.get("/init-question", questionSer.initData);
+  router.get("/init-lesson", lessonSer.initData); // tạo CSDL bài học
+  router.get("/init-vocab", vocabSer.initData); // tạo CSDL từ vựng
+  router.get("/init-game", gameSer.initData); // tạo CSDL game
+  router.get("/init-question", questionSer.initData); // tạo CSDL câu hỏi
+  
   router.get("/api-lesson", lessonContro.getAllData);
   router.get("/api-vocab", vocabContro.getAllData);
   router.get(`/api-question/:id`, questionContro.getCollection);

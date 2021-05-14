@@ -3,9 +3,9 @@ import { vocabTypes } from "../types/vocabTypes";
 const initState = {
   vocab: {
     listQuestion: [
-      "6079108d8a5b364151f0f929",
-      "60791360e1c87a49ba560322",
-      "6079a62e3076f62ac32bbebe",
+      "609e71fbf172b71f985cd8dc",
+      "609e73b4083e0a0930a0788a",
+      "609e7eb9dbc7b512b079ee2c",
     ],
   },
 };
