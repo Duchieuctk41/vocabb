@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./answer-order.module.scss";
 
 const AnswerOrder = ({ item, actived }) => {
@@ -7,13 +7,20 @@ const AnswerOrder = ({ item, actived }) => {
   //chọn đáp án, chạy lên trên
   function onClickAddAnswer(item) {
     setArrayAnswer((arrayAnswer) => [...arrayAnswer, item], [arrayAnswer]);
+    
   }
+  
   function onClickRemoveAnswer(item) {
     const newList = arrayAnswer.filter((element) => element !== item)
     setArrayAnswer(newList);
   }
 
+  useEffect(() => {
+    onClickHandler(arrayAnswer);
+  },[arrayAnswer]);
+
   let onClickHandler = actived;
+
 
   return (
     <div className={style.content}>
@@ -36,7 +43,6 @@ const AnswerOrder = ({ item, actived }) => {
                 key={element.title}
                 onClick={() => {
                   onClickAddAnswer(element.title);
-                  onClickHandler(1);
                 }}
                 disabled={arrayAnswer.find(item => item === element.title) ? true : false}
               >

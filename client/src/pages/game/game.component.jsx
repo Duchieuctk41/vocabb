@@ -18,6 +18,9 @@ const Game = () => {
   const [isActive, setIsActve] = useState(null);
   const [isTrue, setIsTrue] = useState(false);
   const [process, setProcess] = useState(0);
+  const [dapanOrder2, setDapanOrder2] = useState([]); // đáp án đúng cho order
+  const [userchooseOrder, setUserchooseOrder] = useState([]);
+
 
   const history = useHistory();
 
@@ -36,17 +39,33 @@ const Game = () => {
   }, [dispatch]);
   
   // console.log(listQuestion);
-  dispatch(questionActions(test1[1]));
+  dispatch(questionActions(test1[1])); //dayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
  
   // dispatch(questionActions(test1[2]));
-
   const onClickHandler = (stt) => {
+    setUserchooseOrder(stt);
+  
     stt ? setIsActve(stt) : setIsActve(null);
   };
 
+
+
+  // lay ket qua nguoi dung chon
+  // const onClickUserchooseOrder = (ketqua) => {
+  //   alert(ketqua);
+  // }
+
+  // Kiểm tra đúng sai
   const checkTruFalseHandler = () => {
+    const dapanOrder = question.Answer.filter(item => item.order);
+    for(let i = 0; i < dapanOrder.length; i++) {
+      setDapanOrder2((dapanOrder2) =>[...dapanOrder2, dapanOrder[i].title], [dapanOrder2]);
+    }
     setIsTrue(true);
   };
+  // useEffect(() => {
+  //   console.log("toi ",dapanOrder2);
+  // },[])
 
   // click nút tiếp tục
   const onClickProcess = (val) => {
@@ -130,7 +149,9 @@ const Game = () => {
           <button className={style.ignore}>Bỏ qua</button>
           <button
             className={`${isActive ? style.check : style.notcheck}`}
-            onClick={checkTruFalseHandler}
+            onClick={() => {
+              checkTruFalseHandler();
+            }}
           >
             Kiểm tra
           </button>
@@ -138,9 +159,11 @@ const Game = () => {
       </div>
       {isTrue ? (
         <Check
-          report={question.Answer[isActive - 1].correct}
+          report={question.type === "choose" ? question.Answer[isActive - 1].correct : null}
           result={find[0].title}
           processedd={onClickProcess}
+          orderReport={dapanOrder2}
+          userOrderReport={userchooseOrder}
         />
       ) : null}
     </div>
