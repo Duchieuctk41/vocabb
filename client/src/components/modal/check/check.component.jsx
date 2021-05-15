@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./check.module.scss";
 
 import { cancel, check, flag, flagtrue } from "./../../../img";
 
-const Check = ({ report, result, processedd }) => {
+const Check = ({ report, result, processedd, orderReport, userOrderReport }) => {
+  useEffect(()=> {
+    console.log("report ",orderReport);
+    console.log("user ", userOrderReport);
+    if(JSON.stringify(orderReport)==JSON.stringify(userOrderReport)) {
+      alert(`hieu-pc`);
+    } else {
+      alert(`false roi`);
+    }
+  }, []);
   let checkProcess = processedd;
   return (
     <div className={style.content}>
