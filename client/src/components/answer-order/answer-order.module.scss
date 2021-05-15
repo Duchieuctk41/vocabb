@@ -56,7 +56,8 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      span {
+      
+      button {
         height: 51px;
         margin-left: 4px;
         margin-right: 4px;
@@ -67,12 +68,21 @@
         border-radius: 16px;
         cursor: pointer;
         color: #4b4b4b;
+        font-size: 16px;
+        background-color: #ffffff;
+
+        &:disabled {
+          background-color: #e5e5e5;
+          color: #e5e5e5;
+        }
+       
         &:active {
           position: relative;
           top: 2px;
           border-width: 2px !important;
         }
       }
+      
     }
     .--choosed {
       border-bottom: 2px solid #e6e6e6;

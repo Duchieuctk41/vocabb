@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import style from "./answer-order.module.scss";
 
-const AnswerOrder = ({ item }) => {
-  const [arrayAnswer, setArrayAnswer] = useState([]);
-  const [test, setTest] = useState(["hei", "jdjk", "fdjkals"]);
-  function onClickHandler(item) {
+const AnswerOrder = ({ item, actived }) => {
+  const [arrayAnswer, setArrayAnswer] = useState([]);  //danh sách được chọn
+
+  //chọn đáp án, chạy lên trên
+  function onClickAddAnswer(item) {
     setArrayAnswer((arrayAnswer) => [...arrayAnswer, item], [arrayAnswer]);
   }
+  function onClickRemoveAnswer(item) {
+    const newList = arrayAnswer.filter((element) => element !== item)
+    setArrayAnswer(newList);
+  }
+
+  let onClickHandler = actived;
+
   return (
     <div className={style.content}>
       <div className={style.image}>
@@ -17,19 +25,23 @@ const AnswerOrder = ({ item }) => {
       </div>
       <div className={style.answer}>
         <div className={style["--choosed"]}>
-          {arrayAnswer && arrayAnswer.map((e) => <span key={e}>{e}</span>)}
+          {arrayAnswer && arrayAnswer.map((e) => <button key={e} onClick={() => {onClickRemoveAnswer(e);
+          if(arrayAnswer.length == 1) onClickHandler(0);} 
+          }>{e}</button>)}
         </div>
         <div>
           {item.Answer &&
             item.Answer.map((element) => (
-              <span
+              <button
                 key={element.title}
                 onClick={() => {
-                  onClickHandler(element.title);
+                  onClickAddAnswer(element.title);
+                  onClickHandler(1);
                 }}
+                disabled={arrayAnswer.find(item => item === element.title) ? true : false}
               >
                 {element.title}
-              </span>
+              </button>
             ))}
         </div>
       </div>

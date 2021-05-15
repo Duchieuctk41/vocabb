@@ -41,7 +41,7 @@ const Game = () => {
   // dispatch(questionActions(test1[2]));
 
   const onClickHandler = (stt) => {
-    setIsActve(stt);
+    stt ? setIsActve(stt) : setIsActve(null);
   };
 
   const checkTruFalseHandler = () => {
@@ -120,7 +120,7 @@ const Game = () => {
               <AnswerInput item={question} />
             ) : null}
             {question.type && question.type === "order" ? (
-              <AnswerOrder item={question} />
+              <AnswerOrder item={question} actived={onClickHandler}/>
             ) : null}
           </div>
         </div>
