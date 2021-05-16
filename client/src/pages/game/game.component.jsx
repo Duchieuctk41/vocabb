@@ -20,6 +20,7 @@ const Game = () => {
   const [process, setProcess] = useState(0);
   const [dapanOrder2, setDapanOrder2] = useState([]); // đáp án đúng cho order
   const [userchooseOrder, setUserchooseOrder] = useState([]);
+  const [result1, setResult1] = useState(false);
 
 
   const history = useHistory();
@@ -39,14 +40,20 @@ const Game = () => {
   }, [dispatch]);
   
   // console.log(listQuestion);
-  dispatch(questionActions(test1[1])); //dayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+  dispatch(questionActions(test1[0])); //dayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
  
   // dispatch(questionActions(test1[2]));
   const onClickHandler = (stt) => {
     setUserchooseOrder(stt);
-  
     stt ? setIsActve(stt) : setIsActve(null);
+
+    const dapanOrder = question.Answer.filter(item => item.order);
+    setDapanOrder2([]);
+    for(let i = 0; i < dapanOrder.length; i++) {
+      setDapanOrder2((dapanOrder2) =>[...dapanOrder2, dapanOrder[i].title], [dapanOrder2]);
+    }
   };
+ 
 
 
 
@@ -57,10 +64,7 @@ const Game = () => {
 
   // Kiểm tra đúng sai
   const checkTruFalseHandler = () => {
-    const dapanOrder = question.Answer.filter(item => item.order);
-    for(let i = 0; i < dapanOrder.length; i++) {
-      setDapanOrder2((dapanOrder2) =>[...dapanOrder2, dapanOrder[i].title], [dapanOrder2]);
-    }
+    JSON.stringify(dapanOrder2)==JSON.stringify(userchooseOrder) ? setResult1(true) : setResult1(false);
     setIsTrue(true);
   };
   // useEffect(() => {
@@ -96,6 +100,12 @@ const Game = () => {
 
   let find =
     question.Answer && question.Answer.filter((item) => item.correct === true);
+
+  // let result1 = JSON.stringify(dapanOrder2)==JSON.stringify(userchooseOrder);
+  // useEffect(() => {
+  //   console.log("answer ",dapanOrder2);
+  //   console.log("user ",userchooseOrder);
+  // },[userchooseOrder]);
 
   return (
     <div className={style.container}>
@@ -159,10 +169,8 @@ const Game = () => {
       </div>
       {isTrue ? (
         <Check
-          report={question.type === "choose" ? question.Answer[isActive - 1].correct : null}
-          result={find[0].title}
-          processedd={onClickProcess}
-          orderReport={dapanOrder2}
+          report={question.type === "choose" ? question.Answer[isActive - 1].correct : result1}
+          result={dapanOrder2}
           userOrderReport={userchooseOrder}
         />
       ) : null}

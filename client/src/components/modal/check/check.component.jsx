@@ -3,15 +3,11 @@ import style from "./check.module.scss";
 
 import { cancel, check, flag, flagtrue } from "./../../../img";
 
-const Check = ({ report, result, processedd, orderReport, userOrderReport }) => {
+const Check = ({ report, result, processedd}) => {
   useEffect(()=> {
-    console.log("report ",orderReport);
-    console.log("user ", userOrderReport);
-    if(JSON.stringify(orderReport)==JSON.stringify(userOrderReport)) {
-      alert(`hieu-pc`);
-    } else {
-      alert(`false roi`);
-    }
+    // console.log("report ",orderReport);
+    // console.log("user ", userOrderReport);
+
   }, []);
   let checkProcess = processedd;
   return (
@@ -27,7 +23,7 @@ const Check = ({ report, result, processedd, orderReport, userOrderReport }) => 
           </div>
           <div className={style["main__alert-title"]}>
             <h2>{report ? "Giỏi lắm!" : "Đáp án đúng:"}</h2>
-            {report ? "" : <span className={style["--answer"]}>{result}</span>}
+            {report ? "" : <span className={style["--answer"]}>{result.map((item) => `${item} `)}</span>}
             <div className={style.article}>
               <img src={report ? flagtrue : flag} alt="flag" />
               <span>Báo cáo</span>
