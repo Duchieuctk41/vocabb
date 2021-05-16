@@ -10,6 +10,7 @@ const Check = ({ report, result, processedd}) => {
 
   }, []);
   let checkProcess = processedd;
+  let checked = result => result.every(v => v === true);
   return (
     <div className={style.content}>
       <div
@@ -23,7 +24,7 @@ const Check = ({ report, result, processedd}) => {
           </div>
           <div className={style["main__alert-title"]}>
             <h2>{report ? "Giỏi lắm!" : "Đáp án đúng:"}</h2>
-            {report ? "" : <span className={style["--answer"]}>{result.map((item) => `${item} `)}</span>}
+            {report ? "" : <span className={style["--answer"]}>{ typeof result === "array" ? result.map((item) => `${item} `) : result}</span>}
             <div className={style.article}>
               <img src={report ? flagtrue : flag} alt="flag" />
               <span>Báo cáo</span>

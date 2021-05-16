@@ -15,7 +15,7 @@ import { questionActions } from "../../redux/actions/questionActions";
 import style from "./game.module.scss";
 
 const Game = () => {
-  const [isActive, setIsActve] = useState(null);
+  const [isActive, setIsActve] = useState(null); // hiển thị nút kiểm tra
   const [isTrue, setIsTrue] = useState(false);
   const [process, setProcess] = useState(0);
   const [dapanOrder2, setDapanOrder2] = useState([]); // đáp án đúng cho order
@@ -42,7 +42,14 @@ const Game = () => {
   // console.log(listQuestion);
   dispatch(questionActions(test1[0])); //dayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
  
-  // dispatch(questionActions(test1[2]));
+
+  // hiển thị nút kiểm tra, lấy đáp án đúng
+  const onClickHandlerInput = (stt) => {
+    setUserchooseOrder(stt);
+
+    stt ? setIsActve(stt) : setIsActve(null);
+  }
+
   const onClickHandler = (stt) => {
     setUserchooseOrder(stt);
     stt ? setIsActve(stt) : setIsActve(null);
@@ -54,17 +61,15 @@ const Game = () => {
     }
   };
  
-
-
-
-  // lay ket qua nguoi dung chon
-  // const onClickUserchooseOrder = (ketqua) => {
-  //   alert(ketqua);
-  // }
-
   // Kiểm tra đúng sai
   const checkTruFalseHandler = () => {
-    JSON.stringify(dapanOrder2)==JSON.stringify(userchooseOrder) ? setResult1(true) : setResult1(false);
+    if (question.type === "order") {
+      JSON.stringify(dapanOrder2)==JSON.stringify(userchooseOrder) ? setResult1(true) : setResult1(false);
+    }
+    if (question.type === "input") {
+      question.Answer[0].title === userchooseOrder ? setResult1(true) : setResult1(false);
+      setDapanOrder2(question.Answer[0].title);
+    }
     setIsTrue(true);
   };
   // useEffect(() => {
@@ -72,19 +77,19 @@ const Game = () => {
   // },[])
 
   // click nút tiếp tục
-  const onClickProcess = (val) => {
-    console.log(question.Answer);
-    if (test1.length === 0) history.push(`/`);
-    if (val) {
-      setProcess(process + 10);
-      test1.splice(0, 1);
-    } else {
-      shuffle(test1);
-    }
-    // console.log("fsdfsdfsda", test1);
+  // const onClickProcess = (val) => {
+  //   console.log(question.Answer);
+  //   if (test1.length === 0) history.push(`/`);
+  //   if (val) {
+  //     setProcess(process + 10);
+  //     test1.splice(0, 1);
+  //   } else {
+  //     shuffle(test1);
+  //   }
+  //   // console.log("fsdfsdfsda", test1);
 
-    setIsTrue(false);
-  };
+  //   setIsTrue(false);
+  // };
 
   /**
    * Shuffles array in place. ES6 version
@@ -100,12 +105,6 @@ const Game = () => {
 
   let find =
     question.Answer && question.Answer.filter((item) => item.correct === true);
-
-  // let result1 = JSON.stringify(dapanOrder2)==JSON.stringify(userchooseOrder);
-  // useEffect(() => {
-  //   console.log("answer ",dapanOrder2);
-  //   console.log("user ",userchooseOrder);
-  // },[userchooseOrder]);
 
   return (
     <div className={style.container}>
@@ -146,7 +145,7 @@ const Game = () => {
                 })
               : null}
             {question.type && question.type === "input" ? (
-              <AnswerInput item={question} />
+              <AnswerInput item={question} actived={onClickHandlerInput}/>
             ) : null}
             {question.type && question.type === "order" ? (
               <AnswerOrder item={question} actived={onClickHandler}/>
