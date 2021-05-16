@@ -4,7 +4,7 @@ import { gameURL } from "../../api";
 
 export const vocabActions = () => async (dispatch) => {
   const vocabData = await axios.get(gameURL());
-  console.log("vocab=== ", vocabData);
+  // console.log("vocab=== ", vocabData);
 
   dispatch({
     type: vocabTypes.FETCH_ALL_VOCAB,

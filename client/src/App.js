@@ -22,7 +22,7 @@ import UploadImage from "./pages/upload-image/upload-image.component";
 
 function App() {
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
   const notHeader = [
     "/login",
     "/game",
@@ -31,7 +31,7 @@ function App() {
     "/homepageadmin",
   ];
   const toggleHeader = notHeader.filter((item) => item === location.pathname);
-  console.log("header", toggleHeader);
+  // console.log("header", toggleHeader);
   return (
     <div className="App">
       {toggleHeader.length === 0 ? <Header /> : null}
