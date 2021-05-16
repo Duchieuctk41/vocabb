@@ -18,6 +18,8 @@ const Game = () => {
   const [isActive, setIsActve] = useState(null); // hiển thị nút kiểm tra
   const [isTrue, setIsTrue] = useState(false);
   const [process, setProcess] = useState(0);
+  const [position, setPosition] = useState(0);
+  const [mix, setMix] = useState(0);
   const [dapanOrder2, setDapanOrder2] = useState([]); // đáp án đúng cho order
   const [userchooseOrder, setUserchooseOrder] = useState([]);
   const [result1, setResult1] = useState(false);
@@ -40,7 +42,16 @@ const Game = () => {
   }, [dispatch]);
   
   // console.log(listQuestion);
-  dispatch(questionActions(test1[0])); //dayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+  useEffect(() => {
+    if (position > 9) {
+    history.push(`/`);
+    setPosition(0);
+    setMix(0);
+    } else {
+      dispatch(questionActions(test1[position]));
+    }
+    console.log(1);
+  },[position, mix]); //dayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
  
 
   // hiển thị nút kiểm tra, lấy đáp án đúng
@@ -63,6 +74,10 @@ const Game = () => {
  
   // Kiểm tra đúng sai
   const checkTruFalseHandler = () => {
+    if(question.type === "choose") {
+      setResult1(question.Answer[isActive - 1].correct);
+    }
+
     if (question.type === "order") {
       JSON.stringify(dapanOrder2)==JSON.stringify(userchooseOrder) ? setResult1(true) : setResult1(false);
     }
@@ -72,24 +87,25 @@ const Game = () => {
     }
     setIsTrue(true);
   };
-  // useEffect(() => {
-  //   console.log("toi ",dapanOrder2);
-  // },[])
 
-  // click nút tiếp tục
-  // const onClickProcess = (val) => {
-  //   console.log(question.Answer);
-  //   if (test1.length === 0) history.push(`/`);
-  //   if (val) {
-  //     setProcess(process + 10);
-  //     test1.splice(0, 1);
-  //   } else {
-  //     shuffle(test1);
-  //   }
-  //   // console.log("fsdfsdfsda", test1);
 
-  //   setIsTrue(false);
-  // };
+  //click nút tiếp tục
+  const onClickProcess = () => {
+    // console.log(result1);
+    if (result1) {
+      setProcess(process + 10);
+      setPosition(position + 1);
+      console.log(position);
+    } else {
+      const tam = test1.filter((item, index) => index >= position ? item : null);
+      shuffle(tam);
+      test1.splice(position, tam.length, ...tam);
+      setMix(mix + 1);
+    }
+    // console.log("fsdfsdfsda", test1);
+
+    setIsTrue(false);
+  };
 
   /**
    * Shuffles array in place. ES6 version
@@ -145,7 +161,7 @@ const Game = () => {
                 })
               : null}
             {question.type && question.type === "input" ? (
-              <AnswerInput item={question} actived={onClickHandlerInput}/>
+              <AnswerInput item={question} actived={onClickHandlerInput} />
             ) : null}
             {question.type && question.type === "order" ? (
               <AnswerOrder item={question} actived={onClickHandler}/>
@@ -168,9 +184,10 @@ const Game = () => {
       </div>
       {isTrue ? (
         <Check
-          report={question.type === "choose" ? question.Answer[isActive - 1].correct : result1}
+          report={result1}
           result={dapanOrder2}
           userOrderReport={userchooseOrder}
+          processedd={onClickProcess}
         />
       ) : null}
     </div>

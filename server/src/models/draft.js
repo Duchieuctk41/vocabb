@@ -4,7 +4,7 @@
 
 // let VocabModel = new Schema({
 //   vocabId: String,
-//   EnName: String,
+//   EnName: String, 
 //   ViName: String,
 //   img: "",
 // });
@@ -38,7 +38,7 @@
 // let LessonModel = new Schema({
 //   vocabId: String,
 //   vocab: String,
-// });
+// }); 
 
 // (LessonModel.statics = {
 //   createNew(item) {
