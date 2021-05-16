@@ -8,7 +8,7 @@ let ContactSchema = new Schema({
   status: { type: Boolean, default: false },
   createdAt: { type: Timestamp, default: Date.now },
   updatedAt: { type: Number, default: null },
-  deletedAt: { type: Number, default: null },
+  deletedAt: { type: Number, default: null }, 
 });
 
 ContactSchema.statics = {

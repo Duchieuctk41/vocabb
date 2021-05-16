@@ -10,7 +10,6 @@ const Check = ({ report, result, processedd}) => {
 
   }, []);
   let checkProcess = processedd;
-  let checked = result => result.every(v => v === true);
   return (
     <div className={style.content}>
       <div
@@ -32,7 +31,7 @@ const Check = ({ report, result, processedd}) => {
           </div>
         </div>
         <div className={style.main__continue}>
-          <button onClick={() => checkProcess(report)}>Tiếp Tục</button>
+          <button onClick={() => checkProcess()}>Tiếp Tục</button>
         </div>
       </div>
     </div>
