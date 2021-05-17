@@ -6,9 +6,9 @@ import Popup from "../popup/popup.component";
 import { chick, corona } from "../../img";
 import style from "./lesson-item.module.scss";
 
-const LessonItem = ({ lesson, imaged }) => {
+const LessonItem = ({ lesson, imaged ,idgame}) => {
   // console.log("lesson: ", lesson);
-  console.log("imaged: ", imaged);
+  // console.log("idgame: ", idgame);
   const [toggle, setToggle] = useState(false);
   return (
     <div className={style.item}>
@@ -28,7 +28,7 @@ const LessonItem = ({ lesson, imaged }) => {
           </div>
         </div>
         <h3>{lesson}</h3>
-        {toggle ? <Popup /> : null}
+        {toggle ? <Popup idgame={idgame}/> : null}
       </div>
     </div>
   );

@@ -18,13 +18,18 @@ const Main = () => {
     dispatch(lessonActions());
   }, [dispatch]);
 
+
+
   let hang2 = false;
   let lap = false;
   const { lesson } = useSelector((state) => state.lesson);
-  // console.log("lesson: ", lesson);
+  useEffect(() => {
+    // console.log("lesson: ", lesson[0].idgame);
+  }, [lesson]);
   return (
     <div className={style.main}>
       {lesson.map((item) => {
+        // console.log("item: ",item._id);
         if (lap === true) {
           hang2 = false;
           return (lap = false);

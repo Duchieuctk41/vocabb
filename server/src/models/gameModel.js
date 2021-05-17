@@ -23,6 +23,9 @@ GameSchema.statics = {
       _id: item,
     });
   },
+  getIdGames() {
+    return this.find({}, {_id: 1});
+  }
 };
 
 module.exports = mongoose.model("game", GameSchema);

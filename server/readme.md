@@ -1,5 +1,4 @@
-### list api
-http://localhost:3001
+### ghi chú
 
-/init-lesson  tạo danh sách bài học
-/init-vocab  tạo danh sách từ vựng
+npm config set script-shell "C:/Program Files/Git/bin/bash.exe"
+npm config delete script-shell

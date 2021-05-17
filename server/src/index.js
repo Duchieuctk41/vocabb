@@ -7,8 +7,8 @@ import bodyParser from "body-parser";
 import connectFlash from "connect-flash";
 import configSession from "./config/session";
 import passport from "passport";
-// Init app
-const app = express();
+// Init app 
+const app = express(); 
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
@@ -20,7 +20,7 @@ app.use(
     credentials: true, // allow session cookie from browser to pass through
   })
 );
-
+ 
 // Connect mongodb
 ConnectDB();
 

@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { close } from "../../img";
+import { questionActions } from "../../redux/actions/questionActions";
+
 import AnswerChoose from "./../../components/answer-choose/answer-choose.component";
 import AnswerInput from "./../../components/answer-input/anser-input.component";
 import AnswerOrder from "./../../components/answer-order/answer-order.component";
 import Check from "./../../components/modal/check/check.component";
 
-// redux
-import { useDispatch, useSelector } from "react-redux";
-import { vocabActions } from "../../redux/actions/vocabActions";
-import { questionActions } from "../../redux/actions/questionActions";
-
+import { close } from "../../img";
 import style from "./game.module.scss";
 
 const Game = () => {
   const [isActive, setIsActve] = useState(null); // hiển thị nút kiểm tra
-  const [isTrue, setIsTrue] = useState(false);
+  const [isTrue, setIsTrue] = useState(false); // hiển thị modal check
   const [process, setProcess] = useState(0);
   const [position, setPosition] = useState(0);
   const [mix, setMix] = useState(0);
@@ -24,62 +22,49 @@ const Game = () => {
   const [userchooseOrder, setUserchooseOrder] = useState([]);
   const [result1, setResult1] = useState(false);
 
-
   const history = useHistory();
 
   // Lay data in redux
   const { vocab } = useSelector((state) => state.vocab);
   const { question } = useSelector((state) => state.question);
-  // console.log("question: ", question);
-  const listQuestion = vocab.listQuestion;
-  let test1 = listQuestion;
-  // console.log("test1 ",test1);
-  // lay data cau hoi
+  let test1 = vocab.listQuestion;
   const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(vocabActions());
-  }, [dispatch]);
-  
-  // console.log(listQuestion);
+
+  // Lấy câu dữ liệu câu hỏi, trả về question
   useEffect(() => {
     if (position > 9) {
-    history.push(`/`);
-    setPosition(0);
-    setMix(0);
+      history.push(`/`);
+      setPosition(0);
+      setMix(0);
     } else {
-      dispatch(questionActions(test1[position]));
+      if (test1 !== undefined) dispatch(questionActions(test1[position]));
     }
-    console.log(1);
-  },[position, mix]); //dayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
- 
+  }, [dispatch, history, test1, position, mix]);
 
   // hiển thị nút kiểm tra, lấy đáp án đúng
   const onClickHandlerInput = (stt) => {
     setUserchooseOrder(stt);
-
     stt ? setIsActve(stt) : setIsActve(null);
   }
 
+  // Lấy giá trị người dùng chọn (nhập)
   const onClickHandler = (stt) => {
     setUserchooseOrder(stt);
     stt ? setIsActve(stt) : setIsActve(null);
-
     const dapanOrder = question.Answer.filter(item => item.order);
     setDapanOrder2([]);
-    for(let i = 0; i < dapanOrder.length; i++) {
-      setDapanOrder2((dapanOrder2) =>[...dapanOrder2, dapanOrder[i].title], [dapanOrder2]);
+    for (let i = 0; i < dapanOrder.length; i++) {
+      setDapanOrder2((dapanOrder2) => [...dapanOrder2, dapanOrder[i].title], [dapanOrder2]);
     }
   };
- 
+
   // Kiểm tra đúng sai
   const checkTruFalseHandler = () => {
-    if(question.type === "choose") {
+    if (question.type === "choose") {
       setResult1(question.Answer[isActive - 1].correct);
     }
-
     if (question.type === "order") {
-      JSON.stringify(dapanOrder2)==JSON.stringify(userchooseOrder) ? setResult1(true) : setResult1(false);
+      JSON.stringify(dapanOrder2) === JSON.stringify(userchooseOrder) ? setResult1(true) : setResult1(false);
     }
     if (question.type === "input") {
       question.Answer[0].title === userchooseOrder ? setResult1(true) : setResult1(false);
@@ -88,22 +73,18 @@ const Game = () => {
     setIsTrue(true);
   };
 
-
-  //click nút tiếp tục
+  //Click nút tiếp tục
   const onClickProcess = () => {
-    // console.log(result1);
     if (result1) {
       setProcess(process + 10);
       setPosition(position + 1);
-      console.log(position);
+      // console.log(position); 
     } else {
       const tam = test1.filter((item, index) => index >= position ? item : null);
       shuffle(tam);
       test1.splice(position, tam.length, ...tam);
       setMix(mix + 1);
     }
-    // console.log("fsdfsdfsda", test1);
-
     setIsTrue(false);
   };
 
@@ -118,9 +99,6 @@ const Game = () => {
     }
     return a;
   }
-
-  let find =
-    question.Answer && question.Answer.filter((item) => item.correct === true);
 
   return (
     <div className={style.container}>
@@ -148,23 +126,23 @@ const Game = () => {
           >
             {question.type && question.type === "choose"
               ? question.Answer &&
-                question.Answer.map((item) => {
-                  let stt = question.Answer.indexOf(item) + 1;
-                  return (
-                    <AnswerChoose
-                      item={item}
-                      stt={stt}
-                      actived={onClickHandler}
-                      isActive={isActive}
-                    />
-                  );
-                })
+              question.Answer.map((item) => {
+                let stt = question.Answer.indexOf(item) + 1;
+                return (
+                  <AnswerChoose
+                    item={item}
+                    stt={stt}
+                    actived={onClickHandler}
+                    isActive={isActive}
+                  />
+                );
+              })
               : null}
             {question.type && question.type === "input" ? (
               <AnswerInput item={question} actived={onClickHandlerInput} />
             ) : null}
             {question.type && question.type === "order" ? (
-              <AnswerOrder item={question} actived={onClickHandler}/>
+              <AnswerOrder item={question} actived={onClickHandler} />
             ) : null}
           </div>
         </div>
