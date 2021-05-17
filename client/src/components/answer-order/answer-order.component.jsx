@@ -15,13 +15,11 @@ const AnswerOrder = ({ item, actived }) => {
     setArrayAnswer(newList);
   }
 
+  let onClickHandler = actived;
   useEffect(() => {
     onClickHandler(arrayAnswer);
-  },[arrayAnswer]);
-
-  let onClickHandler = actived;
-
-
+  },[onClickHandler, arrayAnswer]);
+  
   return (
     <div className={style.content}>
       <div className={style.image}>
@@ -33,7 +31,7 @@ const AnswerOrder = ({ item, actived }) => {
       <div className={style.answer}>
         <div className={style["--choosed"]}>
           {arrayAnswer && arrayAnswer.map((e) => <button key={e} onClick={() => {onClickRemoveAnswer(e);
-          if(arrayAnswer.length == 1) onClickHandler(0);} 
+          if(arrayAnswer.length === 1) onClickHandler(0);} 
           }>{e}</button>)}
         </div>
         <div>

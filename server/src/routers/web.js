@@ -35,7 +35,8 @@ let initRouters = (app) => {
   router.get("/api-lesson", lessonContro.getAllData);
   router.get("/api-vocab", vocabContro.getAllData);
   router.get(`/api-question/:id`, questionContro.getCollection);
-  router.get("/api-game", gameContro.getCollection);
+  router.get("/api-game/:id", gameContro.getCollection);
+  router.get("/api-idgames", gameContro.getIdGames);
 
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);

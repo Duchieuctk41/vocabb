@@ -6,16 +6,16 @@ const AnswerInput = ({ item, actived }) => {
 
   const [userInput, setUserInput] = useState("");
   const changeHandler = e => {
-    const {name, value} = e.target;
+    const {value} = e.target;
     setUserInput(value);
   }
 
+  let onClickHandlerInput = actived;
   
   useEffect(() => {
     onClickHandlerInput(userInput);
-  },[userInput]);
+  },[onClickHandlerInput, userInput]);
 
-  let onClickHandlerInput = actived;
   
   return (
     <div className={style.content}>

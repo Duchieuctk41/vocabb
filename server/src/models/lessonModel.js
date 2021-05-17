@@ -5,7 +5,8 @@ let Schema = mongoose.Schema;
 let LessonSchema = new Schema({
   name: String,
   img: { type: String, default: "chick" },
-  grade: { type: Number, default: 3 },
+  grade: { type: Number, default: 0 },
+  idgame: Array
 });
 
 LessonSchema.statics = {
