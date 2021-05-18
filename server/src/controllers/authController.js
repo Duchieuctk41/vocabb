@@ -1,7 +1,8 @@
 import { validationResult } from "express-validator";
 import { authSer } from "./../services/index";
+import passport from "passport";
 
-// Kiểm tra đăng ký đúng hay không
+// Kiểm tra đăng ký
 let postRegister = async (req, res) => {
   let errorArr = [];
   let successArr = [];
@@ -35,32 +36,21 @@ let postRegister = async (req, res) => {
 };
 
 // Kiểm tra đăng nhập
-let postLogin = async (req, res) => {
+let postLogin = async (req, res, next) => {
   let errorArr = [];
   let successArr = [];
 
-  let validationErrors = validationResult(req);
-  if (!validationErrors.isEmpty()) {
-    let errors = Object.values(validationErrors.mapped());
-    errors.forEach((item) => {
-      errorArr.push(item.msg);
-    });
-    req.flash("errors", errorArr);
-    return res.send({ errors: errorArr });
-  }
-  try {
-    let createUserSuccess = await authSer.login(
-      req.body.email,
-      req.body.password,
-    );
-    successArr.push(createUserSuccess);
-    req.flash("success", successArr);
-    return res.send({ success: successArr });
-  } catch (error) {
-    errorArr.push(error);
-    req.flash("errors", errorArr);
-    return res.send({ errors: errorArr });
-  }
+  passport.authenticate("local", (err, user, info) => {
+    if (info.success) {
+      successArr.push(info.success);
+      req.flash("success", successArr);
+      return res.send({ success: successArr });
+    } else {
+      errorArr.push(info.errors);
+      req.flash("errors", errorArr);
+      return res.send({ errors: errorArr });
+    }
+  })(req, res, next);
 };
 
 // Kiểm tra có vào hàm Flash ko
@@ -93,6 +83,6 @@ let verifyAccount = async (req, res) => {
 module.exports = {
   postRegister: postRegister,
   verifyAccount: verifyAccount,
-  postLogin:postLogin,
+  postLogin: postLogin,
   getFlash: getFlash,
 };

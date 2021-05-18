@@ -11,7 +11,6 @@ import {
 import { lessonSer, vocabSer, gameSer, questionSer } from "./../services/index";
 import { authValid } from "./../validation/index";
 
-import passport from "passport";
 import initPassportLocal from "./../controllers/passportController/local";
 const { cloudinary } = require("./../config/cloudinary");
 
@@ -40,7 +39,13 @@ let initRouters = (app) => {
 
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);
-  router.post("/login", authValid.login, authContro.postLogin);
+  router.post("/login", authContro.postLogin);
+  // router.post("/login", passport.authenticate("local", {
+  //   successRedirect:"/",
+  //   failureRedirect:"/login",
+  //   successFlash: true,
+  //   failureFlash: true
+  // }));
 
   app.get("/api/images", imageContro.getImage);
   app.post("/api/upload", imageContro.uploadImage);
