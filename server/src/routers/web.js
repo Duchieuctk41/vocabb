@@ -40,6 +40,7 @@ let initRouters = (app) => {
 
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);
+  router.post("/login", authValid.login, authContro.postLogin);
 
   app.get("/api/images", imageContro.getImage);
   app.post("/api/upload", imageContro.uploadImage);

@@ -2,10 +2,15 @@ import React, { useState } from "react";
 
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import { authLogoUrl } from "../../api";
+import { authLoginUrl } from "../../api";
+import { useSelector } from "react-redux";
+
 
 import style from "./signin.module.scss";
 import { facebook, google } from "./../../img";
+
+const { message } = useSelector((state) => state.message);
+
 
 const SignIn = () => {
   const [signup, setSignup] = useState({
@@ -26,7 +31,7 @@ const SignIn = () => {
       method: "POST",
       data: signup,
       withCredentials: true,
-      url: authLogoUrl(),
+      url: authLoginUrl(),
     })
       .then((response) => {
         console.log(response.data);
@@ -39,6 +44,7 @@ const SignIn = () => {
 
   return (
     <div className={style.main}>
+      {message ? message : null}
       <h1 className={style.title__login}>Đăng nhập</h1>
       <form onSubmit={submitHandler}>
         <div className={style.inp}>

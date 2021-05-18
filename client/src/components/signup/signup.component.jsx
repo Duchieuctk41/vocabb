@@ -18,7 +18,7 @@ const SignUp = () => {
   // console.log("hieu", dispatch);
 
   const { message } = useSelector((state) => state.message);
-  // console.log("qua on", message);
+  // console.log("message: ", message);
 
   const [signup, setSignup] = useState({
     age: "",

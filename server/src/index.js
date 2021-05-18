@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 import connectFlash from "connect-flash";
 import configSession from "./config/session";
 import passport from "passport";
-// Init app 
+// Init app
 const app = express(); 
 
 app.use(express.json({ limit: "50mb" }));

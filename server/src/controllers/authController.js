@@ -1,6 +1,7 @@
 import { validationResult } from "express-validator";
 import { authSer } from "./../services/index";
 
+// Kiểm tra đăng ký đúng hay không
 let postRegister = async (req, res) => {
   let errorArr = [];
   let successArr = [];
@@ -32,8 +33,38 @@ let postRegister = async (req, res) => {
     return res.send({ errors: errorArr });
   }
 };
-let success = ["1"];
 
+// Kiểm tra đăng nhập
+let postLogin = async (req, res) => {
+  let errorArr = [];
+  let successArr = [];
+
+  let validationErrors = validationResult(req);
+  if (!validationErrors.isEmpty()) {
+    let errors = Object.values(validationErrors.mapped());
+    errors.forEach((item) => {
+      errorArr.push(item.msg);
+    });
+    req.flash("errors", errorArr);
+    return res.send({ errors: errorArr });
+  }
+  try {
+    let createUserSuccess = await authSer.login(
+      req.body.email,
+      req.body.password,
+    );
+    successArr.push(createUserSuccess);
+    req.flash("success", successArr);
+    return res.send({ success: successArr });
+  } catch (error) {
+    errorArr.push(error);
+    req.flash("errors", errorArr);
+    return res.send({ errors: errorArr });
+  }
+};
+
+// Kiểm tra có vào hàm Flash ko
+let success = ["1"];
 let getFlash = (req, res) => {
   console.log("vao day roiw");
 
@@ -41,6 +72,7 @@ let getFlash = (req, res) => {
   return res.send(success);
 };
 
+// Kiểm tra verify account
 let verifyAccount = async (req, res) => {
   let errorArr = [];
   let successArr = [];
@@ -61,5 +93,6 @@ let verifyAccount = async (req, res) => {
 module.exports = {
   postRegister: postRegister,
   verifyAccount: verifyAccount,
+  postLogin:postLogin,
   getFlash: getFlash,
 };
