@@ -15,6 +15,7 @@ export const transErrors = {
   login_failed: "Sai tài khoản hoặc mật khẩu!",
   server_error:
     "Có lỗi ở phía server, vui lòng liên hệ với bộ phận của chúng tôi, xin cảm ơn.",
+  account_not_use: "Tài khoản hoặc mật khẩu không đúng!"
 };
 
 export const transSuccess = {

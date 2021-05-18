@@ -6,4 +6,4 @@ export const questionURL = (id) => `http://localhost:3001/api-question/${id}`;
 
 export const postSignupUrl = () => `http://localhost:3001/register`;
 export const verifyUrl = () => `http://localhost:3001/login-register`;
-export const authLogoUrl = () => `http://localhost:3001/login`;
+export const authLoginUrl = () => `http://localhost:3001/login`;

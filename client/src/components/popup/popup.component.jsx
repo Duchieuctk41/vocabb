@@ -5,9 +5,7 @@ import { key } from "../../img";
 import style from "./popup.module.scss";
 
 import { useDispatch } from "react-redux";
-
 import { vocabActions } from "../../redux/actions/vocabActions";
-
 
 const Popup = ({idgame}) => {
   // console.log("idgame ",idgame);
@@ -30,7 +28,7 @@ const Popup = ({idgame}) => {
         </div>
       </div>
       <div className={style.popup__bottom}>
-        <Link to="/game" onClick={()=>getidQuestion(idgame)} idgame={idgame}>Bắt đầu</Link>
+        <Link to="/game" onClick={()=>getidQuestion(idgame)}>Bắt đầu</Link>
       </div>
     </div>
   );

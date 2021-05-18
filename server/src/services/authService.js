@@ -1,6 +1,6 @@
 import UserModel from "./../models/userModel";
 import bcrypt from "bcrypt";
-import uuidv4 from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 import { transErrors, transSuccess, transMail } from "./../../lang/vi";
 import sendMail from "./../config/mailer";
 
@@ -51,7 +51,20 @@ let verifyAccount = (token) => {
   });
 };
 
+
+let login = (email, password) => {
+  return new Promise(async (resolve, reject) => {
+    let userByEmail = await UserModel.findByEmail(email);
+    if (!userByEmail) {
+      return reject(transErrors.account_not_use);
+    }
+    let salt = bcrypt.genSaltSync(saltRound);
+  });
+};
+
+
 module.exports = {
   register: register,
   verifyAccount: verifyAccount,
+  login:login
 };
