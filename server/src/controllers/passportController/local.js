@@ -19,7 +19,7 @@ let initPassportLocal = () => {
       async (req, email, password, done) => {
         try {
           let user = await UserModel.findByEmail(email);
-          console.log(user);
+          // console.log(user);
           if (!user) {
             return done(null, false, { errors: transErrors.login_failed });
           }
@@ -37,7 +37,7 @@ let initPassportLocal = () => {
             success: transSuccess.loginSuccess(user.username),
           });
         } catch (error) {
-          console.log(error);
+          // console.log(error);
           return done(null, false, { errors: transErrors.server_error });
         }
       }

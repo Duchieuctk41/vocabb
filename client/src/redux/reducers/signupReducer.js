@@ -9,6 +9,8 @@ const signupReducer = (state = initState, action) => {
     case signupTypes.FETCH_RESPONSE_SERVER:
       // console.log("payload", action.payload);
       return { message: action.payload.message };
+    case signupTypes.FETCH_MESSAGE_LOGIN:
+      return { message: action.payload.message };
     default:
       return state;
   }
