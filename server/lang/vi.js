@@ -28,6 +28,7 @@ export const transSuccess = {
     return `Xin chào ${username}, chúc bạn một ngày học tập hiệu quả.`;
   },
   logout_success: "Đăng xuất tài khoản thành công.",
+  login_success: "Đăng nhập thành công",
 };
 
 export const transMail = {

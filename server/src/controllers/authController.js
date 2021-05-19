@@ -95,23 +95,29 @@ let getLogout = (req, res) => {
 };
 
 // Kiểm tra đăng nhập chưa
-let checkLoggedIn = (req, res, next) => {
+let checkLoggedIn = (req, res) => {
+  let errorArr = [];
   let successArr = [];
   if (!req.isAuthenticated()) {
     successArr.push(transSuccess.logout_success);
     return res.send({ success: successArr });
+  } else {
+    errorArr.push(transSuccess.login_success);
+    return res.send({ errors: errorArr });
   }
-  next();
 }
 
 // Kiểm tra đăng xuất chưa
-let checkLoggedOut = (req, res, next) => {
+let checkLoggedOut = (req, res) => {
+  let errorArr = [];
   let successArr = [];
   if (req.isAuthenticated()) {
-    successArr.push(transSuccess.logout_success);
+    successArr.push(transSuccess.login_success);
     return res.send({ success: successArr });
+  } else {
+    errorArr.push(transSuccess.logout_success);
+    return res.send({ errors: errorArr });
   }
-  next();
 }
 
 module.exports = {
