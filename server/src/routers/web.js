@@ -40,12 +40,8 @@ let initRouters = (app) => {
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);
   router.post("/login", authContro.postLogin);
-  // router.post("/login", passport.authenticate("local", {
-  //   successRedirect:"/",
-  //   failureRedirect:"/login",
-  //   successFlash: true,
-  //   failureFlash: true
-  // }));
+
+  router.get("/logout", authContro.getLogout);
 
   app.get("/api/images", imageContro.getImage);
   app.post("/api/upload", imageContro.uploadImage);

@@ -19,7 +19,6 @@ let initPassportLocal = () => {
       async (req, email, password, done) => {
         try {
           let user = await UserModel.findByEmail(email);
-          // console.log(user);
           if (!user) {
             return done(null, false, { errors: transErrors.login_failed });
           }
@@ -40,13 +39,14 @@ let initPassportLocal = () => {
           // console.log(error);
           return done(null, false, { errors: transErrors.server_error });
         }
-      }
-    )
-  );
+      }));
   // Save userId to session
   passport.serializeUser((user, done) => {
-    done(null, user._id);
-  });
+      console.log("vao day ko?");
+      done(null, user._id)
+    }
+  );
+
   passport.deserializeUser((id, done) => {
     UserModel.findUserById(id)
       .then((user) => {
