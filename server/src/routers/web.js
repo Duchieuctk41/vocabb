@@ -42,6 +42,7 @@ let initRouters = (app) => {
   router.post("/login", authContro.postLogin);
 
   router.get("/logout", authContro.getLogout);
+  router.get("/check-login", authContro.checkLoggedIn);
 
   app.get("/api/images", imageContro.getImage);
   app.post("/api/upload", imageContro.uploadImage);

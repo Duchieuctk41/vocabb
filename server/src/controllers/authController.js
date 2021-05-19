@@ -85,19 +85,41 @@ let verifyAccount = async (req, res) => {
   }
 };
 
+// Đăng xuất
 let getLogout = (req, res) => {
   let successArr = [];
   req.logout(); // remove session passport user 
   successArr.push(transSuccess.logout_success);
-  console.log(successArr)
   req.flash("success", transSuccess.logout_success);
   return res.send({ success: successArr });
 };
+
+// Kiểm tra đăng nhập chưa
+let checkLoggedIn = (req, res, next) => {
+  let successArr = [];
+  if (!req.isAuthenticated()) {
+    successArr.push(transSuccess.logout_success);
+    return res.send({ success: successArr });
+  }
+
+  next();
+}
+
+// Kiểm tra đăng xuất chưa
+let checkLoggedOut = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+
+  next();
+}
 
 module.exports = {
   postRegister: postRegister,
   verifyAccount: verifyAccount,
   postLogin: postLogin,
   getFlash: getFlash,
-  getLogout: getLogout
+  getLogout: getLogout,
+  checkLoggedIn: checkLoggedIn,
+  checkLoggedOut: checkLoggedOut
 };
