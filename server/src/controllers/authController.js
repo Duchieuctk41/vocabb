@@ -1,6 +1,7 @@
 import { validationResult } from "express-validator";
 import { authSer } from "./../services/index";
 import passport from "passport";
+import { transSuccess } from "./../../lang/vi";
 
 // Kiểm tra đăng ký
 let postRegister = async (req, res) => {
@@ -42,9 +43,13 @@ let postLogin = async (req, res, next) => {
 
   passport.authenticate("local", (err, user, info) => {
     if (info.success) {
-      successArr.push(info.success);
-      req.flash("success", successArr);
-      return res.send({ success: successArr });
+      req.logIn(user, err => {
+        if (err) return next(err);
+        successArr.push(info.success);
+        req.flash("success", successArr);
+        return res.send({ success: successArr });
+      });
+
     } else {
       errorArr.push(info.errors);
       req.flash("errors", errorArr);
@@ -80,9 +85,19 @@ let verifyAccount = async (req, res) => {
   }
 };
 
+let getLogout = (req, res) => {
+  let successArr = [];
+  req.logout(); // remove session passport user 
+  successArr.push(transSuccess.logout_success);
+  console.log(successArr)
+  req.flash("success", transSuccess.logout_success);
+  return res.send({ success: successArr });
+};
+
 module.exports = {
   postRegister: postRegister,
   verifyAccount: verifyAccount,
   postLogin: postLogin,
   getFlash: getFlash,
+  getLogout: getLogout
 };

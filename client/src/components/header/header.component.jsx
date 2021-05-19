@@ -105,7 +105,7 @@ const Header = () => {
             title={[
               { name: "Hồ sơ của bạn", to: "profile" },
               { name: "Cài đặt", to: "setting" },
-              { name: "Đăng xuất", to: "introduce" },
+              { name: "Đăng xuất", to: "introduce" , action: "logout"},
             ]}
             classes={"--me"}
           />
