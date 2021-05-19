@@ -40,13 +40,15 @@ let initPassportLocal = () => {
           return done(null, false, { errors: transErrors.server_error });
         }
       }));
+
   // Save userId to session
   passport.serializeUser((user, done) => {
-      console.log("vao day ko?");
-      done(null, user._id)
-    }
+    done(null, user._id)
+  }
   );
 
+  // This is called by passport.session()
+  // Return userInfo to req.user
   passport.deserializeUser((id, done) => {
     UserModel.findUserById(id)
       .then((user) => {

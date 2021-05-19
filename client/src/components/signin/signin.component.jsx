@@ -2,11 +2,30 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-import { authLoginUrl } from "../../api";
+import { authLoginUrl, checkLoggedOut } from "../../api";
 import style from "./signin.module.scss";
 import { facebook, google } from "./../../img";
 
 const SignIn = () => {
+  const history = useHistory();
+  
+  checkLogout();
+
+  function checkLogout(){
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: checkLoggedOut(),
+    })
+      .then((response) => {
+        console.log(response);
+
+        if (response.data.success) {
+          history.push("/");
+        }
+      })
+      .catch((error) => console.log(error));
+  }
 
   const [flash, setFlash] = useState();
   const [signin, setSignin] = useState({
@@ -14,8 +33,6 @@ const SignIn = () => {
     password: "",
   });
 
-  const history = useHistory();
-  
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setSignin({ ...signin, [name]: value });

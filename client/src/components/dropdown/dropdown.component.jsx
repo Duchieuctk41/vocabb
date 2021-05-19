@@ -26,7 +26,7 @@ const Dropdown = ({ title, subtitle, classes}) => {
           ? setFlash(response.data.errors)
           : setFlash(response.data.success);
         if (response.data.success) {
-          history.push(`/login`);
+          history.push(`/introduce`);
         }
       })
       .catch((error) => console.log(error));
