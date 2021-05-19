@@ -1,5 +1,5 @@
 // module
-import React, { useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { logoutUrl } from "../../api";
@@ -9,8 +9,7 @@ import { logoutUrl } from "../../api";
 import { search } from "../../img";
 import "./dropdown.style.scss";
 
-const Dropdown = ({ title, subtitle, classes}) => {
-  const [flash, setFlash] = useState();
+const Dropdown = ({ title, subtitle, classes }) => {
   const history = useHistory();
 
   const logoutHandler = (e) => {
@@ -21,10 +20,7 @@ const Dropdown = ({ title, subtitle, classes}) => {
       url: logoutUrl(),
     })
       .then((response) => {
-        console.log(response);
-        response.data.errors
-          ? setFlash(response.data.errors)
-          : setFlash(response.data.success);
+        // console.log(response);
         if (response.data.success) {
           history.push(`/introduce`);
         }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { checkLoggedIn } from "../../api";
@@ -15,7 +15,6 @@ const Homepage = () => {
   const history = useHistory();
 
   checkLogin();
-
   function checkLogin(){
     axios({
       method: "GET",
@@ -23,7 +22,7 @@ const Homepage = () => {
       url: checkLoggedIn(),
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
 
         if (response.data.success) {
           history.push("/introduce");

@@ -1,14 +1,6 @@
 import express from "express";
-import {
-  homeContro,
-  lessonContro,
-  vocabContro,
-  authContro,
-  imageContro,
-  questionContro,
-  gameContro,
-} from "./../controllers/index";
-import { lessonSer, vocabSer, gameSer, questionSer } from "./../services/index";
+import { homeContro, lessonContro, vocabContro, authContro, imageContro, questionContro, gameContro } from "./../controllers/index";
+import { lessonSer, vocabSer, gameSer, questionSer, studiedSer } from "./../services/index";
 import { authValid } from "./../validation/index";
 
 import initPassportLocal from "./../controllers/passportController/local";
@@ -30,7 +22,8 @@ let initRouters = (app) => {
   router.get("/init-vocab", vocabSer.initData); // tạo CSDL từ vựng
   router.get("/init-game", gameSer.initData); // tạo CSDL game
   router.get("/init-question", questionSer.initData); // tạo CSDL câu hỏi
-  
+  router.get("/init-studied", studiedSer.initData); // cập nhật thành tích học tập
+
   router.get("/api-lesson", lessonContro.getAllData);
   router.get("/api-vocab", vocabContro.getAllData);
   router.get(`/api-question/:id`, questionContro.getCollection);
