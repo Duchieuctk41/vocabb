@@ -101,16 +101,16 @@ let checkLoggedIn = (req, res, next) => {
     successArr.push(transSuccess.logout_success);
     return res.send({ success: successArr });
   }
-
   next();
 }
 
 // Kiểm tra đăng xuất chưa
 let checkLoggedOut = (req, res, next) => {
+  let successArr = [];
   if (req.isAuthenticated()) {
-    return res.redirect("/");
+    successArr.push(transSuccess.logout_success);
+    return res.send({ success: successArr });
   }
-
   next();
 }
 
