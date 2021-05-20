@@ -13,10 +13,29 @@ StudiedSchema.statics = {
     return this.create(item);
   },
 
+  getAllData() {
+    return this.find({});
+  },
+
   checkExists(item) {
     return this.findOne({
-      userId: item.userId
+      userId: item.userId,
+      lessonId: item.lessonId
     });
+  },
+
+  findGrade(item) {
+    return this.findOne({
+      userId: item.userId,
+      lessonId: item.lessonId
+    });
+  },
+
+  updateGrade(item) {
+    return this.findOneAndUpdate({
+      userId: item.userId,
+      lessonId: item.lessonId
+    }, { grade: item.grade });
   }
 };
 

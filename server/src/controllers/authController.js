@@ -36,7 +36,7 @@ let postRegister = async (req, res) => {
   }
 };
 
-// Kiểm tra đăng nhập
+// Kiểm tra user đăng nhập
 let postLogin = async (req, res, next) => {
   let errorArr = [];
   let successArr = [];
@@ -46,13 +46,11 @@ let postLogin = async (req, res, next) => {
       req.logIn(user, err => {
         if (err) return next(err);
         successArr.push(info.success);
-        req.flash("success", successArr);
         return res.send({ success: successArr });
       });
 
     } else {
       errorArr.push(info.errors);
-      req.flash("errors", errorArr);
       return res.send({ errors: errorArr });
     }
   })(req, res, next);
@@ -120,6 +118,10 @@ let checkLoggedOut = (req, res) => {
   }
 }
 
+let getUser = (req, res) => { 
+  return res.send(req.session.passport.user);
+}
+
 module.exports = {
   postRegister: postRegister,
   verifyAccount: verifyAccount,
@@ -127,5 +129,6 @@ module.exports = {
   getFlash: getFlash,
   getLogout: getLogout,
   checkLoggedIn: checkLoggedIn,
-  checkLoggedOut: checkLoggedOut
+  checkLoggedOut: checkLoggedOut,
+  getUser: getUser
 };

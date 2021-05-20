@@ -6,16 +6,19 @@ import style from "./popup.module.scss";
 
 import { useDispatch } from "react-redux";
 import { vocabActions } from "../../redux/actions/vocabActions";
+import { lessonIdActions } from "./../../redux/actions/lessonActions";
 
-const Popup = ({idgame}) => {
+const Popup = ({ idgame, idlesson }) => {
   // console.log("idgame ",idgame);
-
+  // console.log("idlesson ", idlesson);
   const dispatch = useDispatch();
 
-  const getidQuestion = (idgame) => {
+  const getidQuestionandidLesson = (idgame, idlesson) => {
     // alert(idgame);
-    dispatch(vocabActions(idgame));
+    dispatch(vocabActions(idgame[0]));
+    dispatch(lessonIdActions(idlesson));
   }
+
   return (
     <div className={style.popup}>
       <div className={style.popup__top}>
@@ -28,7 +31,7 @@ const Popup = ({idgame}) => {
         </div>
       </div>
       <div className={style.popup__bottom}>
-        <Link to="/game" onClick={()=>getidQuestion(idgame)}>Bắt đầu</Link>
+        <Link to="/game" onClick={() => getidQuestionandidLesson(idgame, idlesson)}>Bắt đầu</Link>
       </div>
     </div>
   );

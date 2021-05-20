@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { checkLoggedIn } from "../../api";
@@ -15,7 +15,7 @@ const Homepage = () => {
   const history = useHistory();
 
   checkLogin();
-  function checkLogin(){
+  function checkLogin() {
     axios({
       method: "GET",
       withCredentials: true,
@@ -30,7 +30,7 @@ const Homepage = () => {
       })
       .catch((error) => console.log(error));
   }
- 
+
   return (
     <div className={style.content}>
       <Main />
