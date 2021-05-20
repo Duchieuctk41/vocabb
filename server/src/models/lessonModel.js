@@ -15,7 +15,7 @@ LessonSchema.statics = {
   },
 
   checkExists(item) {
-    return this.findOne({
+    return this.find({
       name: item.name,
     });
   },
@@ -23,6 +23,12 @@ LessonSchema.statics = {
   getAllData() {
     return this.find({});
   },
+
+  getLessonById(item) {
+    return this.findOne({
+      _id: item
+    })
+  }
 };
 
 module.exports = mongoose.model("lesson", LessonSchema);

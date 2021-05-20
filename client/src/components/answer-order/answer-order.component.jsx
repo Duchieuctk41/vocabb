@@ -7,7 +7,6 @@ const AnswerOrder = ({ item, actived }) => {
   //chọn đáp án, chạy lên trên
   function onClickAddAnswer(item) {
     setArrayAnswer((arrayAnswer) => [...arrayAnswer, item], [arrayAnswer]);
-    
   }
   
   function onClickRemoveAnswer(item) {
@@ -18,7 +17,7 @@ const AnswerOrder = ({ item, actived }) => {
   let onClickHandler = actived;
   useEffect(() => {
     onClickHandler(arrayAnswer);
-  },[onClickHandler, arrayAnswer]);
+  },[arrayAnswer]);
   
   return (
     <div className={style.content}>

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import { questionActions } from "../../redux/actions/questionActions";
+import axios from "axios";
 
 import AnswerChoose from "./../../components/answer-choose/answer-choose.component";
 import AnswerInput from "./../../components/answer-input/anser-input.component";
 import AnswerOrder from "./../../components/answer-order/answer-order.component";
 import Check from "./../../components/modal/check/check.component";
+import { updateGradeUrl, getUserId } from "./../../api";
 
 import { close } from "../../img";
 import style from "./game.module.scss";
@@ -15,31 +16,51 @@ import style from "./game.module.scss";
 const Game = () => {
   const [isActive, setIsActve] = useState(null); // hiển thị nút kiểm tra
   const [isTrue, setIsTrue] = useState(false); // hiển thị modal check
-  const [process, setProcess] = useState(0);
-  const [position, setPosition] = useState(0);
-  const [mix, setMix] = useState(0);
+  const [process, setProcess] = useState(0); // Thanh process
+  const [position, setPosition] = useState(0); // Vị trí câu hỏi được render
+  const [mix, setMix] = useState(0); // Số lần trộn
   const [dapanOrder2, setDapanOrder2] = useState([]); // đáp án đúng cho order
-  const [userchooseOrder, setUserchooseOrder] = useState([]);
-  const [result1, setResult1] = useState(false);
+  const [userchooseOrder, setUserchooseOrder] = useState([]); // Đáp án mà người dùng chọn
+  const [result1, setResult1] = useState(false); // Kết quả đáp án (trả về đúng or sai)
+  const [userId, setUserId] = useState();
 
   const history = useHistory();
 
   // Lay data in redux
+  const { lesson } = useSelector((state) => state.lesson);
   const { vocab } = useSelector((state) => state.vocab);
   const { question } = useSelector((state) => state.question);
+  let lessonId = lesson[0]._id;
   let test1 = vocab.listQuestion;
   const dispatch = useDispatch();
+  useEffect(() => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: getUserId(),
+    }).then((response) => {
+      setUserId(response.data);
+    });
+  }, []);
 
   // Lấy câu dữ liệu câu hỏi, trả về question
+  let all = [test1, userId, lessonId, position, mix, history, dispatch];
   useEffect(() => {
     if (position > 9) {
       history.push(`/`);
       setPosition(0);
       setMix(0);
+      axios({
+        method: "GET",
+        withCredentials: true,
+        url: updateGradeUrl(userId, lessonId),
+      }).then((response) => {
+        console.log(response.data);
+      });
     } else {
       if (test1 !== undefined) dispatch(questionActions(test1[position]));
     }
-  }, [dispatch, history, test1, position, mix]);
+  }, [all]);
 
   // hiển thị nút kiểm tra, lấy đáp án đúng
   const onClickHandlerInput = (stt) => {

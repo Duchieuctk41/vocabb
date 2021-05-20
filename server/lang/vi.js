@@ -21,7 +21,7 @@ export const transErrors = {
 export const transSuccess = {
   userCreated: (userEmail) => {
     return `Tài khoản ${userEmail} đã được tạo vui lòng kiểm tra email của bạn để active tài khoản.`;
-  },
+  }, 
   account_actived:
     "Kích hoạt tài khoản thành công, bạn đã có thể đăng nhập ứng dụng.",
   loginSuccess: (username) => {
@@ -29,7 +29,7 @@ export const transSuccess = {
   },
   logout_success: "Đăng xuất tài khoản thành công.",
   login_success: "Đăng nhập thành công",
-};
+}; 
 
 export const transMail = {
   subject: "Vocabb: Xác nhận kích hoạt tài khoản.",
