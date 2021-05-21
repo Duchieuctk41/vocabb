@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 // import components
 import Dropdown from "../dropdown/dropdown.component";
 
@@ -16,9 +18,11 @@ import {
 } from "../../img";
 import "./header.style.scss";
 
-// import { getVocabList } from "../../redux/vocab/vocab.actions";
-
 const Header = () => {
+
+  const { achievement } = useSelector((state) => state.achievement);
+  // console.log(achievement);
+
   return (
     <header className="header container">
       <ul className="menu1">
@@ -68,7 +72,7 @@ const Header = () => {
         <li>
           <span className="menu2__item corona-color">
             <img src={corona} alt="corona"></img>
-            147
+            {achievement.corona}
           </span>
           <Dropdown
             title={[{ name: "Vương miện", to: "" }]}
@@ -78,7 +82,7 @@ const Header = () => {
         </li>
         <li>
           <span className="menu2__item">
-            <img src={fire} alt="fire"></img>0
+            <img src={fire} alt="fire"></img>{achievement.streak}
           </span>
           <Dropdown
             title={[{ name: "Streak", to: "" }]}
@@ -89,7 +93,7 @@ const Header = () => {
         <li>
           <span className="menu2__item lingots-color">
             <img src={lingots} alt="lingots"></img>
-            60
+            {achievement.lingots}
           </span>
           <Dropdown
             title={[{ name: "Lingots", to: "" }]}

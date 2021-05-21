@@ -5,7 +5,7 @@ let createNewItem = (item) => {
     // Kiem tra item co ton tai hay ko
     let checkExists = await lessonModel.checkExists(item);
     if (checkExists) {
-      return reject(false);
+      return res.status(400).send({message: "Data đã tồn tại."});
     }
 
     let newItem = item;

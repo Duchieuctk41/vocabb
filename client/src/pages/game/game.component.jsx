@@ -8,7 +8,7 @@ import AnswerChoose from "./../../components/answer-choose/answer-choose.compone
 import AnswerInput from "./../../components/answer-input/anser-input.component";
 import AnswerOrder from "./../../components/answer-order/answer-order.component";
 import Check from "./../../components/modal/check/check.component";
-import { updateGradeUrl, getUserId } from "./../../api";
+import { updateGradeUrl, getUserId, updateAchievementURL, checkLoggedIn } from "./../../api";
 
 import { close } from "../../img";
 import style from "./game.module.scss";
@@ -23,6 +23,8 @@ const Game = () => {
   const [userchooseOrder, setUserchooseOrder] = useState([]); // Đáp án mà người dùng chọn
   const [result1, setResult1] = useState(false); // Kết quả đáp án (trả về đúng or sai)
   const [userId, setUserId] = useState();
+  const [updateAchievement, setUpdateAchievement] = useState({});
+  // {_id: "60a773b16b0bb42dac428d7b", corona: 2, streak: 3, lingots: 2, kn: 10, totalKn: 50}
 
   const history = useHistory();
 
@@ -30,9 +32,28 @@ const Game = () => {
   const { lesson } = useSelector((state) => state.lesson);
   const { vocab } = useSelector((state) => state.vocab);
   const { question } = useSelector((state) => state.question);
+  const { achievement } = useSelector((state) => state.achievement);
+
   let lessonId = lesson[0]._id;
   let test1 = vocab.listQuestion;
   const dispatch = useDispatch();
+
+  checkLogin();
+  function checkLogin() {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: checkLoggedIn(),
+    })
+      .then((response) => {
+        // console.log(response);
+        if (response.data.success) {
+          history.push("/introduce");
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+
   useEffect(() => {
     axios({
       method: "GET",
@@ -41,15 +62,22 @@ const Game = () => {
     }).then((response) => {
       setUserId(response.data);
     });
+    
   }, []);
 
   // Lấy câu dữ liệu câu hỏi, trả về question
   let all = [test1, userId, lessonId, position, mix, history, dispatch];
   useEffect(() => {
     if (position > 9) {
-      history.push(`/`);
       setPosition(0);
       setMix(0);
+
+      axios({
+        method: "PUT",
+        withCredentials: true,
+        url: updateAchievementURL(),
+      });
+
       axios({
         method: "GET",
         withCredentials: true,
@@ -57,6 +85,7 @@ const Game = () => {
       }).then((response) => {
         console.log(response.data);
       });
+      history.push(`/`);
     } else {
       if (test1 !== undefined) dispatch(questionActions(test1[position]));
     }

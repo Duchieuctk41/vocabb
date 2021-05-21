@@ -34,7 +34,7 @@ configViewEngine(app);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Enable flash messages
+// Enable flash messages 
 app.use(connectFlash());
 
 // Config passport js
