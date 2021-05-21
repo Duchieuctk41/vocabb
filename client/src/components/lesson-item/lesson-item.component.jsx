@@ -7,11 +7,13 @@ import { chick, corona } from "../../img";
 import style from "./lesson-item.module.scss";
 import { useSelector } from "react-redux";
 
-const LessonItem = ({ lesson, imaged ,idgame, idlesson}) => {
+const LessonItem = ({ lesson, imaged ,idgame, idlesson, grade}) => {
+  // console.log("hieu",grade);
 
   const { studied } = useSelector((state) => state.studied);
 
   let lessonId = studied.filter(item => item.lessonId === idlesson);
+  let grading = lessonId.length > 0 ? lessonId[0].grade : 0;
   
   const [toggle, setToggle] = useState(false);
   return (
@@ -35,7 +37,7 @@ const LessonItem = ({ lesson, imaged ,idgame, idlesson}) => {
           </div>
         </div>
         <h3>{lesson}</h3>
-        {toggle ? <Popup idgame={idgame} idlesson={idlesson}/> : null}
+        {toggle ? <Popup idgame={idgame} idlesson={idlesson} grading={grading} grade={grade}/> : null}
       </div>
     </div>
   );
