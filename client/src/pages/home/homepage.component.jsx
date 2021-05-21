@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { checkLoggedIn, initAchievementURL, apiAchievementURL } from "../../api";
-import { useDispatch, useSelector } from "react-redux";
+import { checkLoggedIn, initAchievementURL } from "../../api";
+import { useDispatch } from "react-redux";
 import { achievementActions } from "./../../redux/actions/achievementActions";
 
 // import components

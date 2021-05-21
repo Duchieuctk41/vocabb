@@ -1,7 +1,7 @@
-import { vocabTypes } from "../types/vocabTypes";
+import { vocabTypes } from "./../types/vocabTypes";
 
 const initState = {
-  vocab: {},
+  vocab: [],
 };
 
 const vocabReducer = (state = initState, action) => {

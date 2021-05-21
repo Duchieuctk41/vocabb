@@ -1,37 +1,23 @@
 import vocabModel from "../models/vocabModel";
 
-let createNewItem = (item) => {
-  return new Promise(async (resolve, reject) => {
-    // Kiem tra item co ton tai hay ko
-    let checkExists = await vocabModel.checkExists(item);
-    if (checkExists) {
-      return res.status(400).send({message: "Data đã tồn tại."});
-    }
+let initData = (req, res) => {
+  let item = req.path.split("/");
+  item = item[2].split("-");
+  item[1] = item[1].replace("%20", " ");
 
-    let newItem = item;
+  let userId = req.session.passport.user;
+  if(!userId) {
+    console.log("khong tim thay user");
+    return res.send("Khong tim thay user");
+  }
+  return new Promise(async (resolve, reject) => {
+    let newItem = { userId: userId, front: item[0], back: item[1] };
     //console.log(newItem);
     let newListVocab = vocabModel.createNew(newItem);
     resolve(newListVocab);
   });
 };
 
-let listItem = [
-  { lessonId: "60602b68128c1463e4a8c9b1", EnName: "hot", ViName: "nóng" },
-  { lessonId: "60602b68128c1463e4a8c9b1", EnName: "noodles", ViName: "mì" },
-  { lessonId: "60602b68128c1463e4a8c9b1", EnName: "rice", ViName: "gạo" },
-  { lessonId: "60602b68128c1463e4a8c9b1", EnName: "ice", ViName: "đá" },
-  { lessonId: "60602b68128c1463e4a8c9b1", EnName: "man", ViName: "đàn ông" },
-  { lessonId: "60602b68128c1463e4a8c9b1", EnName: "apple", ViName: "táo" },
-];
-
-let initData = () => {
-  for (let i = 0; i < listItem.length; i++) {
-    createNewItem(listItem[i]);
-  }
-  return;
-};
-
 module.exports = {
-  createNewItem: createNewItem,
   initData: initData,
 };
