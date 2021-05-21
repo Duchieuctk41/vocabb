@@ -23,19 +23,16 @@ const Game = () => {
   const [userchooseOrder, setUserchooseOrder] = useState([]); // Đáp án mà người dùng chọn
   const [result1, setResult1] = useState(false); // Kết quả đáp án (trả về đúng or sai)
   const [userId, setUserId] = useState();
-  const [updateAchievement, setUpdateAchievement] = useState({});
-  // {_id: "60a773b16b0bb42dac428d7b", corona: 2, streak: 3, lingots: 2, kn: 10, totalKn: 50}
 
   const history = useHistory();
 
   // Lay data in redux
   const { lesson } = useSelector((state) => state.lesson);
-  const { vocab } = useSelector((state) => state.vocab);
+  const { game } = useSelector((state) => state.game);
   const { question } = useSelector((state) => state.question);
-  const { achievement } = useSelector((state) => state.achievement);
 
   let lessonId = lesson[0]._id;
-  let test1 = vocab.listQuestion;
+  let test1 = game.listQuestion;
   const dispatch = useDispatch();
 
   checkLogin();
@@ -46,7 +43,6 @@ const Game = () => {
       url: checkLoggedIn(),
     })
       .then((response) => {
-        // console.log(response);
         if (response.data.success) {
           history.push("/introduce");
         }
@@ -66,7 +62,6 @@ const Game = () => {
   }, []);
 
   // Lấy câu dữ liệu câu hỏi, trả về question
-  let all = [test1, userId, lessonId, position, mix, history, dispatch];
   useEffect(() => {
     if (position > 9) {
       setPosition(0);
@@ -89,7 +84,7 @@ const Game = () => {
     } else {
       if (test1 !== undefined) dispatch(questionActions(test1[position]));
     }
-  }, [all]);
+  }, [test1, userId, lessonId, position, mix, history, dispatch]);
 
   // hiển thị nút kiểm tra, lấy đáp án đúng
   const onClickHandlerInput = (stt) => {

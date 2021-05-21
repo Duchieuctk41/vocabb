@@ -5,7 +5,7 @@ import { key } from "../../img";
 import style from "./popup.module.scss";
 
 import { useDispatch } from "react-redux";
-import { vocabActions } from "../../redux/actions/vocabActions";
+import { gameActions } from "../../redux/actions/gameActions";
 import { lessonIdActions } from "./../../redux/actions/lessonActions";
 
 const Popup = ({ idgame, idlesson, grading, grade }) => {
@@ -13,7 +13,7 @@ const Popup = ({ idgame, idlesson, grading, grade }) => {
 
   // Lấy id các câu hỏi và id bài học
   const getidQuestionandidLesson = (idgame, idlesson) => {
-    dispatch(vocabActions(idgame[grading]));
+    dispatch(gameActions(idgame[grading]));
     dispatch(lessonIdActions(idlesson));
   }
 

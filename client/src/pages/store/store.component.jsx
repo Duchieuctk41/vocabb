@@ -1,10 +1,30 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import style from "./store.module.scss";
 import { loupe, babyboy, america } from "../../img";
+import { checkLoggedIn } from "./../../api";
+
 
 const Store = () => {
+  const history = useHistory();
+  checkLogin();
+  function checkLogin() {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: checkLoggedIn(),
+    })
+      .then((response) => {
+        if (response.data.success) {
+          history.push("/introduce");
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+
   return (
     <div className={style["container-fluid"]}>
       <div className={style.container}>

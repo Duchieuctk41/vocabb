@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Popup from "../popup/popup.component";
 
@@ -8,7 +8,6 @@ import style from "./lesson-item.module.scss";
 import { useSelector } from "react-redux";
 
 const LessonItem = ({ lesson, imaged ,idgame, idlesson, grade}) => {
-  // console.log("hieu",grade);
 
   const { studied } = useSelector((state) => state.studied);
 

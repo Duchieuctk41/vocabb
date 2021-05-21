@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 let Schema = mongoose.Schema;
 
 let VocabSchema = new Schema({
-  lessonId: String,
-  EnName: String,
-  ViName: String,
+  userId: String,
+  store: {type: String, default: "Gia đình"},
+  front: String,
+  back: String,
   img: { type: String, default: "avatar-default.jpg" },
 });
 
@@ -23,6 +24,12 @@ VocabSchema.statics = {
   getAllData() {
     return this.find({});
   },
+
+  getDataByUserId(item) {
+    return this.find({
+      userId: item
+    })
+  }
 };
 
 module.exports = mongoose.model("vocab", VocabSchema);

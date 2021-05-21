@@ -21,7 +21,7 @@ let initRouters = (app) => {
   
   // Tạo cơ sở dữ liệu
   router.get("/init-lesson", lessonSer.initData); // tạo CSDL bài học
-  router.get("/init-vocab", vocabSer.initData); // tạo CSDL từ vựng
+  router.get("/init-vocab/:id", vocabSer.initData); // tạo CSDL từ vựng
   router.get("/init-game", gameSer.initData); // tạo CSDL game
   router.get("/init-question", questionSer.initData); // tạo CSDL câu hỏi
   router.get("/init-studied", studiedSer.initData); // cập nhật thành tích học tập
@@ -30,7 +30,7 @@ let initRouters = (app) => {
   // Api lấy dữ liệu
   router.get("/api-lesson", lessonContro.getAllData); // Lấy các bài học
   router.get("/api-lessonid/:id", lessonContro.getLessonById); // Lấy các bài học
-  router.get("/api-vocab", vocabContro.getAllData); // Lấy dữ liệu vocab - cái này hiện ko dùng
+  router.get("/api-vocab", vocabContro.getDataByUserId); // Lấy dữ liệu vocab flashcard
   router.get(`/api-question/:id`, questionContro.getCollection); // Lấy câu hỏi
   router.get("/api-game/:id", gameContro.getCollection); // Lấy danh sách câu hỏi trong game
   router.get("/api-idgames", gameContro.getIdGames); // Lấy id game

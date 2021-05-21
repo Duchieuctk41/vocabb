@@ -1,15 +1,15 @@
 import axios from "axios";
 import { gameTypes } from "../types/gameTypes";
-import { idGameURL } from "../../api";
+import { gameURL } from "../../api";
 
-export const gameActions = () => async (dispatch) => {
-    const gameData = await axios.get(idGameURL());
-    console.log("idGame: ", gameData);
+export const gameActions = (idQuestion) => async (dispatch) => {
+  const gameData = await axios.get(gameURL(idQuestion));
+  // console.log("game=== ", gameData);
 
-    dispatch({
-        type: gameTypes.FETCH_LIST_GAMES,
-        payload: {
-            game: gameData.data
-        }
-    })
-}
+  dispatch({
+    type: gameTypes.FETCH_GAME,
+    payload: {
+      game: gameData.data,
+    },
+  });
+};

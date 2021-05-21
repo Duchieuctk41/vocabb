@@ -43,6 +43,7 @@ let initPassportLocal = () => {
 
   // Save userId to session
   passport.serializeUser((user, done) => {
+    console.log('OK')//is show in console 
     done(null, user._id)
   }
   );
