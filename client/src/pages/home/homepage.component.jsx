@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { checkLoggedIn } from "../../api";
+import { checkLoggedIn, initAchievementURL, apiAchievementURL } from "../../api";
+import { useDispatch, useSelector } from "react-redux";
+import { achievementActions } from "./../../redux/actions/achievementActions";
 
 // import components
 import Main from "../../components/main/main.component";
@@ -13,8 +15,10 @@ import style from "./homepage.module.scss";
 
 const Homepage = () => {
   const history = useHistory();
-
   checkLogin();
+  const dispatch = useDispatch();
+
+  // Kiểm tra đăng nhập chưa
   function checkLogin() {
     axios({
       method: "GET",
@@ -26,9 +30,21 @@ const Homepage = () => {
 
         if (response.data.success) {
           history.push("/introduce");
+        } else {
+          initAchievement();
+          dispatch(achievementActions());
         }
       })
       .catch((error) => console.log(error));
+  }
+
+  // Tạo data achievement
+  function initAchievement() {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: initAchievementURL(),
+    })
   }
 
   return (

@@ -5,6 +5,7 @@ import cloudinary from "./cloudinary";
 import gameService from "./gameService";
 import questionService from "./questionService";
 import studiedService from "./studiedService";
+import achievementService from "./achievementService";
 
 export const lessonSer = lessonService;
 export const vocabSer = vocabService;
@@ -13,3 +14,4 @@ export const image = cloudinary;
 export const gameSer = gameService;
 export const questionSer = questionService;
 export const studiedSer = studiedService;
+export const achievementSer = achievementService;

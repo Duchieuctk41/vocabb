@@ -5,8 +5,7 @@ let createNewItem = (item) => {
     // Kiem tra item co ton tai hay ko
     let checkExists = await questionModel.checkExists(item);
     if (checkExists) {
-      console.log("Câu hỏi đã tồn taị!");
-      return reject(false);
+      return res.status(400).send({message: "Data đã tồn tại."});
     }
 
     let newItem = item;

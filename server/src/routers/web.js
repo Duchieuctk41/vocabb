@@ -1,6 +1,6 @@
 import express from "express";
-import { homeContro, lessonContro, vocabContro, authContro, imageContro, questionContro, gameContro, studiedContro } from "./../controllers/index";
-import { lessonSer, vocabSer, gameSer, questionSer, studiedSer } from "./../services/index";
+import { homeContro, lessonContro, vocabContro, authContro, imageContro, questionContro, gameContro, studiedContro, achievementContro } from "./../controllers/index";
+import { lessonSer, vocabSer, gameSer, questionSer, studiedSer, achievementSer } from "./../services/index";
 import { authValid } from "./../validation/index";
 
 import initPassportLocal from "./../controllers/passportController/local";
@@ -25,25 +25,29 @@ let initRouters = (app) => {
   router.get("/init-game", gameSer.initData); // tạo CSDL game
   router.get("/init-question", questionSer.initData); // tạo CSDL câu hỏi
   router.get("/init-studied", studiedSer.initData); // cập nhật thành tích học tập
+  router.get("/init-achievement", achievementSer.initData); // Tạo bảng thành tích học tập
 
-  // Api
+  // Api lấy dữ liệu
   router.get("/api-lesson", lessonContro.getAllData); // Lấy các bài học
   router.get("/api-lessonid/:id", lessonContro.getLessonById); // Lấy các bài học
   router.get("/api-vocab", vocabContro.getAllData); // Lấy dữ liệu vocab - cái này hiện ko dùng
   router.get(`/api-question/:id`, questionContro.getCollection); // Lấy câu hỏi
   router.get("/api-game/:id", gameContro.getCollection); // Lấy danh sách câu hỏi trong game
   router.get("/api-idgames", gameContro.getIdGames); // Lấy id game
-  router.get("/api-userid", authContro.getUser);
-  router.get("/update-grade/:id", studiedSer.updateGrade);
+  router.get("/api-userid", authContro.getUser); // Lấy userid
   router.get("/api-studied",studiedContro.getAllData);
+  router.get("/api-achievement", achievementContro.getAllData);
 
+  // Update dữ liệu
+  router.get("/update-grade/:id", studiedSer.updateGrade);
+  router.put("/update-achievement", achievementSer.updateAchievement);
 
   // Đăng ký, đăng nhập, đăng xuất
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);
-  router.post("/login", authContro.postLogin);
+  router.post("/login", authContro.postLogin); //Đăng nhập
   router.get("/logout", authContro.getLogout);
-  router.get("/check-login", authContro.checkLoggedIn);
+  router.get("/check-login", authContro.checkLoggedIn); // Kiểm tra đăng nhập hay chưa
   router.get("/check-logout", authContro.checkLoggedOut);
 
   app.get("/api/images", imageContro.getImage);
