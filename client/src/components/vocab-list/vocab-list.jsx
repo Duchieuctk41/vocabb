@@ -8,14 +8,15 @@ const Vocab = ({ item }) => {
     const onToolAdjustHandler = () => {
         setTool(!tool);
     }
-    //onMouseLeave={()=> onToolAdjustHandler()}
     return (
-        <tr onClick={() => onToolAdjustHandler()} className={tool ? style.active : null} >
-            <td>{item.front}</td>
-            <td>{item.back}</td>
-            <td>{item.img}</td>
-            {tool ? <ToolAdjust /> : null}
-        </tr>
+        <div>
+            <tr onClick={() => onToolAdjustHandler()} className={tool ? style.active : null} >
+                <td>{item.front}</td>
+                <td>{item.back}</td>
+                <td>{item.img}</td>
+            </tr>
+            {tool ? <ToolAdjust id={item._id} /> : null}
+        </div>
     )
 }
 export default Vocab;

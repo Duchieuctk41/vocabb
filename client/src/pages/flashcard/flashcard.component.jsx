@@ -13,12 +13,14 @@ import VocabList from "./../../components/vocab-list/vocab-list";
 const Store = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  useState(() => {
-    dispatch(vocabActions());
-  }, [dispatch])
-  checkLogin();
 
   const { vocab } = useSelector(state => state.vocab);
+
+  useState(() => {
+    dispatch(vocabActions());
+  }, [dispatch]);
+
+  checkLogin();
 
   function checkLogin() {
     axios({
@@ -120,7 +122,7 @@ const Store = () => {
               </thead>
               <tbody>
                 {
-                  vocab.map(item =><VocabList item={item}/>)
+                  vocab.map(item => <VocabList item={item} />)
                 }
               </tbody>
             </table>

@@ -17,7 +17,7 @@ VocabSchema.statics = {
   
   checkExists(item) {
     return this.findOne({
-      name: item.name,
+      _id: item,
     });
   },
 
@@ -28,6 +28,12 @@ VocabSchema.statics = {
   getDataByUserId(item) {
     return this.find({
       userId: item
+    })
+  }, 
+
+  deleteVocab(item) {
+    return this.deleteMany({
+      _id: item
     })
   }
 };

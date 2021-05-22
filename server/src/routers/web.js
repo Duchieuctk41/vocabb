@@ -42,6 +42,9 @@ let initRouters = (app) => {
   router.get("/update-grade/:id", studiedSer.updateGrade);
   router.put("/update-achievement", achievementSer.updateAchievement);
 
+  // Xóa dữ liệu
+  router.delete("/delete-vocab/:id", vocabSer.deleteVocab);
+
   // Đăng ký, đăng nhập, đăng xuất
   router.post("/register", authValid.register, authContro.postRegister);
   router.get("/verify/:token", authContro.verifyAccount);
