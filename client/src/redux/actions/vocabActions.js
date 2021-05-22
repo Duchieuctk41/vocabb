@@ -1,6 +1,6 @@
 import axios from "axios";
 import { vocabTypes } from "../types/vocabTypes";
-import { vocabURL } from "../../api";
+import { vocabURL, deleteVocabURL } from "../../api";
 
 export const vocabActions = () => async (dispatch) => {
     const vocabData = await axios({
@@ -8,11 +8,25 @@ export const vocabActions = () => async (dispatch) => {
         withCredentials: true,
         url: vocabURL(),
     });
-    // console.log("achievement: ", achievementData);
+    // console.log("vocabData: ", vocabData);
     dispatch({
         type: vocabTypes.FETCH_ALL_VOCAB,
         payload: {
             vocab: vocabData.data
         }
     })
-}
+};
+
+export const deleteVocabActions = (id) => async (dispatch) => {
+    dispatch({
+        type: vocabTypes.DELETE_VOCAB,
+        payload: id
+    })
+
+    return axios({
+        method: "DELETE",
+        withCredentials: true,
+        url: deleteVocabURL(id),
+    });
+    
+};

@@ -9,7 +9,13 @@ const vocabReducer = (state = initState, action) => {
     case vocabTypes.FETCH_ALL_VOCAB:
       // console.log("reducer:", action.payload);
       return { ...state, vocab: action.payload.vocab };
-    
+    case vocabTypes.DELETE_VOCAB:
+
+      return   {
+        vocab: state.vocab.filter((it) => {
+            return it._id !== action.payload;
+        }),
+     }
     default:
       return state;
   }
