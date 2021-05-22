@@ -1,6 +1,9 @@
 import express from "express";
-import { homeContro, lessonContro, vocabContro, authContro, imageContro, questionContro, gameContro, studiedContro, achievementContro } from "./../controllers/index";
-import { lessonSer, vocabSer, gameSer, questionSer, studiedSer, achievementSer } from "./../services/index";
+import {
+  homeContro, lessonContro, vocabContro, authContro, imageContro,
+  questionContro, gameContro, studiedContro, achievementContro, storeContro
+} from "./../controllers/index";
+import { lessonSer, vocabSer, gameSer, questionSer, studiedSer, achievementSer, storeSer } from "./../services/index";
 import { authValid } from "./../validation/index";
 
 import initPassportLocal from "./../controllers/passportController/local";
@@ -18,25 +21,27 @@ let router = express.Router();
 
 let initRouters = (app) => {
   router.get("/", homeContro.getHome);
-  
+
   // Tạo cơ sở dữ liệu
   router.get("/init-lesson", lessonSer.initData); // tạo CSDL bài học
-  router.get("/init-vocab/:id", vocabSer.initData); // tạo CSDL từ vựng
   router.get("/init-game", gameSer.initData); // tạo CSDL game
   router.get("/init-question", questionSer.initData); // tạo CSDL câu hỏi
   router.get("/init-studied", studiedSer.initData); // cập nhật thành tích học tập
   router.get("/init-achievement", achievementSer.initData); // Tạo bảng thành tích học tập
+  router.get("/init-store", storeSer.initData); // Tao bộ từ vựng mới
+  router.get("/init-vocab/:id", vocabSer.initData); // tạo CSDL từ vựng 
 
   // Api lấy dữ liệu
   router.get("/api-lesson", lessonContro.getAllData); // Lấy các bài học
   router.get("/api-lessonid/:id", lessonContro.getLessonById); // Lấy các bài học
-  router.get("/api-vocab", vocabContro.getDataByUserId); // Lấy dữ liệu vocab flashcard
   router.get(`/api-question/:id`, questionContro.getCollection); // Lấy câu hỏi
   router.get("/api-game/:id", gameContro.getCollection); // Lấy danh sách câu hỏi trong game
   router.get("/api-idgames", gameContro.getIdGames); // Lấy id game
   router.get("/api-userid", authContro.getUser); // Lấy userid
-  router.get("/api-studied",studiedContro.getAllData);
+  router.get("/api-studied", studiedContro.getAllData);
   router.get("/api-achievement", achievementContro.getAllData);
+  router.get("/api-store", storeContro.getDataByUserId)
+  router.get("/api-vocab/:id", vocabContro.getDataByUserId); // Lấy dữ liệu vocab flashcard
 
   // Update dữ liệu
   router.get("/update-grade/:id", studiedSer.updateGrade);

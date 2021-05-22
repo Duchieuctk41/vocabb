@@ -1,13 +1,15 @@
+export const initVocabURL = (storeId, front, back) => `http://localhost:3001/init-vocab/${storeId}-${front}-${back}`;
+export const initAchievementURL = () => `http://localhost:3001/init-achievement`;
+
 export const lessonURL = () => `http://localhost:3001/api-lesson`;
 export const lessonIdURL = (id) => `http://localhost:3001/api-lessonid/${id}`;
-export const vocabURL = () => `http://localhost:3001/api-vocab`;
-export const initVocabURL = (front, back) => `http://localhost:3001/init-vocab/${front}-${back}`;
 export const gameURL = (idQuestion) => `http://localhost:3001/api-game/${idQuestion}`;
 export const idGameURL = () => `http://localhost:3001/api-idgames`;
 export const questionURL = (id) => `http://localhost:3001/api-question/${id}`;
 export const studiedURL = () => `http://localhost:3001/api-studied`;
-export const initAchievementURL = () => `http://localhost:3001/init-achievement`;
 export const apiAchievementURL = () => `http://localhost:3001/api-achievement`;
+export const storeURL = () => `http://localhost:3001/api-store`;
+export const vocabURL = (storeId) => `http://localhost:3001/api-vocab/${storeId}`;
 
 export const postSignupUrl = () => `http://localhost:3001/register`;
 export const verifyUrl = () => `http://localhost:3001/login-register`;

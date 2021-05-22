@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 let Schema = mongoose.Schema;
 
 let VocabSchema = new Schema({
-  userId: String,
+  storeId: String,
   store: {type: String, default: "Gia đình"},
   front: String,
   back: String,
@@ -25,9 +25,9 @@ VocabSchema.statics = {
     return this.find({});
   },
 
-  getDataByUserId(item) {
+  getDataByStoreId(item) {
     return this.find({
-      userId: item
+      storeId: item
     })
   }, 
 
