@@ -9,7 +9,7 @@ const vocabReducer = (state = initState, action) => {
     case vocabTypes.FETCH_ALL_VOCAB:
       // console.log("reducer:", action.payload);
       return { ...state, vocab: action.payload.vocab };
-
+    
     default:
       return state;
   }
