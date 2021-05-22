@@ -7,7 +7,7 @@ export const vocabActions = () => async (dispatch) => {
         method: "GET",
         withCredentials: true,
         url: vocabURL(),
-      });
+    });
     // console.log("achievement: ", achievementData);
     dispatch({
         type: vocabTypes.FETCH_ALL_VOCAB,

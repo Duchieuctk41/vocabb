@@ -8,6 +8,7 @@ import { loupe, america, image, add, clear } from "../../img";
 import { initVocabURL, checkLoggedIn } from "./../../api";
 import { useDispatch, useSelector } from "react-redux";
 import { vocabActions } from "./../../redux/actions/vocabActions";
+import VocabList from "./../../components/vocab-list/vocab-list";
 
 const Store = () => {
   const history = useHistory();
@@ -37,6 +38,7 @@ const Store = () => {
     front: "",
     back: "",
   });
+
   useEffect(() => {
     if (word.front.length || word.back.length > 0) {
       setToggle(true);
@@ -64,7 +66,9 @@ const Store = () => {
       console.log(response.data);
     });
     onClickRemove();
+    dispatch(vocabActions());
   }
+
 
   const onClickRemove = e => {
     setWord({ front: "", back: "" });
@@ -115,11 +119,9 @@ const Store = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className={style.tr}>
-                  <td>sugar daddy</td>
-                  <td>bố đường</td>
-                  <td>hình ảnh</td>
-                </tr>
+                {
+                  vocab.map(item =><VocabList item={item}/>)
+                }
               </tbody>
             </table>
           </div>

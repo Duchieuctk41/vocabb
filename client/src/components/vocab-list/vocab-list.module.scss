@@ -1,0 +1,14 @@
+tr {
+    position: relative;
+    cursor: pointer;
+    &:hover {
+        background-color: #ddd;
+    }
+    .tool {
+        position: absolute;
+    }
+}
+
+.active {
+    background-color: #ddd;
+}
