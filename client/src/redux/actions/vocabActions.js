@@ -2,11 +2,11 @@ import axios from "axios";
 import { vocabTypes } from "../types/vocabTypes";
 import { vocabURL, deleteVocabURL } from "../../api";
 
-export const vocabActions = () => async (dispatch) => {
+export const vocabActions = (storeId) => async (dispatch) => {
     const vocabData = await axios({
         method: "GET",
         withCredentials: true,
-        url: vocabURL(),
+        url: vocabURL(storeId),
     });
     // console.log("vocabData: ", vocabData);
     dispatch({

@@ -6,6 +6,7 @@ import signupReducer from "./signupReducer";
 import loginReducer from "./loginReducer";
 import questionReducer from "./questionReducer";
 import studiedReducer from "./studiedReducer";
+import storeReducer from "./storeReducer";
 import achievementReducer from "./achievementReducer";
 
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   login: loginReducer,
   question: questionReducer,
   studied: studiedReducer,
+  store: storeReducer,
   achievement: achievementReducer,
 });
 

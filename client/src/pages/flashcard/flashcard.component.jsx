@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -13,12 +13,9 @@ import VocabList from "./../../components/vocab-list/vocab-list";
 const Store = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { storeid } = useParams();
 
   const { vocab } = useSelector(state => state.vocab);
-
-  useState(() => {
-    dispatch(vocabActions());
-  }, [dispatch]);
 
   checkLogin();
 
@@ -35,44 +32,49 @@ const Store = () => {
       })
       .catch((error) => console.log(error));
   }
-
+  
+  const [toggle, setToggle] = useState(false);
   const [word, setWord] = useState({
     front: "",
     back: "",
   });
 
+  // Bắt sự kiện click, hiển thị xóa sử từ vựng
   useEffect(() => {
     if (word.front.length || word.back.length > 0) {
       setToggle(true);
     } else {
       setToggle(false);
     }
-  }, [word])
-  const [toggle, setToggle] = useState(false);
+  }, [word]);
+
+  // Bắt sự kiện thay đổi back
   const changeFrontHandler = e => {
     const { value } = e.target;
     setWord({ ...word, front: value });
   }
 
+  // Bắt sự kiện thay đổi back
   const changeBackHandler = e => {
     const { value } = e.target;
     setWord({ ...word, back: value });
   }
 
-  const onClickAdd = (e) => {
+  // Thêm từ vựng
+  const onClickAdd = () => {
     axios({
       method: "GET",
       withCredentials: true,
-      url: initVocabURL(word.front, word.back)
+      url: initVocabURL(storeid,word.front, word.back)
     }).then((response) => {
       console.log(response.data);
     });
     onClickRemove();
-    dispatch(vocabActions());
+    dispatch(vocabActions(storeid));
   }
 
-
-  const onClickRemove = e => {
+ // Clear input
+  const onClickRemove = () => {
     setWord({ front: "", back: "" });
   }
   return (

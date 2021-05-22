@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 import style from "./store.module.scss";
-import { loupe, babyboy, america } from "../../img";
+import { loupe, babyboy, america, store } from "../../img";
 import { checkLoggedIn } from "./../../api";
+import StoreItem from "./store-item/store-item.component";
+
+import { storeActions } from "./../../redux/actions/storeActions";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const Store = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   checkLogin();
+  const { store } = useSelector((state) => state.store);
   function checkLogin() {
     axios({
       method: "GET",
@@ -25,6 +31,10 @@ const Store = () => {
       .catch((error) => console.log(error));
   }
 
+  useEffect(() => {
+    dispatch(storeActions());
+  }, [dispatch]);
+
   return (
     <div className={style["container-fluid"]}>
       <div className={style.container}>
@@ -35,31 +45,10 @@ const Store = () => {
               <Link to="/flashcard">Tạo bộ thẻ mới</Link>
             </span>
           </div>
-          <div className={style.left__store}>
-            <div className={style["left__store-left"]}>
-              <span className={style.avatar}>
-                <img src={babyboy} alt="" />
-              </span>
-              <h3>Gia đình</h3>
-              <h4>50 từ</h4>
-            </div>
-            <span className={style["left__store-right"]}>
-              <Link to="/flashcard">Thêm từ vựng</Link>
-            </span>
-          </div>
-          {/* nhan doi */}
-          <div className={style.left__store}>
-            <div className={style["left__store-left"]}>
-              <span className={style.avatar}>
-                <img src={babyboy} alt="" />
-              </span>
-              <h3>Gia đình</h3>
-              <h4>50 từ</h4>
-            </div>
-            <span className={style["left__store-right"]}>
-              <Link to="/flashcard">Thêm từ vựng</Link>
-            </span>
-          </div>
+         {store.map(item => (
+            <StoreItem key={item._id} item={item}/>
+         ))}
+          
         </div>
         <div className={style.right}>
           <div className={style.search}>

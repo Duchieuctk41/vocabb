@@ -1,13 +1,14 @@
 import VocabModel from "../models/vocabModel";
 
 let getDataByUserId = async (req, res) => {
-  let userId = req.session.passport.user;
-  // console.log(userId);
-  if(!userId) {
+  const item = req.path.split("/");
+  // console.log(item);
+  if(!item) {
     return res.send("Khong tim thay user");
   }
-  let vocab = await VocabModel.getDataByUserId(userId);
+  let vocab = await VocabModel.getDataByStoreId(item);
   return res.send(vocab);
+
 };
 
 module.exports = {

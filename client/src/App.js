@@ -19,18 +19,21 @@ import Profile from "./pages/profile/profile.component";
 import Flashcard from "./pages/flashcard/flashcard.component";
 import Homeadmin from "./admin/home/homepage.component";
 import UploadImage from "./pages/upload-image/upload-image.component";
+import Learn from "./pages/learn/learn.component";
 
 function App() {
   const location = useLocation();
-  // console.log(location.pathname);
+  let checkLocation = "/" + location.pathname.split("/")[1];
+  console.log(checkLocation);
   const notHeader = [
     "/login",
     "/game",
     "/introduce",
     "/image",
     "/homepageadmin",
+    "/learn"
   ];
-  const toggleHeader = notHeader.filter((item) => item === location.pathname);
+  const toggleHeader = notHeader.filter((item) => item === checkLocation);
   // console.log("header", toggleHeader);
   return (
     <div className="App">
@@ -46,9 +49,10 @@ function App() {
         <Route path="/store" component={Store} />
         <Route path="/setting" component={Setting} />
         <Route path="/profile" component={Profile} />
-        <Route path="/flashcard" component={Flashcard} />
+        <Route path="/flashcard/:storeid"  component={Flashcard} />
         <Route path="/image" component={UploadImage} />
         <Route path="/homepageadmin" component={Homeadmin} />
+        <Route path="/learn/:storeid" component={Learn} />
       </Switch>
     </div>
   );
