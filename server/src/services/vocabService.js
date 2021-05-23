@@ -1,6 +1,7 @@
 import vocabModel from "../models/vocabModel";
 
 let initData = (req, res) => {
+  let userId = req.session.passport.user;
   let item = req.path.split("/");
   item = item[2].split("-");
   let storeId = item[0];
@@ -12,7 +13,7 @@ let initData = (req, res) => {
     return res.send("Khong tim thay store");
   }
   return new Promise(async (resolve, reject) => {
-    let newItem = { storeId: storeId, front: front, back: back };
+    let newItem = { storeId: storeId, front: front, back: back, userId: userId };
     //console.log(newItem);
     let newListVocab = await vocabModel.createNew(newItem);
     resolve(newListVocab);

@@ -10,6 +10,7 @@ export const studiedURL = () => `http://localhost:3001/api-studied`;
 export const apiAchievementURL = () => `http://localhost:3001/api-achievement`;
 export const storeURL = () => `http://localhost:3001/api-store`;
 export const vocabURL = (storeId) => `http://localhost:3001/api-vocab/${storeId}`;
+export const vocabAllURL = () => `http://localhost:3001/api-vocab-user`;
 
 export const postSignupUrl = () => `http://localhost:3001/register`;
 export const verifyUrl = () => `http://localhost:3001/login-register`;

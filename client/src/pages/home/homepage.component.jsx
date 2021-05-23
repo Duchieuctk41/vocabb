@@ -2,8 +2,6 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { checkLoggedIn, initAchievementURL } from "../../api";
-import { useDispatch } from "react-redux";
-import { achievementActions } from "./../../redux/actions/achievementActions";
 
 // import components
 import Main from "../../components/main/main.component";
@@ -16,7 +14,6 @@ import style from "./homepage.module.scss";
 const Homepage = () => {
   const history = useHistory();
   checkLogin();
-  const dispatch = useDispatch();
 
   // Kiểm tra đăng nhập chưa
   function checkLogin() {
@@ -32,7 +29,6 @@ const Homepage = () => {
           history.push("/introduce");
         } else {
           initAchievement();
-          dispatch(achievementActions());
         }
       })
       .catch((error) => console.log(error));

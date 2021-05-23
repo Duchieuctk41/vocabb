@@ -4,7 +4,8 @@ let Schema = mongoose.Schema;
 
 let VocabSchema = new Schema({
   storeId: String,
-  store: {type: String, default: "Gia đình"},
+  userId: String,
+  store: { type: String, default: "Gia đình" },
   front: String,
   back: String,
   img: { type: String, default: "avatar-default.jpg" },
@@ -14,7 +15,7 @@ VocabSchema.statics = {
   createNew(item) {
     return this.create(item);
   },
-  
+
   checkExists(item) {
     return this.findOne({
       _id: item,
@@ -29,7 +30,13 @@ VocabSchema.statics = {
     return this.find({
       storeId: item
     })
-  }, 
+  },
+
+  getDataByUserId(item) {
+    return this.find({
+      userId: item.userId
+    })
+  },
 
   deleteVocab(item) {
     return this.deleteMany({

@@ -10,7 +10,7 @@ import Homepage from "./pages/home/homepage.component";
 import Introduce from "./pages/introduce/introduce.component";
 import Game from "./pages/game/game.component";
 import Login from "./pages/login/login.component";
-import Learned from "./pages/learned/learned.component";
+import Vocabulary from "./pages/vocabulary/vocabulary.component";
 import Discuss from "./pages/discuss/discuss.component";
 import Tudien from "./pages/tudien/tudien.component";
 import Store from "./pages/store/store.component";
@@ -24,7 +24,7 @@ import Learn from "./pages/learn/learn.component";
 function App() {
   const location = useLocation();
   let checkLocation = "/" + location.pathname.split("/")[1];
-  console.log(checkLocation);
+  // console.log(checkLocation);
   const notHeader = [
     "/login",
     "/game",
@@ -43,7 +43,7 @@ function App() {
         <Route path="/introduce" component={Introduce} />
         <Route path="/login" component={Login} />
         <Route path="/game" component={Game} />
-        <Route path="/learned" component={Learned} />
+        <Route path="/vocabulary" component={Vocabulary} />
         <Route path="/discuss" component={Discuss} />
         <Route path="/tudien" component={Tudien} />
         <Route path="/store" component={Store} />
