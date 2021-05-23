@@ -1,23 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { initAchievementURL } from "./../../api";
+import { initAchievementURL, checkLoggedIn } from "./../../api";
 import axios from "axios";
 
 // import components
 import Dropdown from "../dropdown/dropdown.component";
 
 // img && scss
-import {
-  logo,
-  chat,
-  store,
-  more,
-  america,
-  corona,
-  fire,
-  lingots,
-  me,
-} from "../../img";
+import { logo, chat, store, more, america, corona, fire, lingots, me, } from "../../img";
 import "./header.style.scss";
 import { achievementActions } from "./../../redux/actions/achievementActions";
 import { useDispatch } from "react-redux";
@@ -27,12 +17,43 @@ import { useEffect } from "react";
 const Header = () => {
 
   const { achievement } = useSelector((state) => state.achievement);
+  const history = useHistory();
   // console.log(achievement);
   const dispatch = useDispatch();
 
   // Tạo data achievement
-  useEffect(()=> dispatch(achievementActions()),[]);
+
+  checkLogin();
+  // Kiểm tra đăng nhập chưa
+  function checkLogin() {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: checkLoggedIn(),
+    })
+      .then((response) => {
+        // console.log(response);
+
+        if (response.data.success) {
+          history.push("/introduce");
+        } else {
+          initAchievement();
+          dispatch(achievementActions());
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+
   
+  // Tạo data achievement
+  function initAchievement() {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: initAchievementURL(),
+    })
+  }
+
 
   return (
     <header className="header container">

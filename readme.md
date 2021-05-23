@@ -1,1 +1,1 @@
-# Ứng dụng học từ vựng tiếng Anh (MERN)
+# Để chạy được chương trình

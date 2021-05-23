@@ -84,11 +84,13 @@ let verifyAccount = async (req, res) => {
 };
 
 // Đăng xuất
-let getLogout = (req, res) => {
+let getLogout = async (req, res) => {
   let successArr = [];
-  req.logout(); // remove session passport user 
+  await req.logout(); // remove session passport user 
+  
+    // req.session.destroy();
+  
   successArr.push(transSuccess.logout_success);
-  req.flash("success", transSuccess.logout_success);
   return res.send({ success: successArr });
 };
 

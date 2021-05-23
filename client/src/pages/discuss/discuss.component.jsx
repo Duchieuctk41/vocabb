@@ -12,25 +12,25 @@ const Game = () => {
           <div className={style.left__title}>
             <h1>Diễn Đàn Ngôn Ngữ Vocab</h1>
             <span className={style.left__post}>
-              <Link>BÀI ĐĂNG MỚI</Link>
+              <Link to="#">BÀI ĐĂNG MỚI</Link>
             </span>
           </div>
           <ul className={style.left__category}>
             <li>
               <h2>
-                <Link to="/" className={style["--active"]}>
+                <Link to="/#" className={style["--active"]}>
                   ĐANG ĐƯỢC ƯA THÍCH
                 </Link>
               </h2>
             </li>
             <li>
               <h2>
-                <Link to="/">MỚI</Link>
+                <Link to="/#">MỚI</Link>
               </h2>
             </li>
             <li>
               <h2>
-                <Link to="/">ĐÃ THEO DÕI</Link>
+                <Link to="/#">ĐÃ THEO DÕI</Link>
               </h2>
             </li>
           </ul>
