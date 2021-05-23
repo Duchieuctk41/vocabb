@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { initAchievementURL } from "./../../api";
+import axios from "axios";
 
 // import components
 import Dropdown from "../dropdown/dropdown.component";
@@ -17,11 +19,20 @@ import {
   me,
 } from "../../img";
 import "./header.style.scss";
+import { achievementActions } from "./../../redux/actions/achievementActions";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+
 
 const Header = () => {
 
   const { achievement } = useSelector((state) => state.achievement);
   // console.log(achievement);
+  const dispatch = useDispatch();
+
+  // Tạo data achievement
+  useEffect(()=> dispatch(achievementActions()),[]);
+  
 
   return (
     <header className="header container">
@@ -50,8 +61,8 @@ const Header = () => {
           {/* Dropdown */}
           <Dropdown
             title={[
-              { name: "Từ điển", to: "tudien" },
-              { name: "Từ vựng", to: "learned" },
+              { name: "Tra cứu", to: "tudien" },
+              { name: "Từ vựng", to: "vocabulary" },
             ]}
           />
         </li>
@@ -109,7 +120,7 @@ const Header = () => {
             title={[
               { name: "Hồ sơ của bạn", to: "profile" },
               { name: "Cài đặt", to: "setting" },
-              { name: "Đăng xuất", to: "introduce" , action: "logout"},
+              { name: "Đăng xuất", to: "introduce", action: "logout" },
             ]}
             classes={"--me"}
           />

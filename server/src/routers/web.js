@@ -41,7 +41,8 @@ let initRouters = (app) => {
   router.get("/api-studied", studiedContro.getAllData);
   router.get("/api-achievement", achievementContro.getAllData);
   router.get("/api-store", storeContro.getDataByUserId)
-  router.get("/api-vocab/:id", vocabContro.getDataByUserId); // Lấy dữ liệu vocab flashcard
+  router.get("/api-vocab/:id", vocabContro.getDataByStoreId); // Lấy dữ liệu vocab theo storeid
+  router.get("/api-vocab-user", vocabContro.getDataByUserId); // Lấy dữ liệu vocab theo userid
 
   // Update dữ liệu
   router.get("/update-grade/:id", studiedSer.updateGrade);

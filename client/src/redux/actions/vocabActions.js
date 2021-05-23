@@ -1,12 +1,27 @@
 import axios from "axios";
 import { vocabTypes } from "../types/vocabTypes";
-import { vocabURL, deleteVocabURL } from "../../api";
+import { vocabURL, deleteVocabURL, vocabAllURL } from "../../api";
 
 export const vocabActions = (storeId) => async (dispatch) => {
     const vocabData = await axios({
         method: "GET",
         withCredentials: true,
         url: vocabURL(storeId),
+    });
+    // console.log("vocabData: ", vocabData);
+    dispatch({
+        type: vocabTypes.FETCH_VOCAB_STORE,
+        payload: {
+            vocab: vocabData.data
+        }
+    })
+};
+
+export const vocabAllActions = () => async (dispatch) => {
+    const vocabData = await axios({
+        method: "GET",
+        withCredentials: true,
+        url: vocabAllURL(),
     });
     // console.log("vocabData: ", vocabData);
     dispatch({
