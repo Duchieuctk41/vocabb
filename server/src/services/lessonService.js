@@ -16,23 +16,12 @@ let createNewItem = (item) => {
   });
 };
 
-let listItem = [
-  { name: "Cơ bản" },
-  { name: "Chào hỏi" },
-  { name: "Giới thiệu" },
-  { name: "Gia đình" },
-  { name: "Mua sắm" },
-  { name: "Xã hội" },
-  { name: "Nhà hàng" },
-  { name: "Trường học" },
-  { name: "Các sự vật" },
-  { name: "Sở hữu" },
-  { name: "Con người" },
-  { name: "Trang phục" },
-  { name: "Màu sắc" },
-  { name: "Thời gian" },
-  { name: "Công việc" },
-];
+// let listItem = [
+//   { name: "Cơ bản", img: "chick", grade: 3 },
+//   { name: "Chào hỏi", img: "chick", grade: 2 },
+//   { name: "Giới thiệu", img: "chick", grade: 4 },
+//   { name: "Giới aaa", img: "chick", grade: 5 },
+// ];
 
 let initData = () => {
   for (let i = 0; i < listItem.length; i++) {

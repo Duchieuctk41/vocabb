@@ -20,7 +20,7 @@ const Homepage = () => {
           <span>Vocab</span>
         </div>
 
-        <Link to="#">
+        <Link to="/homepageadmin">
           <i class="fas fa-home" name="icon"></i>
           <span>Trang chủ</span>
           <i class="fas fa-chevron-right"></i>
@@ -42,7 +42,7 @@ const Homepage = () => {
         </Link>
       </div>
       <div className="right">
-        <div className="header">
+        <div className="headerad">
           <div className="search">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Search"></input>
@@ -60,7 +60,6 @@ const Homepage = () => {
               <i class="fas fa-angle-down"></i>
             </Link>
           </div>
-          
         </div>
         <Switch>
           <Route path="/homepageadmin/user" component={Userad} />

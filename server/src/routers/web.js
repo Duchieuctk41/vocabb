@@ -21,6 +21,12 @@ let router = express.Router();
 
 let initRouters = (app) => {
   router.get("/", homeContro.getHome);
+  router.get("/init-vocab", vocabSer.initData);
+  router.get("/init-game", gameSer.initData);
+  router.get("/init-question", questionSer.initData);
+  router.get("/api-vocab", vocabContro.getAllData);
+  router.get(`/api-question/:id`, questionContro.getCollection);
+  router.get("/api-game", gameContro.getCollection);
 
   // Tạo cơ sở dữ liệu
   router.get("/init-lesson", lessonSer.initData); // tạo CSDL bài học

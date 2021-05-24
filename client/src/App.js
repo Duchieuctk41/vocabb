@@ -19,6 +19,7 @@ import Profile from "./pages/profile/profile.component";
 import Flashcard from "./pages/flashcard/flashcard.component";
 import Homeadmin from "./admin/home/homepage.component";
 import UploadImage from "./pages/upload-image/upload-image.component";
+import addtheme from "./admin/content/addtheme/addtheme.component";
 import Learn from "./pages/learn/learn.component";
 
 function App() {
@@ -31,6 +32,11 @@ function App() {
     "/introduce",
     "/image",
     "/homepageadmin",
+    "/homepageadmin/user",
+    "/homepageadmin/theme",
+    "/homepageadmin/vocabulary",
+    "/homepageadmin/theme/addtheme",
+    "/addtheme",
     "/learn"
   ];
   const toggleHeader = notHeader.filter((item) => item === checkLocation);
@@ -52,6 +58,7 @@ function App() {
         <Route path="/flashcard/:storeid"  component={Flashcard} />
         <Route path="/image" component={UploadImage} />
         <Route path="/homepageadmin" component={Homeadmin} />
+        <Route path="/addtheme" component={addtheme} />
         <Route path="/learn/:storeid" component={Learn} />
       </Switch>
     </div>

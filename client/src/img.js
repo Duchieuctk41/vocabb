@@ -64,6 +64,7 @@ import check from "./assets/img/check.svg";
 import logoad from "./admin/images/logo.svg";
 import homead from "./admin/images/home.svg";
 import avatarad from "./admin/images/avatar.svg";
+import house from "./admin/images/house.svg";
 
 export {
   check,
@@ -127,7 +128,12 @@ export {
   robot,
   achievement_wildfire,
   us,
+
+
+
+  
   logoad,
   homead,
   avatarad,
+  house
 };
