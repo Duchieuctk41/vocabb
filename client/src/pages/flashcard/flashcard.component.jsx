@@ -1,10 +1,82 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 import style from "./flashcard.module.scss";
 import { loupe, america, image, add, clear } from "../../img";
+import { initVocabURL, checkLoggedIn } from "./../../api";
+import { useDispatch, useSelector } from "react-redux";
+import { vocabActions } from "./../../redux/actions/vocabActions";
+import VocabList from "./../../components/vocab-list/vocab-list";
 
 const Store = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { storeid } = useParams();
+
+  const { vocab } = useSelector(state => state.vocab);
+
+  checkLogin();
+
+  function checkLogin() {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: checkLoggedIn(),
+    })
+      .then((response) => {
+        if (response.data.success) {
+          history.push("/introduce");
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+  
+  const [toggle, setToggle] = useState(false);
+  const [word, setWord] = useState({
+    front: "",
+    back: "",
+  });
+
+  // Bắt sự kiện click, hiển thị xóa sử từ vựng
+  useEffect(() => {
+    if (word.front.length || word.back.length > 0) {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+  }, [word]);
+
+  // Bắt sự kiện thay đổi back
+  const changeFrontHandler = e => {
+    const { value } = e.target;
+    setWord({ ...word, front: value });
+  }
+
+  // Bắt sự kiện thay đổi back
+  const changeBackHandler = e => {
+    const { value } = e.target;
+    setWord({ ...word, back: value });
+  }
+
+  // Thêm từ vựng
+  const onClickAdd = () => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: initVocabURL(storeid,word.front, word.back)
+    }).then((response) => {
+      console.log(response.data);
+    });
+    onClickRemove();
+    dispatch(vocabActions(storeid));
+  }
+
+ // Clear input
+  const onClickRemove = () => {
+    setWord({ front: "", back: "" });
+  }
   return (
     <div className={style["container-fluid"]}>
       <div className={style.container}>
@@ -12,32 +84,32 @@ const Store = () => {
           <div className={style.left__title}>
             <h1>Bộ thẻ: Gia đình</h1>
             <span className={style.left__post}>
-              <Link>Xem tất cả thẻ</Link>
+              <Link to="#">Xem tất cả thẻ</Link>
             </span>
           </div>
           <div className={style.flashcard}>
             <div className={style.left__tool}>
-              <span>
+              <span onClick={() => onClickRemove()} className={toggle ? style.clear : null}>
                 <img src={clear} alt="img" />
                 Clear
               </span>
-              <span>
+              <span onClick={() => onClickAdd()} className={toggle ? style.add : null}>
                 <img src={add} alt="img" />
                 Thêm
               </span>
             </div>
-            <div className={style.left__store}>
+            <form className={style.left__store}>
               <div className={style["left__store-left"]}>
-                <input type="text" placeholder="Thêm mặt trước" />
+                <input type="text" placeholder="Thêm mặt trước" onChange={changeFrontHandler} value={word.front} />
               </div>
               <div className={style["left__store-right"]}>
-                <input type="text" placeholder="Thêm mặt sau" />
+                <input type="text" placeholder="Thêm mặt sau" onChange={changeBackHandler} value={word.back} />
               </div>
               <div className={style["left__store-img"]}>
                 <img src={image} alt="img"></img>
                 <span>Hình ảnh</span>
               </div>
-            </div>
+            </form>
           </div>
           <div className={style.left__added}>
             <h2>Từ vựng đã thêm</h2>
@@ -51,11 +123,9 @@ const Store = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className={style.tr}>
-                  <td>sugar daddy</td>
-                  <td>bố đường</td>
-                  <td>hình ảnh</td>
-                </tr>
+                {
+                  vocab.map(item => <VocabList item={item} />)
+                }
               </tbody>
             </table>
           </div>

@@ -1,48 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import style from "./vocabulary.module.scss";
+import { vocabAllActions } from "./../../redux/actions/vocabActions";
+import { useDispatch } from "react-redux";
+import VocabAll from "./../../components/vocab-all/vocab-all.component";
 
-import style from "./learned.module.scss";
-
-const Introduce = () => {
+const Vocabulary = () => {
+  const dispatch = useDispatch();
+  const { vocab } = useSelector(state => state.vocab);
+  useEffect(() => dispatch(vocabAllActions()), []);
   return (
     <div className={style["container-fluid"]}>
       <div className={style.container}>
         <div className={style.left}>
-          <h1>Đã học từ vựng tiếng Anh</h1>
-          <span>808 từ</span>
+          <h1>Danh sách từ vựng của bạn</h1>
+          <span>{vocab.length} Từ</span>
           <table className={style.table}>
             <thead>
               <tr>
-                <th>Từ vựng</th>
-                <th>Từ loại</th>
-                <th>Lần cuối luyện tập</th>
-                <th>Độ mạnh</th>
+                <th>Mặt trước</th>
+                <th>Mặt sau</th>
+                <th>Hình ảnh</th>
+                <th>Bộ từ</th>
               </tr>
             </thead>
             <tbody>
-              <tr className={style.tr}>
-                <td>yes</td>
-                <td>Adverb</td>
-                <td>1 tuần trước</td>
-                <td>
-                  <span className={style["--level"]}></span>
-                </td>
-              </tr>
-              <tr className={style.tr}>
-                <td>yes</td>
-                <td>Adverb</td>
-                <td>1 tuần trước</td>
-                <td>
-                  <span className={style["--level"]}></span>
-                </td>
-              </tr>
-              <tr className={style.tr}>
-                <td>yes</td>
-                <td>Adverb</td>
-                <td>1 tuần trước</td>
-                <td>
-                  <span className={style["--level"]}></span>
-                </td>
-              </tr>
+              {
+                vocab.map(item => <VocabAll item={item} />)
+              }
             </tbody>
           </table>
         </div>
@@ -50,7 +35,7 @@ const Introduce = () => {
           <div className={style.note}>
             <h2>Lặp lại ngắt quãng</h2>
             <p>
-              Thuật toán của Duolingo sẽ tính toán khi nào bạn nên luyện tập từ
+              Thuật toán của Vocabb sẽ tính toán khi nào bạn nên luyện tập từ
               vựng để có thể ghi nhớ từ một cách lâu dài.
             </p>
             <div className={style.desc}>
@@ -78,4 +63,4 @@ const Introduce = () => {
   );
 };
 
-export default Introduce;
+export default Vocabulary;

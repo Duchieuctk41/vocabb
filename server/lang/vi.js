@@ -15,18 +15,21 @@ export const transErrors = {
   login_failed: "Sai tài khoản hoặc mật khẩu!",
   server_error:
     "Có lỗi ở phía server, vui lòng liên hệ với bộ phận của chúng tôi, xin cảm ơn.",
+  account_not_use: "Tài khoản hoặc mật khẩu không đúng!"
 };
 
 export const transSuccess = {
   userCreated: (userEmail) => {
     return `Tài khoản ${userEmail} đã được tạo vui lòng kiểm tra email của bạn để active tài khoản.`;
-  },
+  }, 
   account_actived:
     "Kích hoạt tài khoản thành công, bạn đã có thể đăng nhập ứng dụng.",
   loginSuccess: (username) => {
     return `Xin chào ${username}, chúc bạn một ngày học tập hiệu quả.`;
   },
-};
+  logout_success: "Đăng xuất tài khoản thành công.",
+  login_success: "Đăng nhập thành công",
+}; 
 
 export const transMail = {
   subject: "Vocabb: Xác nhận kích hoạt tài khoản.",

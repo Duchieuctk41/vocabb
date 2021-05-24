@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./answer-order.module.scss";
 
-const AnswerOrder = ({ item }) => {
+const AnswerOrder = ({ item, actived }) => {
+  const [arrayAnswer, setArrayAnswer] = useState([]);  //danh sách được chọn
+
+  //chọn đáp án, chạy lên trên
+  function onClickAddAnswer(item) {
+    setArrayAnswer((arrayAnswer) => [...arrayAnswer, item], [arrayAnswer]);
+  }
+  
+  function onClickRemoveAnswer(item) {
+    const newList = arrayAnswer.filter((element) => element !== item)
+    setArrayAnswer(newList);
+  }
+
+  let onClickHandler = actived;
+  useEffect(() => {
+    onClickHandler(arrayAnswer);
+  },[arrayAnswer]);
+  
   return (
     <div className={style.content}>
       <div className={style.image}>
@@ -12,12 +29,22 @@ const AnswerOrder = ({ item }) => {
       </div>
       <div className={style.answer}>
         <div className={style["--choosed"]}>
-          <span>Hello</span>
+          {arrayAnswer && arrayAnswer.map((e) => <button key={e} onClick={() => {onClickRemoveAnswer(e);
+          if(arrayAnswer.length === 1) onClickHandler(0);} 
+          }>{e}</button>)}
         </div>
         <div>
           {item.Answer &&
             item.Answer.map((element) => (
-              <span key={element.title}>{element.title}</span>
+              <button
+                key={element.title}
+                onClick={() => {
+                  onClickAddAnswer(element.title);
+                }}
+                disabled={arrayAnswer.find(item => item === element.title) ? true : false}
+              >
+                {element.title}
+              </button>
             ))}
         </div>
       </div>

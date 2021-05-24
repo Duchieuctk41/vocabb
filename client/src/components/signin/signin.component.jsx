@@ -1,35 +1,57 @@
 import React, { useState } from "react";
-
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import { authLogoUrl } from "../../api";
 
+import { authLoginUrl, checkLoggedOut } from "../../api";
 import style from "./signin.module.scss";
 import { facebook, google } from "./../../img";
 
 const SignIn = () => {
-  const [signup, setSignup] = useState({
+  const history = useHistory();
+  
+  checkLogout();
+
+  function checkLogout(){
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: checkLoggedOut(),
+    })
+      .then((response) => {
+        console.log(response);
+
+        if (response.data.success) {
+          history.push("/");
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+
+  const [flash, setFlash] = useState();
+  const [signin, setSignin] = useState({
     email: "",
     password: "",
   });
 
-  const history = useHistory();
-
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setSignup({ ...signup, [name]: value });
+    setSignin({ ...signin, [name]: value });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     axios({
       method: "POST",
-      data: signup,
+      data: signin,
       withCredentials: true,
-      url: authLogoUrl(),
+      url: authLoginUrl(),
     })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data.errors);
+        // console.log("success", response.data.success);
+        response.data.errors
+          ? setFlash(response.data.errors)
+          : setFlash(response.data.success);
         if (response.data.success) {
           history.push(`/`);
         }
@@ -39,7 +61,7 @@ const SignIn = () => {
 
   return (
     <div className={style.main}>
-      <h1 className={style.title__login}>Đăng nhập</h1>
+      <h1 className={style.title__login}>{flash ? flash : "Đăng nhập"}</h1>
       <form onSubmit={submitHandler}>
         <div className={style.inp}>
           <div className={style.inp1}>

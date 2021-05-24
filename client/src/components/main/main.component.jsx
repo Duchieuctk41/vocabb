@@ -10,21 +10,28 @@ import style from "./main.module.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { lessonActions } from "../../redux/actions/lessonActions";
+import { lessonActions } from "./../../redux/actions/lessonActions";
+import { studiedActions } from "./../../redux/actions/studiedActions";
+
 
 const Main = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(lessonActions());
-  }, [dispatch]);
+    dispatch(studiedActions());
+  }, []);
 
   let hang2 = false;
   let lap = false;
   const { lesson } = useSelector((state) => state.lesson);
-  // console.log("lesson: ", lesson);
+  // useEffect(() => {
+  //   // console.log("lesson: ", lesson);
+  //   // console.log("fdfas",studied.filter(item => item.lessonId === "609e545814e8251128b96d84"));
+  // }, [studied]);
   return (
     <div className={style.main}>
-      {lesson.map((item) => {
+      {lesson && lesson.map((item) => {
+        
         if (lap === true) {
           hang2 = false;
           return (lap = false);

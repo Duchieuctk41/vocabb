@@ -5,11 +5,12 @@ let createNewItem = (item) => {
     // Kiem tra item co ton tai hay ko
     let checkExists = await lessonModel.checkExists(item);
     if (checkExists) {
-      return reject(false);
+      console.log("Data da ton tai");
+      return ;
     }
 
     let newItem = item;
-    //console.log(newItem);
+    //console.log(newItem); 
     let newListVocab = lessonModel.createNew(newItem);
     resolve(newListVocab);
   });

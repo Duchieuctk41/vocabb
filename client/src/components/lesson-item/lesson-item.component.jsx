@@ -5,10 +5,15 @@ import Popup from "../popup/popup.component";
 // import icon &&  scss
 import { chick, corona } from "../../img";
 import style from "./lesson-item.module.scss";
+import { useSelector } from "react-redux";
 
-const LessonItem = ({ lesson, imaged }) => {
-  // console.log("lesson: ", lesson);
-  console.log("imaged: ", imaged);
+const LessonItem = ({ lesson, imaged ,idgame, idlesson, grade}) => {
+
+  const { studied } = useSelector((state) => state.studied);
+
+  let lessonId = studied.filter(item => item.lessonId === idlesson);
+  let grading = lessonId.length > 0 ? lessonId[0].grade : 0;
+  
   const [toggle, setToggle] = useState(false);
   return (
     <div className={style.item}>
@@ -24,11 +29,14 @@ const LessonItem = ({ lesson, imaged }) => {
             ) : (
               <img src={chick} alt="chick"></img>
             )}
-            <img src={corona} alt="corona" />
+            
+            <span><img src={corona} alt="corona" />
+            <span>{lessonId.length > 0 ? lessonId[0].grade : null}</span>
+            </span>
           </div>
         </div>
         <h3>{lesson}</h3>
-        {toggle ? <Popup /> : null}
+        {toggle ? <Popup idgame={idgame} idlesson={idlesson} grading={grading} grade={grade}/> : null}
       </div>
     </div>
   );

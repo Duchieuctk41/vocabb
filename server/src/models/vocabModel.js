@@ -3,9 +3,11 @@ import mongoose from "mongoose";
 let Schema = mongoose.Schema;
 
 let VocabSchema = new Schema({
-  lessonId: String,
-  EnName: String,
-  ViName: String,
+  storeId: String,
+  userId: String,
+  store: { type: String, default: "Gia đình" },
+  front: String,
+  back: String,
   img: { type: String, default: "avatar-default.jpg" },
 });
 
@@ -13,16 +15,34 @@ VocabSchema.statics = {
   createNew(item) {
     return this.create(item);
   },
-  
+
   checkExists(item) {
     return this.findOne({
-      name: item.name,
+      _id: item,
     });
   },
 
   getAllData() {
     return this.find({});
   },
+
+  getDataByStoreId(item) {
+    return this.find({
+      storeId: item
+    })
+  },
+
+  getDataByUserId(item) {
+    return this.find({
+      userId: item.userId
+    })
+  },
+
+  deleteVocab(item) {
+    return this.deleteMany({
+      _id: item
+    })
+  }
 };
 
 module.exports = mongoose.model("vocab", VocabSchema);

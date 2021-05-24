@@ -1,0 +1,18 @@
+.tool {
+    position: absolute;
+    height: 48px;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        height: 100%;
+        width: 48%;
+        background-color: #8ae008;
+        color: #ffffff;
+        font-weight: bold;
+        outline: none;
+        border: 0.5px dashed #afafaf;
+        cursor: pointer;
+    }
+}

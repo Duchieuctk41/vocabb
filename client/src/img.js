@@ -15,7 +15,7 @@ import badge_locked from "./assets/img/badge_locked.svg";
 import duo_sleeping from "./assets/img/duo_sleeping.svg";
 
 import treasure from "./assets/img/treasure.svg";
-import achievement from "./assets/img/achievement.svg";
+import achievementImg from "./assets/img/achievement.svg";
 import facebook from "./assets/img/facebook.svg";
 import instagram from "./assets/img/instagram.svg";
 import twitter from "./assets/img/twitter.svg";
@@ -105,7 +105,7 @@ export {
   badge_locked,
   duo_sleeping,
   treasure,
-  achievement,
+  achievementImg,
   facebook,
   instagram,
   twitter,

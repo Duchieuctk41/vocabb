@@ -1,24 +1,60 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { initAchievementURL, checkLoggedIn } from "./../../api";
+import axios from "axios";
+
 // import components
 import Dropdown from "../dropdown/dropdown.component";
 
 // img && scss
-import {
-  logo,
-  chat,
-  store,
-  more,
-  america,
-  corona,
-  fire,
-  lingots,
-  me,
-} from "../../img";
+import { logo, chat, store, more, america, corona, fire, lingots, me, } from "../../img";
 import "./header.style.scss";
+import { achievementActions } from "./../../redux/actions/achievementActions";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-// import { getVocabList } from "../../redux/vocab/vocab.actions";
 
 const Header = () => {
+
+  const { achievement } = useSelector((state) => state.achievement);
+  const history = useHistory();
+  // console.log(achievement);
+  const dispatch = useDispatch();
+
+  // Tạo data achievement
+
+  checkLogin();
+  // Kiểm tra đăng nhập chưa
+  function checkLogin() {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: checkLoggedIn(),
+    })
+      .then((response) => {
+        // console.log(response);
+
+        if (response.data.success) {
+          history.push("/introduce");
+        } else {
+          initAchievement();
+          dispatch(achievementActions());
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+
+  
+  // Tạo data achievement
+  function initAchievement() {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: initAchievementURL(),
+    })
+  }
+
+
   return (
     <header className="header container">
       <ul className="menu1">
@@ -46,8 +82,8 @@ const Header = () => {
           {/* Dropdown */}
           <Dropdown
             title={[
-              { name: "Từ điển", to: "tudien" },
-              { name: "Từ vựng", to: "learned" },
+              { name: "Tra cứu", to: "tudien" },
+              { name: "Từ vựng", to: "vocabulary" },
             ]}
           />
         </li>
@@ -68,7 +104,7 @@ const Header = () => {
         <li>
           <span className="menu2__item corona-color">
             <img src={corona} alt="corona"></img>
-            147
+            {achievement.corona}
           </span>
           <Dropdown
             title={[{ name: "Vương miện", to: "" }]}
@@ -78,7 +114,7 @@ const Header = () => {
         </li>
         <li>
           <span className="menu2__item">
-            <img src={fire} alt="fire"></img>0
+            <img src={fire} alt="fire"></img>{achievement.streak}
           </span>
           <Dropdown
             title={[{ name: "Streak", to: "" }]}
@@ -89,7 +125,7 @@ const Header = () => {
         <li>
           <span className="menu2__item lingots-color">
             <img src={lingots} alt="lingots"></img>
-            60
+            {achievement.lingots}
           </span>
           <Dropdown
             title={[{ name: "Lingots", to: "" }]}
@@ -105,7 +141,7 @@ const Header = () => {
             title={[
               { name: "Hồ sơ của bạn", to: "profile" },
               { name: "Cài đặt", to: "setting" },
-              { name: "Đăng xuất", to: "introduce" },
+              { name: "Đăng xuất", to: "introduce", action: "logout" },
             ]}
             classes={"--me"}
           />

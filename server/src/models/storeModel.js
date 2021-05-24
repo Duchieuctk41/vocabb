@@ -13,6 +13,18 @@ StoreSchema.statics = {
   createNew(item) {
     return this.create(item);
   },
+
+  checkExists(item) {
+    return this.findOne({
+      name: item.name
+    })
+  },
+
+  getDataByUserId(item) {
+    return this.find({
+      userId: item.userId
+    })
+  },
 };
 
 module.exports = mongoose.model("store", StoreSchema);

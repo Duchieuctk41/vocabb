@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./answer-input.module.scss";
 
-const AnswerInput = ({ item }) => {
+const AnswerInput = ({ item, actived }) => {
   // console.log(item.question);
+
+  const [userInput, setUserInput] = useState("");
+  const changeHandler = e => {
+    const {value} = e.target;
+    setUserInput(value);
+  }
+
+  let onClickHandlerInput = actived;
+  
+  useEffect(() => {
+    onClickHandlerInput(userInput);
+  },[onClickHandlerInput, userInput]);
+
+  
   return (
     <div className={style.content}>
       <div className={style.image}>
@@ -11,7 +25,7 @@ const AnswerInput = ({ item }) => {
           <span>{item.sentense}</span>
         </div>
       </div>
-      <textarea placeholder={item.question}></textarea>
+      <textarea placeholder={item.question} onChange={changeHandler}></textarea>
     </div>
   );
 };

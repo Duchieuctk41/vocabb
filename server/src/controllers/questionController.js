@@ -7,8 +7,9 @@ let getAllData = async (req, res) => {
 };
 let getCollection = async (req, res) => {
   const item = req.path.split("/");
+  // console.log("item ",item);
   let question = await questionModel.getCollection(item[2]);
-  // console.log(question);
+  // console.log("question: ",question);
   return res.send(question);
 };
 

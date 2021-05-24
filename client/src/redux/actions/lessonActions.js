@@ -1,6 +1,6 @@
 import axios from "axios";
 import { lessonTypes } from "../types/lessonTypes";
-import { lessonURL } from "../../api"; //api-lesson
+import { lessonURL, lessonIdURL } from "../../api";
 
 export const lessonActions = () => async (dispatch) => {
   const lessonData = await axios.get(lessonURL()); //http://localhost:3001/api-lesson
@@ -13,3 +13,16 @@ export const lessonActions = () => async (dispatch) => {
     },
   });
 };
+
+export const lessonIdActions = (idLesson) => async (dispatch) => {
+  const lessonData = await axios.get(lessonIdURL(idLesson));
+  // console.log("lesson=", lessonData);
+
+  dispatch({
+    type: lessonTypes.FETCH_LESSON_BY_ID,
+    payload: {
+      lesson: lessonData.data,
+    },
+  });
+};
+

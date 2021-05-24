@@ -5,6 +5,9 @@ import authController from "./authController";
 import imageController from "./imageController";
 import questionController from "./questionController";
 import gameController from "./gameController";
+import studiedController from "./studiedController";
+import achievementController from "./achievementController";
+import storeController from "./storeController";
 
 export const homeContro = homeController;
 export const lessonContro = lessonController;
@@ -13,3 +16,6 @@ export const authContro = authController;
 export const imageContro = imageController;
 export const questionContro = questionController;
 export const gameContro = gameController;
+export const studiedContro = studiedController;
+export const achievementContro = achievementController;
+export const storeContro = storeController;
