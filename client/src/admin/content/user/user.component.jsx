@@ -14,6 +14,14 @@ const Userad = () => {
           <th>Số từ đã học</th>
           <th>Số bộ thẻ tự tạo</th>
         </tr>
+        <tr>
+          <td>01</td>
+          <td>Nguyễn Đức Hiếu</td>
+          <td>duchieuctk41@gmail.com</td>
+          <td>Kinh nghiệm</td>
+          <td>Số từ đã học</td>
+          <td>Số bộ thẻ tự tạo</td>
+        </tr>
       </table>
   </div>;
 };

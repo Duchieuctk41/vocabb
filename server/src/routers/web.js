@@ -27,11 +27,13 @@ let router = express.Router();
 
 let initRouters = (app) => {
   router.get("/", homeContro.getHome);
-  router.get("/init-lesson", lessonSer.initData);
+  
+  router.get("/init-lesson", lessonSer.initData); //tao bai hoc
+  router.get("/api-lesson", lessonContro.getAllData); //lay bai hoc ve
+
   router.get("/init-vocab", vocabSer.initData);
   router.get("/init-game", gameSer.initData);
   router.get("/init-question", questionSer.initData);
-  router.get("/api-lesson", lessonContro.getAllData);
   router.get("/api-vocab", vocabContro.getAllData);
   router.get(`/api-question/:id`, questionContro.getCollection);
   router.get("/api-game", gameContro.getCollection);

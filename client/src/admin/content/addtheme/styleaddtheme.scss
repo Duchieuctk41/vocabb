@@ -1,0 +1,32 @@
+.addtheme{
+    width: 700px;
+    height: 90vh;
+    border: 1px solid black;
+    margin: 50px auto;
+    padding: 25px;
+}
+h2{
+    font-size: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #555;
+}
+.content{
+    width: 515px;
+    padding-top: 50px;
+    margin: 0 auto;
+    table{
+        tr{
+            td{
+                padding: 10px 0;
+                input{
+                    width: 400px;
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+    button{
+        padding: 5px 15px;
+        margin-top: 25px;
+    }
+}
