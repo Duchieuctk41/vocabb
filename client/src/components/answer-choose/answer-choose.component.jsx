@@ -2,14 +2,14 @@ import style from "./answer-choose.module.scss";
 
 const AnswerChoose = ({ item, stt, isActive, actived }) => {
   // console.log(item);
-  let onClickHandler = actived;
+  let onClickHandlerChoose = actived;
   return (
     <div className={style.answer}>
       <div
         className={`${style.answer__item} ${
           isActive === stt ? style.active : ""
         }`}
-        onClick={() => onClickHandler(stt)}
+        onClick={() => onClickHandlerChoose(stt)}
         key={stt}
       >
         <div className={style["answer__item-img"]}>

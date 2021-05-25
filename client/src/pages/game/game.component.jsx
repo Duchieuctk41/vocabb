@@ -58,7 +58,7 @@ const Game = () => {
     }).then((response) => {
       setUserId(response.data);
     });
-    
+
   }, []);
 
   // Lấy câu dữ liệu câu hỏi, trả về question
@@ -103,10 +103,17 @@ const Game = () => {
     }
   };
 
+  // Lấy giá trị người dùng chọn (nhập)
+  const onClickHandlerChoose = (stt) => {
+    stt ? setIsActve(stt) : setIsActve(null);
+  };
+
   // Kiểm tra đúng sai
   const checkTruFalseHandler = () => {
     if (question.type === "choose") {
       setResult1(question.Answer[isActive - 1].correct);
+      let itemCorrect = question.Answer.filter(item => item.correct);
+      setDapanOrder2(itemCorrect[0].title);
     }
     if (question.type === "order") {
       JSON.stringify(dapanOrder2) === JSON.stringify(userchooseOrder) ? setResult1(true) : setResult1(false);
@@ -177,7 +184,7 @@ const Game = () => {
                   <AnswerChoose
                     item={item}
                     stt={stt}
-                    actived={onClickHandler}
+                    actived={onClickHandlerChoose}
                     isActive={isActive}
                   />
                 );

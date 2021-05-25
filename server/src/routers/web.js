@@ -22,10 +22,6 @@ let router = express.Router();
 let initRouters = (app) => {
   router.get("/", homeContro.getHome);
   router.get("/init-vocab", vocabSer.initData);
-  router.get("/init-game", gameSer.initData);
-  router.get("/init-question", questionSer.initData);
-  router.get("/api-vocab", vocabContro.getAllData);
-  router.get(`/api-question/:id`, questionContro.getCollection);
   router.get("/api-game", gameContro.getCollection);
 
   // Tạo cơ sở dữ liệu
@@ -46,7 +42,7 @@ let initRouters = (app) => {
   router.get("/api-userid", authContro.getUser); // Lấy userid
   router.get("/api-studied", studiedContro.getAllData);
   router.get("/api-achievement", achievementContro.getAllData);
-  router.get("/api-store", storeContro.getDataByUserId)
+  router.get("/api-store", storeContro.getDataByUserId);
   router.get("/api-vocab/:id", vocabContro.getDataByStoreId); // Lấy dữ liệu vocab theo storeid
   router.get("/api-vocab-user", vocabContro.getDataByUserId); // Lấy dữ liệu vocab theo userid
 
@@ -65,8 +61,8 @@ let initRouters = (app) => {
   router.get("/check-login", authContro.checkLoggedIn); // Kiểm tra đăng nhập hay chưa
   router.get("/check-logout", authContro.checkLoggedOut);
 
-  app.get("/api/images", imageContro.getImage);
-  app.post("/api/upload", imageContro.uploadImage);
+  router.get("/api/images", imageContro.getImage);
+  router.post("/api/upload", imageContro.uploadImage);
 
   return app.use("/", router);
 };
