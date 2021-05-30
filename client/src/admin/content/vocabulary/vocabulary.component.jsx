@@ -7,21 +7,76 @@ const Vocabulary = () => {
   const [nameLesson, setNameLesson] = useState();
   const [grade, setGrade] = useState();
 
+  const [fileInputState, setFileInputState] = useState("");
+  const [previewSource, setPreviewSource] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+
   const onChangeNameLesson = (e) => {
-    const {value} = e.target;
+    const { value } = e.target;
     setNameLesson(value);
   }
   const onChangeGrade = (e) => {
-    const {value} = e.target;
+    const { value } = e.target;
     setGrade(value);
   }
+  const onChangeImage = (e) => {
+    const file = e.target.files[0];
+    previewFile(file); // Chuyển thành base64
+    setSelectedFile(file); // Lấy tất cả thông số của file
+    setFileInputState(e.target.value); // Lấy đường dẫn file
+  }
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  
+  const handleSubmitFile = (e) => {
+    e.preventDefault();
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.error("AHHHHHHHH!!");
+      setErrMsg("something went wrong!");
+    };
+  };
+
+  const uploadImage = async (base64EncodedImage) => {
+    try {
+      await fetch("http://localhost:3001/api/upload", {
+        method: "POST",
+        body: JSON.stringify({ data: base64EncodedImage }),
+        headers: { "Content-Type": "application/json" },
+      });
+      setFileInputState("");
+      setPreviewSource("");
+      setSuccessMsg("Image uploaded successfully");
+    } catch (err) {
+      console.error(err);
+      setErrMsg("Something went wrong!");
+    }
+  };
+
 
   return (
     <div className={style.vocabulary}>
-      <form className={style.form}>
+      <form className={style.form} onSubmit={handleSubmitFile}>
+      <button className="btn" type="submit">
+          Submit
+        </button>
         <div>
           <label htmlFor="ten">Nhập tên</label>
-          <input name="ten" type="text" placeholder="Nhập tên" onChange={onChangeNameLesson}/>
+          <input name="ten" type="text" placeholder="Nhập tên" onChange={onChangeNameLesson} />
         </div>
         <div>
           <label htmlFor="cars">Cấp độ</label>
@@ -38,9 +93,13 @@ const Vocabulary = () => {
           <input
             name="image"
             type="file"
+            onChange={onChangeImage}
           />
         </div>
       </form>
+      {previewSource && (
+        <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
+      )}
       <table>
         <tr>
           <th>Tên</th>
