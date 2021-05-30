@@ -6,8 +6,8 @@
 
 2. Đăng nhập vào tài khoản Mongodb Atlas (kiểm tra "network acess", nếu chưa 0.0.0.0 chưa đc active thì click "allow access from anywhere")
 
-Tài khoản: 1710172@dlu.edu.vn
-Mật khẩu: thuyduong1112001
+Tài khoản: ******
+Mật khẩu: ******
 
 ![3](./readme/3.png)
 ![4](./readme/4.png)
