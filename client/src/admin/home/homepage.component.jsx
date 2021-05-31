@@ -21,43 +21,43 @@ const Homepage = () => {
         </div>
 
         <Link to="/homepageadmin">
-          <i class="fas fa-home" name="icon"></i>
+          <i className="fas fa-home" name="icon"></i>
           <span>Trang chủ</span>
-          <i class="fas fa-chevron-right"></i>
+          <i className="fas fa-chevron-right"></i>
         </Link>
         <Link to="/homepageadmin/user">
-          <i class="far fa-address-card" name="icon"></i>
+          <i className="far fa-address-card" name="icon"></i>
           <span>Người dùng</span>
-          <i class="fas fa-chevron-right"></i>{" "}
+          <i className="fas fa-chevron-right"></i>{" "}
         </Link>
         <Link to="/homepageadmin/theme">
-          <i class="fab fa-themeisle" name="icon"></i>
+          <i className="fab fa-themeisle" name="icon"></i>
           <span>Chủ đề</span>
-          <i class="fas fa-chevron-right"></i>
+          <i className="fas fa-chevron-right"></i>
         </Link>
         <Link to="/homepageadmin/vocabulary">
-          <i class="fas fa-bookmark" name="icon"></i>
+          <i className="fas fa-bookmark" name="icon"></i>
           <span>Từ vựng</span>
-          <i class="fas fa-chevron-right"></i>
+          <i className="fas fa-chevron-right"></i>
         </Link>
       </div>
       <div className="right">
         <div className="headerad">
           <div className="search">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
             <input type="text" placeholder="Search"></input>
           </div>
 
           <div className="profile">
             <Link to="#">
-              <i class="fas fa-bell"></i>
+              <i className="fas fa-bell"></i>
             </Link>
             <Link to="#">
               <img src={avatarad} alt="avatar" />
             </Link>
             <Link to="#">
               <span>Minh Chính</span>
-              <i class="fas fa-angle-down"></i>
+              <i className="fas fa-angle-down"></i>
             </Link>
           </div>
         </div>

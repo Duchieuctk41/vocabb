@@ -19,7 +19,7 @@ const Main = () => {
   useEffect(() => {
     dispatch(lessonActions());
     dispatch(studiedActions());
-  }, []);
+  }, [dispatch]);
 
   let hang2 = false;
   let lap = false;

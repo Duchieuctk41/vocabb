@@ -1,19 +1,28 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { initAdLessonURL } from "./../../../api";
+import LessonAdList from "./../../../components/lesson-ad-list/lesson-add-list.component";
+import { lessonActions } from "./../../../redux/actions/lessonActions";
 //import { Link } from "react-router-dom";
 
 import style from "./vocabulary.module.scss";
 
 const Vocabulary = () => {
   const [nameLesson, setNameLesson] = useState();
-  const [grade, setGrade] = useState();
+  const [grade, setGrade] = useState(1);
 
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState("");
   const [selectedFile, setSelectedFile] = useState();
-  const [successMsg, setSuccessMsg] = useState("");
-  const [errMsg, setErrMsg] = useState("");
+
+  const dispatch = useDispatch();
+  const { lesson } = useSelector(state => state.lesson);
+
+  useEffect(() => {
+    dispatch(lessonActions());
+  },[dispatch])
+
 
   const onChangeNameLesson = (e) => {
     const { value } = e.target;
@@ -38,6 +47,7 @@ const Vocabulary = () => {
     };
   };
 
+  // Click submit
 
   const handleSubmitFile = (e) => {
     e.preventDefault();
@@ -49,7 +59,6 @@ const Vocabulary = () => {
     };
     reader.onerror = () => {
       console.error("AHHHHHHHH!!");
-      setErrMsg("something went wrong!");
     };
   };
 
@@ -70,13 +79,10 @@ const Vocabulary = () => {
       setNameLesson("");
       setFileInputState("");
       setPreviewSource("");
-      setSuccessMsg("Image uploaded successfully");
     } catch (err) {
       console.error(err);
-      setErrMsg("Something went wrong!");
     }
   };
-
 
   return (
     <div className={style.vocabulary}>
@@ -86,12 +92,12 @@ const Vocabulary = () => {
         </button>
         <div>
           <label htmlFor="ten">Nhập tên</label>
-          <input name="ten" type="text" placeholder="Nhập tên" onChange={onChangeNameLesson} value={nameLesson}/>
+          <input name="ten" type="text" placeholder="Nhập tên" onChange={onChangeNameLesson} value={nameLesson} />
         </div>
         <div>
           <label htmlFor="cars">Cấp độ</label>
           <select name="cars" onChange={onChangeGrade}>
-            <option value="1">1</option>
+            <option value="1" selected>1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -113,16 +119,18 @@ const Vocabulary = () => {
         <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
       )}
       <table>
-        <tr>
-          <th>Tên</th>
-          <th>Cấp độ</th>
-          <th>Hình ảnh</th>
-        </tr>
-        <tr>
-          <td>Động vật</td>
-          <td>3</td>
-          <td>avatar.jpg</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Tên</th>
+            <th>Cấp độ</th>
+            <th>Hình ảnh</th>
+          </tr>
+        </thead>
+        {
+          lesson && lesson.map(item => (
+            <LessonAdList item={item} key={item.name}/>
+          ))
+        }
       </table>
     </div>
   )
