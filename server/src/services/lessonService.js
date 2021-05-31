@@ -1,3 +1,4 @@
+import { check } from "express-validator";
 import lessonModel from "../models/lessonModel";
 
 let createNewItem = (item) => {
@@ -6,7 +7,7 @@ let createNewItem = (item) => {
     let checkExists = await lessonModel.checkExists(item);
     if (checkExists) {
       console.log("Data da ton tai");
-      return ;
+      return;
     }
 
     let newItem = item;
@@ -30,7 +31,27 @@ let initData = () => {
   return;
 };
 
+let initDataLesson = (req, res) => {
+  const item = req.query;
+  return new Promise(async (resolve, reject) => {
+    // Kiểm tra data có tồn tại chưa
+    let checkExists = await lessonModel.checkExists(item);
+    if(item.name.length === 0) return;
+    if (checkExists) {
+      console.log("Data da ton tai");
+      return;
+    }
+
+    let newItem = item;
+    //console.log(newItem); 
+    let newListVocab = lessonModel.createNew(newItem);
+    resolve(newListVocab);
+  });
+
+}
+
 module.exports = {
   createNewItem: createNewItem,
   initData: initData,
+  initDataLesson: initDataLesson
 };

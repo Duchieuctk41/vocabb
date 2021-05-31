@@ -2,7 +2,7 @@ import { cloudinary } from "./../config/cloudinary";
 
 let getImage = async (req, res) => {
   const { resources } = await cloudinary.search
-    .expression("folder:dev_setups")
+    .expression("folder:lesson")
     .sort_by("public_id", "desc")
     .max_results(30)
     .execute();
@@ -12,13 +12,14 @@ let getImage = async (req, res) => {
 };
 
 let uploadImage = async (req, res) => {
-  try {
+  try { 
+  let successArr = [];
     const fileStr = req.body.data;
     const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-      upload_preset: "dev_setups",
+      upload_preset: "lesson",
     });
-    console.log(uploadResponse);
-    res.json({ msg: "yaya" });
+    // console.log(uploadResponse.secure_url);
+    res.json({ msg: uploadResponse.secure_url });
   } catch (err) {
     console.error(err);
     res.status(500).json({ err: "Something went wrong" });

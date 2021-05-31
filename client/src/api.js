@@ -1,5 +1,7 @@
 export const initVocabURL = (storeId, front, back) => `http://localhost:3001/init-vocab/${storeId}-${front}-${back}`;
 export const initAchievementURL = () => `http://localhost:3001/init-achievement`;
+export const initAdLessonURL = (name, grade, img) => 
+`http://localhost:3001/init-admin-lesson/?name=${name}&grade=${grade}&img=${img}`;
 
 export const lessonURL = () => `http://localhost:3001/api-lesson`;
 export const lessonIdURL = (id) => `http://localhost:3001/api-lessonid/${id}`;

@@ -15,7 +15,7 @@ LessonSchema.statics = {
   },
 
   checkExists(item) {
-    return this.find({
+    return this.findOne({
       name: item.name,
     });
   },
