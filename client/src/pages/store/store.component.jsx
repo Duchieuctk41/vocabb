@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import style from "./store.module.scss";
-import { loupe, babyboy, america, store } from "../../img";
+import { loupe, america} from "../../img";
 import { checkLoggedIn } from "./../../api";
 import StoreItem from "./store-item/store-item.component";
 

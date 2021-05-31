@@ -6,7 +6,7 @@ let createNewItem = (item) => {
     // Kiem tra item co ton tai hay ko
     let checkExists = await lessonModel.checkExists(item);
     if (checkExists) {
-      console.log("Data da ton tai");
+      console.log("Data da ton tai"); 
       return;
     }
 
@@ -31,8 +31,9 @@ let initData = () => {
   return;
 };
 
-let initDataLesson = (req, res) => {
+let initDataLesson = (req, res) => { 
   const item = req.query;
+  console.log(item);
   return new Promise(async (resolve, reject) => {
     // Kiểm tra data có tồn tại chưa
     let checkExists = await lessonModel.checkExists(item);
@@ -46,6 +47,7 @@ let initDataLesson = (req, res) => {
     //console.log(newItem); 
     let newListVocab = lessonModel.createNew(newItem);
     resolve(newListVocab);
+    let test = await lessonModel.checkExists(item);
   });
 
 }

@@ -34,7 +34,7 @@ let initRouters = (app) => {
   router.get("/init-vocab/:id", vocabSer.initData); // tạo CSDL từ vựng 
   router.get("/init-admin-lesson", lessonSer.initDataLesson);
 
-  // Api lấy dữ liệu
+  // Api lấy dữ liệu 
   router.get("/api-lesson", lessonContro.getAllData); // Lấy các bài học
   router.get("/api-lessonid/:id", lessonContro.getLessonById); // Lấy các bài học
   router.get(`/api-question/:id`, questionContro.getCollection); // Lấy câu hỏi
