@@ -5,6 +5,7 @@
   .form {
     display: flex;
     flex-direction: column;
+
     div {
       margin: 10px 0;
       display: flex;
@@ -34,4 +35,8 @@
       }
     }
   }
+}
+
+.btn {
+  cursor: pointer;
 }

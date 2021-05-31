@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { initAdLessonURL } from "./../../../api";
 //import { Link } from "react-router-dom";
 
 import style from "./vocabulary.module.scss";
@@ -36,7 +38,7 @@ const Vocabulary = () => {
     };
   };
 
-  
+
   const handleSubmitFile = (e) => {
     e.preventDefault();
     if (!selectedFile) return;
@@ -53,11 +55,19 @@ const Vocabulary = () => {
 
   const uploadImage = async (base64EncodedImage) => {
     try {
-      await fetch("http://localhost:3001/api/upload", {
+      const response = await fetch("http://localhost:3001/api/upload", {
         method: "POST",
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { "Content-Type": "application/json" },
-      });
+      })
+      const message = await response.json();
+      // console.log(message.msg);
+      axios({
+        method: "GET",
+        withCredentials: true,
+        url: initAdLessonURL(nameLesson, grade, message.msg),
+      })
+      setNameLesson("");
       setFileInputState("");
       setPreviewSource("");
       setSuccessMsg("Image uploaded successfully");
@@ -71,12 +81,12 @@ const Vocabulary = () => {
   return (
     <div className={style.vocabulary}>
       <form className={style.form} onSubmit={handleSubmitFile}>
-      <button className="btn" type="submit">
+        <button className={style.btn} type="submit" disabled={nameLesson ? false : true}>
           Submit
         </button>
         <div>
           <label htmlFor="ten">Nhập tên</label>
-          <input name="ten" type="text" placeholder="Nhập tên" onChange={onChangeNameLesson} />
+          <input name="ten" type="text" placeholder="Nhập tên" onChange={onChangeNameLesson} value={nameLesson}/>
         </div>
         <div>
           <label htmlFor="cars">Cấp độ</label>
@@ -94,6 +104,8 @@ const Vocabulary = () => {
             name="image"
             type="file"
             onChange={onChangeImage}
+            value={fileInputState}
+            className={style.btn}
           />
         </div>
       </form>
