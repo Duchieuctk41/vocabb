@@ -1,10 +1,8 @@
 import React from "react";
 
-const LessonAdList = ({ item }) => {
+const LessonAdList = ({ item, actived }) => {
 
-    const onclickInsertGame = (el) => {
-        alert(item.name);
-    }
+    const onclickInsertGame = actived;
     const grade = item.grade;
     let listgrade = [];
 
@@ -17,7 +15,7 @@ const LessonAdList = ({ item }) => {
                 <td>
                     <img src={item.img} alt="image" />
                 </td>
-                {listgrade.map(el=><td onClick={() => onclickInsertGame(el)} key={el}>{el}</td>)}
+                {listgrade.map(el=><td onClick={() => onclickInsertGame(el,item)} key={el}>{el}</td>)}
             </tr>
         </tbody>
     )
