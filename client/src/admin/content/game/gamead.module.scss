@@ -1,22 +1,9 @@
-.vocabulary {
-  margin-left: 240px;
-  position: absolute;
-  top: 54px;
-  .form {
-    display: flex;
-    flex-direction: column;
+.content {
+    margin-left: 240px;
+    position: absolute;
+    top: 54px;
     border: 1px solid #ccc;
-
-    div {
-      margin: 10px 0;
-      display: flex;
-      justify-content: space-between;
-      label {
-        margin-right: 20px;
-      }
-    }
-  }
-
+    
   table {
     margin-top: 15px;
     tr {
@@ -36,8 +23,4 @@
       }
     }
   }
-}
-
-.btn {
-  cursor: pointer;
 }
