@@ -89,6 +89,10 @@ const Vocabulary = () => {
     }
   };
 
+  const onclickInsertGame = (el, i) => {
+    alert(el);
+}
+
   return (
     <div className={style.vocabulary}>
       <form className={style.form} onSubmit={handleSubmitFile}>
@@ -133,11 +137,10 @@ const Vocabulary = () => {
         </thead>
         {
           lesson && lesson.map(item => (
-            <LessonAdList item={item} key={item.name}/>
+            <LessonAdList item={item} key={item.name} actived={onclickInsertGame} />
           ))
         }
       </table>
-      <QuestionAd />
     </div>
   )
 };
