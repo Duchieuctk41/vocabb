@@ -36,6 +36,7 @@ function App() {
     "/homepageadmin/theme",
     "/homepageadmin/vocabulary",
     "/homepageadmin/theme/addtheme",
+    "/homepageadmin/game",
     "/addtheme",
     "/learn"
   ];

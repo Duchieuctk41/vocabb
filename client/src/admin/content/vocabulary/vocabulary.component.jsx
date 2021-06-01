@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { initAdLessonURL } from "./../../../api";
+import { initAdLessonURL, initAdGameURL } from "./../../../api";
 import LessonAdList from "./../../../components/lesson-ad-list/lesson-add-list.component";
 import { lessonActions } from "./../../../redux/actions/lessonActions";
-//import { Link } from "react-router-dom";
+import QuestionAd from "./../../components/question-ad/question-ad.component";
 
 import style from "./vocabulary.module.scss";
 
@@ -74,6 +74,11 @@ const Vocabulary = () => {
       axios({
         method: "GET",
         withCredentials: true,
+        url: initAdGameURL(nameLesson, grade),
+      })
+      axios({
+        method: "GET",
+        withCredentials: true,
         url: initAdLessonURL(nameLesson, grade, message.msg),
       })
       setNameLesson("");
@@ -132,6 +137,7 @@ const Vocabulary = () => {
           ))
         }
       </table>
+      <QuestionAd />
     </div>
   )
 };

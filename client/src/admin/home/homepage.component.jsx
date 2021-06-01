@@ -6,6 +6,7 @@ import { Link, Switch, Route } from "react-router-dom";
 import Userad from "../content/user/user.component";
 import Themead from "../content/theme/theme.component";
 import Vocabulary from "../content/vocabulary/vocabulary.component";
+import Game from "../content/game/game.component";
 
 import { logoad, avatarad } from "../../img";
 // import scss
@@ -37,7 +38,12 @@ const Homepage = () => {
         </Link>
         <Link to="/homepageadmin/vocabulary">
           <i className="fas fa-bookmark" name="icon"></i>
-          <span>Từ vựng</span>
+          <span>Bài học</span>
+          <i className="fas fa-chevron-right"></i>
+        </Link>
+        <Link to="/homepageadmin/game">
+          <i className="fas fa-bookmark" name="icon"></i>
+          <span>Game</span>
           <i className="fas fa-chevron-right"></i>
         </Link>
       </div>
@@ -65,6 +71,7 @@ const Homepage = () => {
           <Route path="/homepageadmin/user" component={Userad} />
           <Route path="/homepageadmin/theme" component={Themead} />
           <Route path="/homepageadmin/vocabulary" component={Vocabulary} />
+          <Route path="/homepageadmin/game" component={Game} />
         </Switch>
       </div>
     </div>
