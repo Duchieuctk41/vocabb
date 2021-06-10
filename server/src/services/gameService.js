@@ -23,7 +23,7 @@ let initData = () => {
 };
 
 let initDataGame = (req, res) => {
-  console.log("game");
+  // console.log("game");
   let item = req.query;
   const grade = item.grade;
   for (let i = 1; i <= grade; i++) {

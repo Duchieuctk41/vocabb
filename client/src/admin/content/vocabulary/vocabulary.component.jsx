@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { initAdLessonURL, initAdGameURL } from "./../../../api";
 import LessonAdList from "./../../../components/lesson-ad-list/lesson-add-list.component";
 import { lessonActions } from "./../../../redux/actions/lessonActions";
-import QuestionAd from "./../../components/question-ad/question-ad.component";
 
 import style from "./vocabulary.module.scss";
 
@@ -21,34 +20,35 @@ const Vocabulary = () => {
 
   useEffect(() => {
     dispatch(lessonActions());
-  },[dispatch])
+  }, [dispatch]);
 
 
   const onChangeNameLesson = (e) => {
     const { value } = e.target;
     setNameLesson(value);
-  }
+  };
+
   const onChangeGrade = (e) => {
     const { value } = e.target;
     setGrade(value);
-  }
+  };
+  
+    const previewFile = (file) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setPreviewSource(reader.result);
+      };
+    };
+
   const onChangeImage = (e) => {
     const file = e.target.files[0];
     previewFile(file); // Chuyển thành base64
     setSelectedFile(file); // Lấy tất cả thông số của file
     setFileInputState(e.target.value); // Lấy đường dẫn file
-  }
-
-  const previewFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    };
   };
 
   // Click submit
-
   const handleSubmitFile = (e) => {
     e.preventDefault();
     if (!selectedFile) return;
@@ -91,7 +91,7 @@ const Vocabulary = () => {
 
   const onclickInsertGame = (el, i) => {
     alert(el);
-}
+  }
 
   return (
     <div className={style.vocabulary}>

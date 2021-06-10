@@ -8,6 +8,7 @@ import questionReducer from "./questionReducer";
 import studiedReducer from "./studiedReducer";
 import storeReducer from "./storeReducer";
 import achievementReducer from "./achievementReducer";
+import adquestionReducer from "./adquestionReducer";
 
 const rootReducer = combineReducers({
   lesson: lessonReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   studied: studiedReducer,
   store: storeReducer,
   achievement: achievementReducer,
+  adquestion: adquestionReducer,
 });
 
 export default rootReducer;
