@@ -1,17 +1,38 @@
 import questionModel from "../models/questionModel";
 
-let createNewItem = (item) => {
+let initData = (req, res) => {
+  console.log("vao day roi ne");
+  let item = req.query;
   return new Promise(async (resolve, reject) => {
     // Kiem tra item co ton tai hay ko
-    let checkExists = await questionModel.checkExists(item);
-    if (checkExists) {
-      return res.status(400).send({message: "Data đã tồn tại."});
-    }
-
-    let newItem = item;
-    //console.log(newItem);
+    let newItem = {
+      topic: item.topic,
+      question: item.question,
+      sentence: item.sentence,
+      type: item.type,
+      illustration: item.illustration,
+      Answer: [
+        {
+          title: item.title1,
+          correct: item.correct1,
+          img: item.img1,
+        },
+        {
+          title: item.title2,
+          correct: item.correct2,
+          img: item.img2,
+        },
+        {
+          title: item.title3,
+          correct: item.correct3,
+          img: item.img3,
+        }
+      ]
+    };
+    // console.log(newItem);
     let newListVocab = questionModel.createNew(newItem);
     resolve(newListVocab);
+    console.log("donee");
   });
 };
 
@@ -51,12 +72,11 @@ let createNewItem = (item) => {
 //   type: "order",
 // };
 
-let initData = () => {
-  createNewItem(listQuestion);
-  return;
-};
+// let initData = () => {
+//   createNewItem(listQuestion);
+//   return;
+// };
 
 module.exports = {
-  createNewItem: createNewItem,
   initData: initData,
 };

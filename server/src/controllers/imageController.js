@@ -13,7 +13,6 @@ let getImage = async (req, res) => {
 
 let uploadImage = async (req, res) => {
   try { 
-  let successArr = [];
     const fileStr = req.body.data;
     const uploadResponse = await cloudinary.uploader.upload(fileStr, {
       upload_preset: "lesson",
@@ -26,7 +25,22 @@ let uploadImage = async (req, res) => {
   }
 };
 
+let uploadImageQues = async (req, res) => {
+  try { 
+    const fileStr = req.body.data;
+    const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: "ques",
+    });
+    // console.log(uploadResponse.secure_url);
+    res.json({ msg: uploadResponse.secure_url });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ err: "Something went wrong" });
+  }
+};
+
 module.exports = {
   getImage: getImage,
   uploadImage: uploadImage,
+  uploadImageQues: uploadImageQues
 };

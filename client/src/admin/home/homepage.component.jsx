@@ -48,25 +48,6 @@ const Homepage = () => {
         </Link>
       </div>
       <div className="right">
-        <div className="headerad">
-          <div className="search">
-            <i className="fas fa-search"></i>
-            <input type="text" placeholder="Search"></input>
-          </div>
-
-          <div className="profile">
-            <Link to="#">
-              <i className="fas fa-bell"></i>
-            </Link>
-            <Link to="#">
-              <img src={avatarad} alt="avatar" />
-            </Link>
-            <Link to="#">
-              <span>Minh Chính</span>
-              <i className="fas fa-angle-down"></i>
-            </Link>
-          </div>
-        </div>
         <Switch>
           <Route path="/homepageadmin/user" component={Userad} />
           <Route path="/homepageadmin/theme" component={Themead} />

@@ -5,6 +5,9 @@ export const initAdLessonURL = (name, grade, img) =>
 export const initAdGameURL = (name, grade) => 
 `http://localhost:3001/init-admin-game/?name=${name}&grade=${grade}`;
 
+export const initQuestionURL = (topic, question, sentence, type, illustration, title1, correct1, img1, title2, correct2, img2, title3, correct3, img3) => 
+`http://localhost:3001/init-question/?topic=${topic}&question=${question}&sentence=${sentence}&type=${type}&illustration=${illustration}&title1=${title1}&img1=${img1}&correct1=${correct1}&title2=${title2}&img2=${img2}&correct2=${correct2}&title3=${title3}&img3=${img3}&correct3=${correct3}`;
+
 export const lessonURL = () => `http://localhost:3001/api-lesson`;
 export const lessonIdURL = (id) => `http://localhost:3001/api-lessonid/${id}`;
 export const gameURL = (idQuestion) => `http://localhost:3001/api-game/${idQuestion}`;

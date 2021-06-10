@@ -9,9 +9,9 @@ const Game = () => {
     const { lesson } = useSelector(state => state.lesson);
     const [active, setActive] = useState();
     const [it, setIt] = useState();
-    const onclickInsertGame = (el, i) => {
+    const onclickInsertGame = (element, i) => {
+        setActive(element);
         setIt(i);
-        setActive(el);
     }
     return (
         <div className={style.content}>

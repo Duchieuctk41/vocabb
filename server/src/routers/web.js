@@ -65,6 +65,7 @@ let initRouters = (app) => {
 
   router.get("/api/images", imageContro.getImage);
   router.post("/api/upload", imageContro.uploadImage);
+  router.post("/api/uploadques", imageContro.uploadImageQues);
 
   return app.use("/", router);
 };
