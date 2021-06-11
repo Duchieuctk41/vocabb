@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./gamead.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LessonAdList from "./../../../components/lesson-ad-list/lesson-add-list.component";
+import { lessonActions } from "./../../../redux/actions/lessonActions";
 import QuestionAd from "./../../components/question-ad/question-ad.component";
 
 const Game = () => {
 
     const { lesson } = useSelector(state => state.lesson);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(lessonActions());
+    }, [dispatch]);
+
     const [active, setActive] = useState();
     const [it, setIt] = useState();
     const onclickInsertGame = (element, i) => {
         setActive(element);
         setIt(i);
     }
+
     return (
         <div className={style.content}>
             Tạo trò chơi
@@ -26,11 +34,11 @@ const Game = () => {
                 </thead>
                 {
                     lesson && lesson.map(item => (
-                        <LessonAdList item={item} key={item.name} actived={onclickInsertGame}/>
+                        <LessonAdList item={item} key={item.name} actived={onclickInsertGame} />
                     ))
                 }
             </table>
-            {active ? <QuestionAd item={it} pos={active}/> : null}
+            {active ? <QuestionAd item={it} pos={active} /> : null}
         </div>
     )
 }
