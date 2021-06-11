@@ -1,19 +1,29 @@
 import React from "react";
 import style from "./question-input.component.jsx";
+import { addItem } from "./../../../redux/actions/adquestionActions";
+import { connect, useSelector } from "react-redux";
 
-const QuestionInput = () => {
+const QuestionInput = ({ addItem }) => {
+
+    const { adquestion } = useSelector(state => state.adquestion);
+
+    const HandlerAdQuestion = (e) => {
+        const { name, value } = e.target;
+        addItem({ [name]: value });
+    }
 
     return (
-        <div className={style.choose}>Câu trả lời:
+        <div className={style.choose}>
             <div className={style.answer}>
                 <label htmlFor="title">Câu trả lời:</label>
-                <input type="text" placeholder="Nhập câu trả lời" />
-                <select name="correct">
-                    <option value="true" selected>true</option>
-                </select>
+                <input type="text" name="title1" placeholder="Nhập câu trả lời" onChange={HandlerAdQuestion} value={adquestion.title1}/>
             </div>
         </div>
     )
 }
 
-export default QuestionInput;
+const mapDispatchToProps = dispatch => ({
+    addItem: el => dispatch(addItem(el)),
+});
+
+export default connect(null, mapDispatchToProps) (QuestionInput);

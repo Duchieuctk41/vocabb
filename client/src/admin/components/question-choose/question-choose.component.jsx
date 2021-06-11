@@ -53,8 +53,9 @@ const QuestionChoose = ({ addItem }) => {
         </div>
     )
 }
+
 const mapDispatchToProps = dispatch => ({
     addItem: el => dispatch(addItem(el)),
-})
+});
 
 export default connect(null, mapDispatchToProps)(QuestionChoose);
