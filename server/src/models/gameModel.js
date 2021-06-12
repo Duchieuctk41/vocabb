@@ -32,12 +32,19 @@ GameSchema.statics = {
 
   getDataWithName(item) {
     return this.find({
-       name: item.name 
+      name: item.name
     })
   },
 
   getIdGames() {
     return this.find({}, { _id: 1 });
+  },
+
+  addQuestion(item) {
+    return this.findByIdAndUpdate(item.topic, {
+      $push: { "listQuestion": item.id }
+    }).exec();
+
   }
 };
 
