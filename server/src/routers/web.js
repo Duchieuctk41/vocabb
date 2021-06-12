@@ -31,7 +31,7 @@ let initRouters = (app) => {
   router.get("/init-studied", studiedSer.initData); // cập nhật thành tích học tập
   router.get("/init-achievement", achievementSer.initData); // Tạo bảng thành tích học tập
   router.get("/init-store", storeSer.initData); // Tao bộ từ vựng mới
-  router.get("/init-vocab/:id", vocabSer.initData); // tạo CSDL từ vựng 
+  router.get("/init-vocab", vocabSer.initData); // tạo CSDL từ vựng 
   router.get("/init-admin-lesson", lessonSer.initDataLesson);
   router.get("/init-admin-game", gameSer.initDataGame);
 
