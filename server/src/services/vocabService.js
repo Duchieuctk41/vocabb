@@ -2,22 +2,21 @@ import vocabModel from "../models/vocabModel";
 
 let initData = (req, res) => {
   let userId = req.session.passport.user;
-  let item = req.path.split("/");
-  item = item[2].split("-");
-  let storeId = item[0];
-  let front = item[1].replace("%20", " ");
-  let back = item[2].replace("%20", " ");
+  
+  let item = req.query;
+  console.log(item);
 
-  if (!storeId) {
+  if (!item.storeId) {
     console.log("khong tim thay store");
     return res.send("Khong tim thay store");
   }
   return new Promise(async (resolve, reject) => {
-    let newItem = { storeId: storeId, front: front, back: back, userId: userId };
-    //console.log(newItem);
+    let newItem = { ...item, userId: userId };
+    console.log(newItem);
     let newListVocab = await vocabModel.createNew(newItem);
     resolve(newListVocab);
   });
+
 };
 
 let deleteVocab = async (req, res) => {
