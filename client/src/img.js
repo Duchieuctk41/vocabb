@@ -65,6 +65,7 @@ import logoad from "./admin/images/logo.svg";
 import homead from "./admin/images/home.svg";
 import avatarad from "./admin/images/avatar.svg";
 import house from "./admin/images/house.svg";
+import Br_eng from "./admin/images/Br_eng.jpg";
 
 export {
   check,
@@ -135,5 +136,6 @@ export {
   logoad,
   homead,
   avatarad,
-  house
+  house,
+  Br_eng,
 };

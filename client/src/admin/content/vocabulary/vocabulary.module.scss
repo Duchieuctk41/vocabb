@@ -1,35 +1,99 @@
 .vocabulary {
-  margin-left: 240px;
+  margin-left: 350px;
   position: absolute;
-  top: 54px;
+  border: 1px solid rgb(3, 160, 252);
+  width: 1000px;
+  padding: 50px;
+  background-image: url('/admin/images/eng.jpg');
   .form {
+    width: 750px;
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
-
+    padding: 25px 100px;
+    background-color: #02fd2caf;
+    border-radius: 15px;
+    margin: 0 auto;
+    box-shadow: 5px 5px 10px rgb(65, 64, 64);
     div {
       margin: 10px 0;
       display: flex;
       justify-content: space-between;
       label {
         margin-right: 20px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 20px;
+      }
+      input[name=ten]{
+        width: 350px;
+        padding: 0 25px;
+        border-radius: 5px;
+      }
+      select[name=cars]{
+        width: 68px;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-right: 282px;
+      }
+      input[name=image]{
+        width: 350px;
+        height: 30px;
+        color: black;
+      }
+      ::-webkit-file-upload-button {
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+      img{
+        width: 50px;
+        height: 50px;
       }
     }
+    button{
+      width: 100px;
+      height: 30px;
+      background-color: #3df3ff;
+      margin-top: 25px;
+      color: black;
+      border-radius: 5px;
+    }
   }
-
+  img{
+    display: flex;
+    margin: 15px auto;
+  }
+  h2{
+    font-size: 20px;
+    margin: 35px 150px;
+  }
   table {
-    margin-top: 15px;
+    margin: 0 auto;
     tr {
+      
       th {
         border: 1px solid black;
-        border-collapse: collapse;
+        //border-collapse: collapse;
         padding: 5px 15px;
+        background-color: rgb(136, 241, 248);
+      }
+      th[name=ten]{
+        width: 300px;
+      }
+      th[name=level]{
+        width: 100px;
+      }
+      th[name=img]{
+        width: 250px;
       }
       td {
         border: 1px solid black;
-        border-collapse: collapse;
-        padding: 5px 15px;
+        padding: 0 15px;
+        text-align: center;
+        background-color: white;
         img {
+          display: block;
           width: 30px;
           height: 30px;
         }

@@ -96,15 +96,13 @@ const Vocabulary = () => {
   return (
     <div className={style.vocabulary}>
       <form className={style.form} onSubmit={handleSubmitFile}>
-        <button className={style.btn} type="submit" disabled={nameLesson ? false : true}>
-          Submit
-        </button>
+        
         <div>
-          <label htmlFor="ten">Nhập tên</label>
+          <label htmlFor="ten">Nhập tên :</label>
           <input name="ten" type="text" placeholder="Nhập tên" onChange={onChangeNameLesson} value={nameLesson} />
         </div>
         <div>
-          <label htmlFor="cars">Cấp độ</label>
+          <label htmlFor="cars">Cấp độ :</label>
           <select name="cars" onChange={onChangeGrade}>
             <option value="1" selected>1</option>
             <option value="2">2</option>
@@ -114,25 +112,31 @@ const Vocabulary = () => {
           </select>
         </div>
         <div>
-          <label htmlFor="image">Chọn hình ảnh</label>
+          <label htmlFor="image">Chọn hình ảnh :</label>
           <input
             name="image"
             type="file"
+            class="uploadfile"
+            accept=".jpg, .png"
             onChange={onChangeImage}
             value={fileInputState}
             className={style.btn}
           />
         </div>
+        <button className={style.btn} type="submit" disabled={nameLesson ? false : true}>
+          Submit
+        </button>
       </form>
       {previewSource && (
-        <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
+        <img src={previewSource} alt="chosen" name="sub" style={{ height: "300px" }} />
       )}
+      <h2>DANH SÁCH CÁC BÀI HỌC</h2>
       <table>
         <thead>
           <tr>
-            <th>Tên</th>
-            <th>Cấp độ</th>
-            <th>Hình ảnh</th>
+            <th name="ten">Tên</th>
+            <th name="level">Cấp độ</th>
+            <th name= "img">Hình ảnh</th>
           </tr>
         </thead>
         {

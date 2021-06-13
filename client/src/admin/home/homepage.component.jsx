@@ -8,7 +8,7 @@ import Themead from "../content/theme/theme.component";
 import Vocabulary from "../content/vocabulary/vocabulary.component";
 import Game from "../content/game/game.component";
 
-import { logoad, avatarad } from "../../img";
+import { logoad, Br_eng } from "../../img";
 // import scss
 import "./stylehome.scss";
 
