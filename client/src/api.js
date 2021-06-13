@@ -1,4 +1,4 @@
-export const initVocabURL = (storeId, front, back) => `http://localhost:3001/init-vocab/${storeId}-${front}-${back}`;
+export const initVocabURL = (storeId, front, back) => `http://localhost:3001/init-vocab/?storeId=${storeId}&front=${front}&back=${back}`;
 export const initAchievementURL = () => `http://localhost:3001/init-achievement`;
 export const initAdLessonURL = (name, grade, img) => 
 `http://localhost:3001/init-admin-lesson/?name=${name}&grade=${grade}&img=${img}`;
