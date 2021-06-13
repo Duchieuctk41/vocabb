@@ -12,7 +12,7 @@ const Order = ({ item, addItem }) => {
     }
 
     return (
-        <div className={style.answer}>
+        <div className={style.row}>
             <label htmlFor={`title${item}`}>Câu trả lời {item}</label>
             <input type="text" name={`title${item}`} placeholder="Nhập câu trả lời 1" onChange={HandlerAdQuestion} value={adquestion[`title${item}`]} />
             <select name={`correct${item}`} onChange={HandlerAdQuestion}>

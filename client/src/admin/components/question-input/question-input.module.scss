@@ -1,0 +1,17 @@
+.row {
+    border-bottom: 1px solid #afafaf;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0 10px;
+    label {
+        width: 30%;
+    }
+    input {
+        width: 50%;
+        max-width: 350px;
+        padding: 8px 0 8px 10px;
+        outline: none;
+        border: 1px dashed #afafaf;
+    }
+}

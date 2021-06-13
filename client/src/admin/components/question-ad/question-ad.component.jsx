@@ -5,10 +5,10 @@ import QuestionChoose from "./../question-choose/question-choose.component";
 import QuestionInput from "./../question-input/question-input.component";
 import QuestionOrder from "./../question-order/question-order.component";
 import { connect, useSelector } from "react-redux";
-import { addItem } from "./../../../redux/actions/adquestionActions";
+import { addItem, clearItem } from "./../../../redux/actions/adquestionActions";
 import { initQuestionURL, initQuestionOrderURL } from "./../../../api";
 
-const QuestionAd = ({ item, pos, addItem }) => {
+const QuestionAd = ({ item, pos, addItem, clearItem }) => {
 
   useEffect(() => {
     addItem({ topic: item.idgame[pos - 1] });
@@ -71,8 +71,9 @@ const QuestionAd = ({ item, pos, addItem }) => {
     };
   }
 
-  const HandlerSubmit = (e) => {
+  const HandlerSubmitImage = (e) => {
     e.preventDefault();
+    setToggle1(false);
     return new Promise(async (resolve, reject) => {
       if (adquestion.illustration) {
         runUpdateImage(adquestion.illustration, "illustration");
@@ -93,44 +94,56 @@ const QuestionAd = ({ item, pos, addItem }) => {
     })
   };
 
-  const onClickSubmit = () => {
+  const HandlerSubmitData = () => {
     let urlAPI = initQuestionURL(adquestion.topic, adquestion.question, adquestion.sentence, adquestion.type, adquestion.illustration, adquestion.title1, adquestion.correct1, adquestion.img1, adquestion.title2, adquestion.correct2, adquestion.img2, adquestion.title3, adquestion.correct3, adquestion.img3);
-    if(adquestion.type === "order")
-    urlAPI = initQuestionOrderURL(adquestion.topic, adquestion.question, adquestion.sentence, adquestion.type, adquestion.illustration, adquestion.title1, adquestion.correct1, adquestion.order1, adquestion.title2, adquestion.correct2, adquestion.order2, adquestion.title3, adquestion.correct3, adquestion.order3, adquestion.title4, adquestion.correct4, adquestion.order4, adquestion.title5, adquestion.correct5, adquestion.order5, adquestion.title6, adquestion.correct6, adquestion.order6);
-    
+    if (adquestion.type === "order")
+      urlAPI = initQuestionOrderURL(adquestion.topic, adquestion.question, adquestion.sentence, adquestion.type, adquestion.illustration, adquestion.title1, adquestion.correct1, adquestion.order1, adquestion.title2, adquestion.correct2, adquestion.order2, adquestion.title3, adquestion.correct3, adquestion.order3, adquestion.title4, adquestion.correct4, adquestion.order4, adquestion.title5, adquestion.correct5, adquestion.order5, adquestion.title6, adquestion.correct6, adquestion.order6);
+
     axios({
       method: "GET",
       withCredentials: true,
       url: urlAPI
-    })
+    });
+
     setToggle(false);
-  }
+    return clearItem();
+
+  };
 
   return (
     <div className={style.question}>
-      {toggle ? <button onClick={onClickSubmit}>button submit</button> : null}
-      <div>Tên lesson: {item.name}</div>
-      <div>Cấp độ: {pos}</div>
-      <div>id-game: {item.idgame[pos - 1]}</div>
+      <div className={style.question__btn}>
+        <input type="submit" value="Xử lý file ảnh" onClick={HandlerSubmitImage} className={style.btns} disabled={toggle1 ? false : true} />
+        <button onClick={HandlerSubmitData} className={style.btns} disabled={toggle ? false : true}>Lưu câu hỏi</button>
+      </div>
+      <ul>
+        <li>Tên lesson: {item.name}</li>
+        <li>Cấp độ: {pos}</li>
+        <li>id-game: {item.idgame[pos - 1]}</li>
+      </ul>
+
       <form>
-        <div>
+        <div className={style.row}>
           <label htmlFor="type">Loại câu hỏi:</label>
-          <select name="type" onChange={HandlerAdQuestion}>
-            <option value="choose" selected>choose</option>
+          <select name="type" onChange={HandlerAdQuestion} value={adquestion.type}>
+            <option value="choose">choose</option>
             <option value="input">input</option>
             <option value="order">order</option>
           </select>
         </div>
-        <div>
+        <div className={style.row}>
           <label htmlFor="question">Câu hỏi:</label>
           <input type="text" name="question" placeholder="Nhập câu hỏi" onChange={HandlerAdQuestion} value={adquestion.question} />
         </div>
-        <div>
-          <label htmlFor="sentence">Sentence:</label>
-          <input type="text" name="sentence" placeholder="Nhập Sentence" onChange={HandlerAdQuestion} value={adquestion.sentence} />
-        </div>
-        <div>
-          <label htmlFor="illustration">Hình minh họa</label>
+        {
+          adquestion.type === "choose" ? null : <div className={style.row}>
+            <label htmlFor="sentence">Từ hỏi:</label>
+            <input type="text" name="sentence" placeholder="Nhập Sentence" onChange={HandlerAdQuestion} value={adquestion.sentence} />
+          </div>
+        }
+
+        <div className={style.row}>
+          <label htmlFor="illustration">Hình minh họa:</label>
           <input
             name="illustration"
             type="file"
@@ -140,7 +153,6 @@ const QuestionAd = ({ item, pos, addItem }) => {
         {adquestion.type === "choose" ? <QuestionChoose /> : null}
         {adquestion.type === "input" ? <QuestionInput /> : null}
         {adquestion.type === "order" ? <QuestionOrder /> : null}
-        {toggle1 ? <input type="submit" value="Submit image" onClick={HandlerSubmit} /> : null}
       </form>
 
     </div>
@@ -149,6 +161,7 @@ const QuestionAd = ({ item, pos, addItem }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addItem: (el) => dispatch(addItem(el)),
+  clearItem: () => dispatch(clearItem()),
 })
 
 export default connect(null, mapDispatchToProps)(QuestionAd);

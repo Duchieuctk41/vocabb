@@ -8,3 +8,8 @@ export const addItem = (el) => ({
   type: adquestionTypes.ADD_ITEM,
   payload: el,
 });
+
+
+export const clearItem = () => ({
+  type: adquestionTypes.CLEAR_ITEM,
+})

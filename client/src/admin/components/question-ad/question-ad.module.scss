@@ -1,7 +1,59 @@
 .question {
     margin-top: 10px;
     border: 1px solid #ccc;
-    div {
-        margin: 20px 0;
-    }    
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        border-bottom: 1px solid #afafaf;
+        .btns {
+            padding: 0 10px;
+            height: 45px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            border-radius: 8px;
+            outline: none;
+            border: solid;
+            border-width: 0 0 4px;
+            border-color: #6fc311;
+            background: #8ae008;
+            margin: 0 30px;
+            &:disabled {
+                border-width: 0;
+                background: #e5e5e5;
+                color: #afafaf;
+                cursor: default;
+            }
+        }
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px solid #afafaf;
+        padding: 15px 10px;
+    }
+    form {
+        .row {
+            border-bottom: 1px solid #afafaf;
+            display: flex;
+            align-items: center;
+            height: 50px;
+            padding: 0 10px;
+            label {
+                width: 30%;
+            }
+            input {
+                width: 50%;
+                max-width: 350px;
+                padding: 8px 0 8px 10px;
+                outline: none;
+                border: 1px dashed #afafaf;
+            }
+        }
+    }
 }
