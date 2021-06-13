@@ -31,3 +31,5 @@ mongodb+srv://duchieu:thuyduong1112001@cluster0.30vxh.mongodb.net/vocab
 ![8](./readme/8.png)
 ![9](./readme/9.png)
 
+7. Đăng nhập mk chung là A@a123456 cho dễ nhớ
+
