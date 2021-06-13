@@ -17,6 +17,7 @@ Mật khẩu: ******
 ![5](./readme/5.png)
 
 4. Chạy dòng lệnh env: 
+npm config delete script-shell
 npm config set script-shell "C://Program Files/Git/bin/bash.exe"
 
 ![6](./readme/6.png)

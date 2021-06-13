@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+#sh
+sh/env.sh
+
 # production
 /build
 

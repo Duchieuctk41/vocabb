@@ -16,7 +16,7 @@ let register = (age, name, email, password, protocol, host) => {
 
     let userItem = {
       username: name,
-      age: age,
+      age: 17,
       local: {
         email: email,
         password: bcrypt.hashSync(password, salt),
@@ -26,9 +26,10 @@ let register = (age, name, email, password, protocol, host) => {
 
     let user = await UserModel.createNew(userItem);
     let linkVerify = `${protocol}://${host}/verify/${user.local.verifyToken}`;
+    console.log(linkVerify);
     // send email
     sendMail(email, transMail.subject, transMail.template(linkVerify))
-      .then((success) => {
+      .then(() => {
         resolve(transSuccess.userCreated(user.local.email));
       })
       .catch(async (error) => {
