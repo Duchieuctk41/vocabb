@@ -12,6 +12,10 @@ import { updateGradeUrl, getUserId, updateAchievementURL, checkLoggedIn } from "
 
 import { close } from "../../img";
 import style from "./game.module.scss";
+import { Howl } from "howler";
+import BoopMp3 from "./../../audio/boop.mp3";
+import CorrectMp3 from "./../../audio/correct.mp3";
+import WrongMp3 from "./../../audio/wrong1.mp3";
 
 const Game = () => {
   const [isActive, setIsActve] = useState(null); // hiển thị nút kiểm tra
@@ -34,6 +38,14 @@ const Game = () => {
   let lessonId = lesson[0]._id;
   let test1 = game.listQuestion;
   const dispatch = useDispatch();
+
+  let SoundPlay = (src) => {
+    const sound = new Howl({
+      src,
+      volume: 0.1
+    })
+    sound.play();
+  }
 
   checkLogin();
   function checkLogin() {
@@ -96,6 +108,7 @@ const Game = () => {
 
   // Lấy giá trị người dùng chọn (nhập)
   const onClickHandler = (stt) => {
+    SoundPlay(BoopMp3);
     setUserchooseOrder(stt);
     stt ? setIsActve(stt) : setIsActve(null);
     const dapanOrder = question.Answer.filter(item => item.order);
@@ -107,23 +120,37 @@ const Game = () => {
 
   // Lấy giá trị người dùng chọn (nhập)
   const onClickHandlerChoose = (stt) => {
+    SoundPlay(BoopMp3);
     stt ? setIsActve(stt) : setIsActve(null);
   };
 
   // Kiểm tra đúng sai
   const checkTruFalseHandler = () => {
+    let kq = true;
     if (question.type === "choose") {
-      setResult1(question.Answer[isActive - 1].correct);
+      kq = question.Answer[isActive - 1].correct;
+      setResult1(kq);
       let itemCorrect = question.Answer.filter(item => item.correct);
       setDapanOrder2(itemCorrect[0].title);
     }
     if (question.type === "order") {
-      JSON.stringify(dapanOrder2) === JSON.stringify(userchooseOrder) ? setResult1(true) : setResult1(false);
+      if(JSON.stringify(dapanOrder2) === JSON.stringify(userchooseOrder)) {
+        setResult1(true);
+      } else {
+        setResult1(false);
+        kq = false;
+      }
     }
     if (question.type === "input") {
-      question.Answer[0].title === userchooseOrder ? setResult1(true) : setResult1(false);
+      if(question.Answer[0].title === userchooseOrder){
+        setResult1(true);
+      } else {
+        setResult1(false);
+        kq = false;
+      }
       setDapanOrder2(question.Answer[0].title);
     }
+    kq ? SoundPlay(CorrectMp3) : SoundPlay(WrongMp3);
     setIsTrue(true);
   };
 

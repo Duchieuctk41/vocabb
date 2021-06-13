@@ -4,13 +4,14 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { vocabActions } from "./../../redux/actions/vocabActions";
 import { close } from "./../../img";
+import { Howl } from "howler";
+import Flip from "./../../audio/flip.mp3";
 
 const Learn = () => {
     const [position, setPosition] = useState(0);
     const [toggle, setToggle] = useState(true);
     const [apper, setApper] = useState(true);
     const dispatch = useDispatch();
-
 
     const { vocab } = useSelector(state => state.vocab);
     const { storeid } = useParams();
@@ -20,12 +21,21 @@ const Learn = () => {
     let store = vocab.length ? vocab[position].store : null;
     let max = vocab.length;
 
+    let SoundPlay = (src) => {
+        const sound = new Howl({
+            src,
+            volume: 0.2
+        })
+        sound.play();
+    }
+
     useEffect(() => {
         dispatch(vocabActions(storeid));
     }, []);
 
     const onClickToggle = () => {
         setToggle(!toggle);
+        SoundPlay(Flip);
         setTimeout(()=> {
             return setApper(!apper);
         }, 100);
