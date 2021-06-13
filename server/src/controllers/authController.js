@@ -71,7 +71,6 @@ let verifyAccount = async (req, res) => {
   let successArr = [];
   try {
     let verifySuccess = await authSer.verifyAccount(req.params.token);
-    successArr.push(verifySuccess);
     successFlash.push(verifySuccess);
     req.flash("success", successArr);
     // console.log("vao day roi1");

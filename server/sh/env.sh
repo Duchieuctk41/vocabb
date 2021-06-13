@@ -12,7 +12,7 @@
 
 # Config admin email account
   export MAIL_USER=duchieu.ctk41@gmail.com
-  export MAIL_PASSWORD=thuyduong1112001
+  export MAIL_PASSWORD=@Hieupencil1681999
   export MAIL_HOST=smtp.gmail.com
   export MAIL_PORT=587 
 

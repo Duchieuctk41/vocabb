@@ -10,7 +10,7 @@ const SignUp = () => {
 
   const [flash, setFlash] = useState();
   const [signup, setSignup] = useState({
-    age: "",
+    age: "17",
     name: "",
     email: "",
     password: "",
@@ -44,7 +44,7 @@ const SignUp = () => {
         <h1 className={style.login}>{flash ? flash : "Tạo hồ sơ"}</h1>
         <form onSubmit={submitHandler}>
           <div className={style.inp}>
-            <div className={style.inp1}>
+            {/* <div className={style.inp1}>
               <img src={question} alt="question" className={style.question} />
               <input
                 type="text"
@@ -54,7 +54,7 @@ const SignUp = () => {
                 value={age}
                 onChange={changeHandler}
               ></input>
-            </div>
+            </div> */}
             <div className={style.inp1}>
               <input
                 type="text"
