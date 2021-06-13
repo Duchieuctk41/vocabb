@@ -80,7 +80,9 @@ const Game = () => {
       }).then((response) => {
         console.log(response.data);
       });
-      history.push(`/`);
+      setTimeout(() => {
+        history.push(`/`);
+      }, 500);
     } else {
       if (test1 !== undefined) dispatch(questionActions(test1[position]));
     }
