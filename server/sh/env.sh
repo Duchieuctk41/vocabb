@@ -10,7 +10,7 @@
   export APP_HOST=localhost
   export APP_PORT=3001
 
-# Config admin email account
+# Config admin email account dau cat moi
   export MAIL_USER=duchieu.ctk41@gmail.com
   export MAIL_PASSWORD=@Hieupencil1681999
   export MAIL_HOST=smtp.gmail.com
