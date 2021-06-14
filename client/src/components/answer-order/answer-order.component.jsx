@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from "react";
 import style from "./answer-order.module.scss";
+import { addUserChooseActions, removeUserChooseActions } from "./../../redux/actions/userChooseActions";
+import { useSelector, connect } from "react-redux";
 
-const AnswerOrder = ({ item, actived }) => {
-  const [arrayAnswer, setArrayAnswer] = useState([]);  //danh sách được chọn
+const AnswerOrder = ({ item, actived, addItem, removeItem }) => {
+  const { userChoose } = useSelector(state => state.userChoose);
 
   //chọn đáp án, chạy lên trên
   function onClickAddAnswer(item) {
-    setArrayAnswer((arrayAnswer) => [...arrayAnswer, item], [arrayAnswer]);
+    addItem(item);
   }
-  
+
   function onClickRemoveAnswer(item) {
-    const newList = arrayAnswer.filter((element) => element !== item)
-    setArrayAnswer(newList);
+    removeItem(item);
   }
 
   let onClickHandler = actived;
-  useEffect(() => {
-    onClickHandler(arrayAnswer);
-  },[arrayAnswer]);
-  
   return (
     <div className={style.content}>
       <div className={style.image}>
         <img alt="img" src={item.illustration}></img>
         <div className={style.image__sentense}>
-          <span>{item.sentense}</span>
+          <span>{item.sentence}</span>
         </div>
       </div>
       <div className={style.answer}>
         <div className={style["--choosed"]}>
-          {arrayAnswer && arrayAnswer.map((e) => <button key={e} onClick={() => {onClickRemoveAnswer(e);
-          if(arrayAnswer.length === 1) onClickHandler(0);} 
+          {userChoose && userChoose.map((e) => <button key={e} onClick={() => {
+            onClickRemoveAnswer(e);
+            if (userChoose.length === 1) onClickHandler(0);
+          }
           }>{e}</button>)}
         </div>
         <div>
@@ -41,7 +40,7 @@ const AnswerOrder = ({ item, actived }) => {
                 onClick={() => {
                   onClickAddAnswer(element.title);
                 }}
-                disabled={arrayAnswer.find(item => item === element.title) ? true : false}
+                disabled={userChoose.find(item => item === element.title) ? true : false}
               >
                 {element.title}
               </button>
@@ -52,4 +51,9 @@ const AnswerOrder = ({ item, actived }) => {
   );
 };
 
-export default AnswerOrder;
+const mapDispatchToProps = dispatch => ({
+  addItem: el => dispatch(addUserChooseActions(el)),
+  removeItem: el => dispatch(removeUserChooseActions(el)),
+})
+
+export default connect(null, mapDispatchToProps)(AnswerOrder);

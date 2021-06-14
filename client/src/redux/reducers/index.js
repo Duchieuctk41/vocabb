@@ -9,6 +9,7 @@ import studiedReducer from "./studiedReducer";
 import storeReducer from "./storeReducer";
 import achievementReducer from "./achievementReducer";
 import adquestionReducer from "./adquestionReducer";
+import userChooseReducer from "./userChooseReducer";
 
 const rootReducer = combineReducers({
   lesson: lessonReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   store: storeReducer,
   achievement: achievementReducer,
   adquestion: adquestionReducer,
+  userChoose: userChooseReducer,
 });
 
 export default rootReducer;

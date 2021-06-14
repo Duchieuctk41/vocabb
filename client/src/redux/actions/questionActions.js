@@ -4,7 +4,6 @@ import { questionURL } from "../../api";
 
 export const questionActions = (id) => async (dispatch) => {
   const questionData = await axios.get(questionURL(id));
-  // console.log("question: ", questionData);
 
   dispatch({
     type: questionTypes.FETCH_QUESTION,

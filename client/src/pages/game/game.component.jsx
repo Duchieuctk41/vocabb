@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, connect } from "react-redux";
 import { questionActions } from "../../redux/actions/questionActions";
+import { clearUserChooseActions } from "./../../redux/actions/userChooseActions";
 import axios from "axios";
 
 import AnswerChoose from "./../../components/answer-choose/answer-choose.component";
@@ -17,7 +18,7 @@ import BoopMp3 from "./../../audio/boop.mp3";
 import CorrectMp3 from "./../../audio/correct.mp3";
 import WrongMp3 from "./../../audio/wrong1.mp3";
 
-const Game = () => {
+const Game = ({ clearItem }) => {
   const [isActive, setIsActve] = useState(null); // hiển thị nút kiểm tra
   const [isTrue, setIsTrue] = useState(false); // hiển thị modal check
   const [process, setProcess] = useState(0); // Thanh process
@@ -34,15 +35,16 @@ const Game = () => {
   const { lesson } = useSelector((state) => state.lesson);
   const { game } = useSelector((state) => state.game);
   const { question } = useSelector((state) => state.question);
+  const { userChoose } = useSelector((state) => state.userChoose);
 
   let lessonId = lesson[0]._id;
   let test1 = game.listQuestion;
   const dispatch = useDispatch();
 
-  let SoundPlay = (src) => {
+  let SoundPlay = (src, gt) => {
     const sound = new Howl({
       src,
-      volume: 0.1
+      volume: gt
     })
     sound.play();
   }
@@ -106,9 +108,14 @@ const Game = () => {
     stt ? setIsActve(stt) : setIsActve(null);
   }
 
+  useEffect(() => {
+    if(Object.keys(userChoose).length !== 0)
+    onClickHandler(userChoose);
+  }, [userChoose]);
+
   // Lấy giá trị người dùng chọn (nhập)
   const onClickHandler = (stt) => {
-    SoundPlay(BoopMp3);
+    SoundPlay(BoopMp3, 0.1);
     setUserchooseOrder(stt);
     stt ? setIsActve(stt) : setIsActve(null);
     const dapanOrder = question.Answer.filter(item => item.order);
@@ -120,7 +127,7 @@ const Game = () => {
 
   // Lấy giá trị người dùng chọn (nhập)
   const onClickHandlerChoose = (stt) => {
-    SoundPlay(BoopMp3);
+    SoundPlay(BoopMp3, 0.1);
     stt ? setIsActve(stt) : setIsActve(null);
   };
 
@@ -134,7 +141,7 @@ const Game = () => {
       setDapanOrder2(itemCorrect[0].title);
     }
     if (question.type === "order") {
-      if(JSON.stringify(dapanOrder2) === JSON.stringify(userchooseOrder)) {
+      if (JSON.stringify(dapanOrder2) === JSON.stringify(userchooseOrder)) {
         setResult1(true);
       } else {
         setResult1(false);
@@ -142,7 +149,7 @@ const Game = () => {
       }
     }
     if (question.type === "input") {
-      if(question.Answer[0].title === userchooseOrder){
+      if (question.Answer[0].title === userchooseOrder) {
         setResult1(true);
       } else {
         setResult1(false);
@@ -150,7 +157,7 @@ const Game = () => {
       }
       setDapanOrder2(question.Answer[0].title);
     }
-    kq ? SoundPlay(CorrectMp3) : SoundPlay(WrongMp3);
+    kq ? SoundPlay(CorrectMp3, 0.1) : SoundPlay(WrongMp3);
     setIsTrue(true);
   };
 
@@ -166,6 +173,8 @@ const Game = () => {
       test1.splice(position, tam.length, ...tam);
       setMix(mix + 1);
     }
+    clearItem();
+    setIsActve(null);
     setIsTrue(false);
   };
 
@@ -253,4 +262,8 @@ const Game = () => {
   );
 };
 
-export default Game;
+const mapDispatchToProps = dispatch => ({
+  clearItem: () => (dispatch(clearUserChooseActions())),
+})
+
+export default connect(null, mapDispatchToProps)(Game);

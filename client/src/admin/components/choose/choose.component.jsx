@@ -22,7 +22,7 @@ const Choose = ({ item, addItem }) => {
         <div className={style.row}>
             <label htmlFor={`title${item}`}>Câu trả lời {item}:</label>
             <input type="text" name={`title${item}`} placeholder={`Nhập câu trả lời ${item}`} onChange={HandlerAdQuestion} value={adquestion[`title${item}`]} />
-            <select name={`correct${item}`} onChange={HandlerAdQuestion}>
+            <select name={`correct${item}`} onChange={HandlerAdQuestion} value={adquestion[`correct${item}`]}>
                 <option value="false" selected>false</option>
                 <option value="true">true</option>
             </select>
