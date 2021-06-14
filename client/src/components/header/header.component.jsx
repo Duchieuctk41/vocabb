@@ -11,6 +11,7 @@ import { logo, chat, store, more, america, corona, fire, lingots, me, } from "..
 import "./header.style.scss";
 import { achievementActions } from "./../../redux/actions/achievementActions";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 const Header = () => {
 
@@ -21,7 +22,9 @@ const Header = () => {
 
   // Tạo data achievement
 
-  checkLogin();
+  useEffect(() => {
+    checkLogin();
+  },[])
   // Kiểm tra đăng nhập chưa
   function checkLogin() {
     axios({
