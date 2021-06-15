@@ -9,13 +9,15 @@ import { initVocabURL, checkLoggedIn } from "./../../api";
 import { useDispatch, useSelector } from "react-redux";
 import { vocabActions } from "./../../redux/actions/vocabActions";
 import VocabList from "./../../components/vocab-list/vocab-list";
+import { connect } from "react-redux";
+import { addItem } from "./../../redux/actions/storeActions";
 
-const Store = () => {
+const Store = ({ addItem, fetchItem }) => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const { storeid } = useParams();
 
   const { vocab } = useSelector(state => state.vocab);
+  const { store } = useSelector(state => state.store);
 
   checkLogin();
 
@@ -32,7 +34,7 @@ const Store = () => {
       })
       .catch((error) => console.log(error));
   }
-  
+
   const [toggle, setToggle] = useState(false);
   const [word, setWord] = useState({
     front: "",
@@ -65,15 +67,16 @@ const Store = () => {
     axios({
       method: "GET",
       withCredentials: true,
-      url: initVocabURL(storeid,word.front, word.back)
+      url: initVocabURL(storeid, word.front, word.back)
     }).then((response) => {
       console.log(response.data);
     });
     onClickRemove();
-    dispatch(vocabActions(storeid));
+    addItem(storeid);
+    fetchItem(storeid)
   }
 
- // Clear input
+  // Clear input
   const onClickRemove = () => {
     setWord({ front: "", back: "" });
   }
@@ -113,7 +116,7 @@ const Store = () => {
           </div>
           <div className={style.left__added}>
             <h2>Từ vựng đã thêm</h2>
-            <span>1 từ</span>
+            <span>{store[1].quantity && store[1].quantity} từ</span>
             <table className={style.table}>
               <thead>
                 <tr>
@@ -145,7 +148,7 @@ const Store = () => {
                 <div className={style.note__follow}>
                   <img src={america} alt="img" />
                   <h3>Gia đình</h3>
-                  <h4>đã học 40 từ</h4>
+                  <h4>đã học {store[1] && store[1].quantity} từ</h4>
                 </div>
               </li>
             </ul>
@@ -156,4 +159,9 @@ const Store = () => {
   );
 };
 
-export default Store;
+const mapDispatchToProps = dispatch => ({
+  addItem: el => dispatch(addItem(el)),
+  fetchItem: el => dispatch(vocabActions(el)),
+})
+
+export default connect(null, mapDispatchToProps)(Store);

@@ -15,7 +15,7 @@ const Vocab = ({ item }) => {
                 <td>{item.back}</td>
                 <td>{item.img}</td>
             </tr>
-            {tool ? <ToolAdjust id={item._id} /> : null}
+            {tool ? <ToolAdjust id={item._id} storeId={item.storeId} /> : null}
         </div>
     )
 }

@@ -66,7 +66,7 @@ const Store = () => {
                 <div className={style.note__follow}>
                   <img src={america} alt="" />
                   <h3>Gia đình</h3>
-                  <h4>đã học 40 từ</h4>
+                  <h4>đã học {store[0] && store[1].quantity} từ</h4>
                 </div>
               </li>
             </ul>

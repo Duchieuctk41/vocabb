@@ -31,7 +31,7 @@ export const checkLoggedOut = () => `http://localhost:3001/check-logout`;
 
 export const updateAchievementURL = () => `http://localhost:3001/update-achievement`;
 
-export const deleteVocabURL = (id) => `http://localhost:3001/delete-vocab/${id}`;
+export const deleteVocabURL = (id, storeId) => `http://localhost:3001/delete-vocab/?id=${id}&storeId=${storeId}`;
 
 export const getUserId = () => `http://localhost:3001/api-userid`; 
 export const updateGradeUrl = (userId, lessonId) => `http://localhost:3001/update-grade/${userId}-${lessonId}`;

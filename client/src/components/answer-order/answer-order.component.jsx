@@ -8,6 +8,7 @@ const AnswerOrder = ({ item, actived, addItem, removeItem }) => {
 
   //chọn đáp án, chạy lên trên
   function onClickAddAnswer(item) {
+    onClickHandler(item);
     addItem(item);
   }
 

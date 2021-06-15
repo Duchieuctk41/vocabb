@@ -10,9 +10,8 @@ const userReducer = (state = initState, action) => {
     case userChooseTypes.ADD_USER_CHOOSE:
       return { ...state, userChoose: addUserChoose(state.userChoose, action.payload) };
     case userChooseTypes.ADD_USER_INPUT:
-      return addUserInput(state.userChoose, action.payload) ;
+      return addUserInput(action.payload) ;
     case userChooseTypes.REMOVE_USER_CHOOSE:
-      console.log("action: ", action.payload);
       return { ...state, userChoose: removeUserChoose(state.userChoose, action.payload) };
     case userChooseTypes.CLEAR_USER_CHOOSE:
       return { ...state, userChoose: clearUserChoose() };
