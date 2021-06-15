@@ -2,8 +2,7 @@ export const addUserChoose = (userChoose, addItem) => {
     return [...userChoose, addItem];
 };
 
-export const addUserInput = (userChoose, addItem) => {
-    console.log(addItem);
+export const addUserInput = (addItem) => {
     return { userChoose: addItem.userChoose };
 };
 
