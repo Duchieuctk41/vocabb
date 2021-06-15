@@ -102,29 +102,24 @@ const Game = ({ clearItem }) => {
     }
   }, [test1, userId, lessonId, position, mix, history, dispatch]);
 
-  // hiển thị nút kiểm tra, lấy đáp án đúng
-  const onClickHandlerInput = (stt) => {
-    setUserchooseOrder(stt);
-    stt ? setIsActve(stt) : setIsActve(null);
-  }
-
-  useEffect(() => {
-    if (Object.keys(userChoose).length !== 0)
-      onClickHandler(userChoose);
-  }, [userChoose]);
-
-  // Lấy giá trị người dùng chọn (nhập)
+  // Lấy giá trị người dùng chọn (order)
   const onClickHandler = (stt) => {
     SoundPlay(BoopMp3, 0.1);
-    setUserchooseOrder(stt);
+    setUserchooseOrder(userChoose);
     stt ? setIsActve(stt) : setIsActve(null);
   };
 
-  // Lấy giá trị người dùng chọn (nhập)
+  // Lấy giá trị người dùng chọn (chọn)
   const onClickHandlerChoose = (stt) => {
     SoundPlay(BoopMp3, 0.1);
     stt ? setIsActve(stt) : setIsActve(null);
   };
+
+  // Lấy giá trị người dụng nhập (input)
+  const onClickHandlerInput = (stt) => {
+    setUserchooseOrder(stt);
+    stt ? setIsActve(stt) : setIsActve(null);
+  }
 
   // Kiểm tra đúng sai
   const checkTruFalseHandler = () => {
@@ -139,13 +134,13 @@ const Game = ({ clearItem }) => {
       const dapanOrder = question.Answer.filter(item => item.correct);
       let dapan = [];
       for (let i = 0; i < dapanOrder.length; i++) {
-        let kq = dapanOrder.filter(it => it.order == i + 1);
-        if (kq[0]) {
-          dapan.push(kq[0].title)
+        let tam = dapanOrder.filter(it => it.order == i + 1);
+        if (tam[0]) {
+          dapan.push(tam[0].title)
         }
       }
       setDapanOrder2(dapan);
-      if (JSON.stringify(dapan) === JSON.stringify(userchooseOrder)) {
+      if (JSON.stringify(dapan) === JSON.stringify(userChoose)) {
         setResult1(true);
       } else {
         setResult1(false);

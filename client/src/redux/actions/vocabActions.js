@@ -32,7 +32,7 @@ export const vocabAllActions = () => async (dispatch) => {
     })
 };
 
-export const deleteVocabActions = (id) => async (dispatch) => {
+export const deleteVocabActions = (id, storeId) => async (dispatch) => {
     dispatch({
         type: vocabTypes.DELETE_VOCAB,
         payload: id
@@ -41,7 +41,7 @@ export const deleteVocabActions = (id) => async (dispatch) => {
     return axios({
         method: "DELETE",
         withCredentials: true,
-        url: deleteVocabURL(id),
+        url: deleteVocabURL(id, storeId),
     });
     
 };

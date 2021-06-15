@@ -6,7 +6,7 @@ let StoreSchema = new Schema({
   userId: String,
   name: String,
   img: { type: String, default: "avatar_default.jpg" },
-  quality: { type: Number, default: 0 },
+  quantity: { type: Number, default: 0 },
 });
 
 StoreSchema.statics = {
@@ -19,12 +19,21 @@ StoreSchema.statics = {
       name: item.name
     })
   },
+  findById(item) {
+    return this.findOne({
+      _id: item
+    })
+  },
 
   getDataByUserId(item) {
     return this.find({
       userId: item.userId
     })
   },
+
+  updateStore(item) {
+    return this.findByIdAndUpdate(item.id, { "quantity": item.quantity }).exec();
+  }
 };
 
 module.exports = mongoose.model("store", StoreSchema);

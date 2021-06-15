@@ -1,4 +1,5 @@
 import { storeTypes } from "./../types/storeTypes";
+import { addItem, removeItem } from "./../utils/storeUtils";
 
 const initState = {
     store: [],
@@ -7,9 +8,13 @@ const initState = {
 const storeReducer = (state = initState, action) => {
     switch (action.type) {
         case storeTypes.FETCH_ALL_STORE:
-            console.log("store: ", action.payload);
             return { ...state, store: action.payload.store };
-            default:
+        case storeTypes.ADD_STORE:
+            return { ...state, store: addItem(state.store, action.payload)};
+        case storeTypes.REMOVE_STORE:
+            return { ...state, store: removeItem(state.store, action.payload)};
+
+        default:
             return state;
     }
 }

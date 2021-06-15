@@ -19,7 +19,7 @@ const vocabReducer = (state = initState, action) => {
           return it._id !== action.payload;
         }),
       };
-
+   
     default:
       return state;
   }

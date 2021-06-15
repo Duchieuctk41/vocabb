@@ -15,3 +15,13 @@ export const storeActions = () => async (dispatch) => {
         },
     });
 };
+
+export const addItem = (id) => ({
+    type: storeTypes.ADD_STORE,
+    payload: id
+});
+
+export const removeItem = (id) => ({
+    type: storeTypes.REMOVE_STORE,
+    payload: id
+});

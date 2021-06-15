@@ -15,7 +15,7 @@ const AnswerInput = ({ item, actived, addItem }) => {
 
   useEffect(() => {
     onClickHandlerInput(userChoose);
-  }, [onClickHandlerInput, userChoose]);
+  }, [userChoose]);
 
 
   return (
