@@ -32,14 +32,14 @@ const Vocabulary = () => {
     const { value } = e.target;
     setGrade(value);
   };
-  
-    const previewFile = (file) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setPreviewSource(reader.result);
-      };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
     };
+  };
 
   const onChangeImage = (e) => {
     const file = e.target.files[0];
@@ -96,7 +96,7 @@ const Vocabulary = () => {
   return (
     <div className={style.vocabulary}>
       <form className={style.form} onSubmit={handleSubmitFile}>
-        
+
         <div>
           <label htmlFor="ten">Nhập tên :</label>
           <input name="ten" type="text" placeholder="Nhập tên" onChange={onChangeNameLesson} value={nameLesson} />
@@ -136,13 +136,11 @@ const Vocabulary = () => {
           <tr>
             <th name="ten">Tên</th>
             <th name="level">Cấp độ</th>
-            <th name= "img">Hình ảnh</th>
+            <th name="img">Hình ảnh</th>
           </tr>
         </thead>
         {
-          lesson && lesson.map(item => (
-            <LessonAdList item={item} key={item.name} actived={onclickInsertGame} />
-          ))
+          lesson && lesson.map(item => <LessonAdList item={item} key={item.name} actived={onclickInsertGame} />)
         }
       </table>
     </div>

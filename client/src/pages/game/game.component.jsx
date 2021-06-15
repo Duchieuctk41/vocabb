@@ -109,8 +109,8 @@ const Game = ({ clearItem }) => {
   }
 
   useEffect(() => {
-    if(Object.keys(userChoose).length !== 0)
-    onClickHandler(userChoose);
+    if (Object.keys(userChoose).length !== 0)
+      onClickHandler(userChoose);
   }, [userChoose]);
 
   // Lấy giá trị người dùng chọn (nhập)
@@ -118,11 +118,6 @@ const Game = ({ clearItem }) => {
     SoundPlay(BoopMp3, 0.1);
     setUserchooseOrder(stt);
     stt ? setIsActve(stt) : setIsActve(null);
-    const dapanOrder = question.Answer.filter(item => item.order);
-    setDapanOrder2([]);
-    for (let i = 0; i < dapanOrder.length; i++) {
-      setDapanOrder2((dapanOrder2) => [...dapanOrder2, dapanOrder[i].title], [dapanOrder2]);
-    }
   };
 
   // Lấy giá trị người dùng chọn (nhập)
@@ -141,7 +136,16 @@ const Game = ({ clearItem }) => {
       setDapanOrder2(itemCorrect[0].title);
     }
     if (question.type === "order") {
-      if (JSON.stringify(dapanOrder2) === JSON.stringify(userchooseOrder)) {
+      const dapanOrder = question.Answer.filter(item => item.correct);
+      let dapan = [];
+      for (let i = 0; i < dapanOrder.length; i++) {
+        let kq = dapanOrder.filter(it => it.order == i + 1);
+        if (kq[0]) {
+          dapan.push(kq[0].title)
+        }
+      }
+      setDapanOrder2(dapan);
+      if (JSON.stringify(dapan) === JSON.stringify(userchooseOrder)) {
         setResult1(true);
       } else {
         setResult1(false);
